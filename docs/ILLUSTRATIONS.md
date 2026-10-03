@@ -1,5 +1,11 @@
 # Illustration provenance
 
+The teal/ivory redesign also replaces the displayed playground image with a matching illustration. The original remains intact. Its new paths are `public/img/generated/social-playground-v2.png`, `social-playground-v2-800.webp` and `social-playground-v2-1600.webp` in the same directory. Created with the built-in image-generation tool; inspected for the separate observer, three playing classmates, calm expressions and absence of embedded text.
+
+## Playground redesign prompt
+
+Use case: illustration-story. Landscape 16:10 picture-book educational illustration for Maum:Link, a calm Korean social-emotional learning app. Korean elementary school playground at recess. A nine-year-old child in a muted purple shirt stands a little apart on the left, watching three classmates playing together with a ball on the right, wanting to join but not yet invited. Keep all four children fully within the central 80 percent so they remain visible in a 4:3 center crop. Include the observer's face in three-quarter view, subtle hesitant expression, no tears. The playing children have small friendly smiles, not exaggerated cartoon faces. Do not show exclusion or deliberate bullying. Style: refined hand-painted children's picture book, soft pencil outlines, delicate gouache texture on warm ivory paper, natural child proportions, muted sage green, buttery yellow, dusty pink and powder blue. Friendly daylight, rounded simple shapes, readable hands and faces, sparse school building and tree in background. No text, lettering, speech balloons, signage, badges, borders, UI, scores or exaggerated expressions. Single full-canvas scene, not collage.
+
 Generated with the built-in image-generation tool on 2026-10-03; no runtime image service. The client originals are preserved. New assets are provisional illustrations for content-team review, not commissioned final art. The classroom presentation image replaces the displayed source slide; the original remains in public/img and content-source.
 
 Assets are in `public/img/generated/`: each base name has an 800px PNG fallback and 800/1600px WebP sources. Optimized with the project's Sharp dependency. They are included in the PWA precache.
@@ -20,4 +26,4 @@ Use case: illustration-story. Landscape 16:10 picture-book educational illustrat
 
 ## Review
 
-Inspected all three generated outputs. Pencil is visibly hidden, lunch queue is interrupted, presentation classmates whisper while the presenter appears uneasy. No UI text, tears, or failure markers. Illustration briefs and all lesson strings are unchanged. The retained playground scene is supplied client artwork and uses a different illustration style; the source is preserved deliberately.
+Inspected all three generated outputs. Pencil is visibly hidden, lunch queue is interrupted, presentation classmates whisper while the presenter appears uneasy. No UI text, tears, or failure markers. Illustration briefs and all lesson strings are unchanged. The original playground scene is preserved as a source asset; the later teal/ivory redesign displays the new matching playground illustration described above.

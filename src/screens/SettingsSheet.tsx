@@ -1,5 +1,4 @@
 import { Sheet } from '@/design/Sheet'
-import { cn } from '@/design/cn'
 import { useT } from '@/i18n/useT'
 import { useSettings } from '@/services/settings'
 import { sound } from '@/services/sound'
@@ -16,9 +15,9 @@ function Segmented<T extends string>({
   onChange: (v: T) => void
 }) {
   return (
-    <div className="flex flex-col gap-4 py-3 md:flex-row md:items-center md:justify-between">
+    <div className="settings-row">
       <span className="text-body font-bold text-ink">{label}</span>
-      <div role="radiogroup" aria-label={label} className="flex gap-4">
+      <div role="radiogroup" aria-label={label} className="settings-segments">
         {options.map((o) => {
           const on = o.value === value
           return (
@@ -27,12 +26,7 @@ function Segmented<T extends string>({
               type="button"
               role="radio"
               aria-checked={on}
-              className={cn(
-                'tap rounded-btn border-[3px] px-6 text-btn font-bold transition-colors',
-                on
-                  ? 'border-select bg-domain-social text-ink'
-                  : 'border-line bg-surface text-ink-soft',
-              )}
+              className="settings-option tap"
               onKeyDown={(event) => {
                 if (
                   !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(

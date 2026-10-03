@@ -22,7 +22,8 @@
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium webkit",
     "icons": "node --import tsx scripts/gen-icons.ts",
-    "draft-strings": "node --import tsx scripts/draft-strings.ts"
+    "draft-strings": "node --import tsx scripts/draft-strings.ts",
+    "app-icons": "node --import tsx scripts/build-app-icons.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",

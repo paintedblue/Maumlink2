@@ -19,7 +19,7 @@ export function Action({ scenario, state, dispatch, wiggle }: Props) {
   const q = scenario.action.question
   useAutoRead(L(q), 'action', q.audio?.[locale])
   return (
-    <div className="flex flex-col gap-4">
+    <div className="lesson-question-screen flex flex-col gap-4">
       <h1 className="text-story font-bold text-ink">{L(q)}</h1>
       <div
         key={wiggle}

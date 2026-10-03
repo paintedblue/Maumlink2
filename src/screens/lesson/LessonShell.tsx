@@ -59,14 +59,15 @@ export function LessonShell({
         className="lesson-header flex shrink-0 items-center justify-between gap-4"
         style={{ minHeight: 'calc(var(--h-topbar) + var(--safe-top))' }}
       >
-        <IconButton label={t('nav.home')} onClick={onHome}>
-          <HomeIcon />
-        </IconButton>
-        <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
+        <div className="flex items-center">
+          <IconButton label={t('nav.home')} onClick={onHome}>
+            <HomeIcon />
+          </IconButton>
+          <span className="lesson-brand">{t('app.name')}</span>
+        </div>
+        <div className="lesson-progress">
           <ProgressLink index={progressIndex} />
-          <span className="hidden text-caption text-ink-soft md:block">
-            {t(`step.${screenKey}`)}
-          </span>
+          <span className="progress-caption">{t(`step.${screenKey}`)}</span>
         </div>
         <div className="flex items-center gap-4">
           <IconButton
@@ -85,6 +86,7 @@ export function LessonShell({
       </header>
 
       <main
+        data-screen={screenKey}
         ref={content}
         key={screenKey}
         className="lesson-content mx-auto flex min-h-0 w-full max-w-[1280px] flex-1 flex-col overflow-y-auto motion-safe:animate-[slideIn_240ms_ease-out]"

@@ -18,7 +18,7 @@ const out = (dir: string) => {
 
 const SW = 2.5
 const wrap = (body: string, size = 64) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" color="#23313F" fill="none" stroke="currentColor" stroke-width="${SW}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n${body}\n</svg>\n`
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" color="#203B3A" fill="none" stroke="currentColor" stroke-width="${SW}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n${body}\n</svg>\n`
 
 // ---------- emotion faces ----------
 const head = `<circle cx="32" cy="32" r="26"/>`

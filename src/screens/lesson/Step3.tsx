@@ -41,7 +41,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
   )
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="lesson-question-screen flex flex-col gap-4">
       {first && (
         <div className="flex items-center gap-3" aria-live="polite">
           <span

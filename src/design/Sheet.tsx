@@ -86,7 +86,7 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
         aria-modal="true"
         aria-labelledby={`${id}-title`}
         className={cn(
-          'relative flex max-h-[85dvh] w-full flex-col rounded-t-card border-2 border-line bg-surface pb-safe shadow-[0_-2px_0_var(--color-line)] motion-safe:animate-[slideUp_240ms_ease-out] md:max-h-[85dvh] lg:max-h-[80dvh] lg:w-[560px] lg:rounded-card',
+          'app-sheet relative flex max-h-[85dvh] w-full flex-col rounded-t-card border-2 border-line bg-surface pb-safe shadow-[0_-2px_0_var(--color-line)] motion-safe:animate-[slideUp_240ms_ease-out] md:max-h-[85dvh] lg:max-h-[80dvh] lg:w-[560px] lg:rounded-card',
         )}
         style={tint ? { backgroundColor: tint } : undefined}
       >
@@ -94,7 +94,7 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
           className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-line lg:hidden"
           aria-hidden="true"
         />
-        <div className="flex shrink-0 items-center justify-between gap-4 px-5 pt-3">
+        <div className="sheet-heading flex shrink-0 items-center justify-between gap-4 px-5 pt-3">
           <h2 id={`${id}-title`} className="text-body font-bold text-ink">
             {title}
           </h2>

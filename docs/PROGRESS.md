@@ -61,3 +61,12 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ Validator (4 scenarios / 18 existing drafts), lint, 65 unit/component/integration tests, typecheck and production/PWA build.
 - ☐ Current browser/axe/responsive/offline/Lighthouse revalidation: local server and Chromium launch denied; computer-use unavailable. Old snapshots are not approval of this revision. See `REVIEW.md` for the rerun commands.
 - ☐ Real-device and content-team illustration review remain open.
+
+## 2026-10-03 — Teal/ivory redesign
+
+- ☑ Substantial new visual identity: start screen, branded Home, four illustrated domain choices, reading panels, lesson chrome, progress, emotion/action selections, settings and wrap-up.
+- ☑ Matching browser theme and generated install icons; playground artwork brought into the same style as the other three scenes.
+- ☑ All pedagogical content preserved; original source artwork retained. See `REDESIGN.md` and `ILLUSTRATIONS.md`.
+- ☑ Lint, 65 tests, validation, TypeScript and production/PWA build.
+- ☐ Browser rendering, viewport matrix, axe, snapshots and physical-device validation remain pending; both browser engines fail to launch here.
+- ☐ Live Vercel state could not be read; Git push alone is not deployment verification.

@@ -21,7 +21,7 @@ export function Illustration({ src, alt, brief, domain, className }: Props) {
   return (
     <div
       className={cn(
-        'relative aspect-[16/10] w-full overflow-hidden rounded-card border-2',
+        'story-illustration relative aspect-[16/10] w-full overflow-hidden rounded-card border-2',
         src ? 'border-line bg-surface' : domainSurface[domain],
         className,
       )}

@@ -11,8 +11,7 @@ type Base = ButtonHTMLAttributes<HTMLButtonElement> & {
   quiet?: boolean
 }
 
-const common =
-  'tap inline-flex items-center justify-center gap-3 whitespace-normal rounded-btn px-6 py-3 text-btn font-bold select-none transition-[transform,background-color,opacity] duration-150 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100'
+const common = 'app-button tap'
 
 /** The one green "go" button — always the same color, always the same place (PRD §6.2). */
 export function PrimaryButton({
@@ -33,8 +32,8 @@ export function PrimaryButton({
       aria-disabled={softDisabled || undefined}
       className={cn(
         common,
-        'bg-go text-go-ink shadow-[0_2px_0_var(--color-line)] hoverable:hover:brightness-105',
-        softDisabled && 'opacity-40',
+        'app-button--primary',
+        softDisabled && 'app-button--pending',
         full && 'w-full',
         className,
       )}
@@ -65,12 +64,7 @@ export function SecondaryButton({
     <button
       type="button"
       data-variant="secondary"
-      className={cn(
-        common,
-        'border-2 border-line bg-surface text-ink hoverable:hover:bg-bg',
-        full && 'w-full',
-        className,
-      )}
+      className={cn(common, 'app-button--secondary', full && 'w-full', className)}
       onClick={(e) => {
         if (!quiet) sound.play('tick')
         onClick?.(e)
@@ -103,10 +97,7 @@ export function IconButton({
       type="button"
       aria-label={label}
       title={label}
-      className={cn(
-        'tap relative inline-flex items-center justify-center rounded-full border-2 border-line bg-surface text-ink transition-transform duration-150 active:scale-95 hoverable:hover:bg-bg motion-reduce:transition-none',
-        className,
-      )}
+      className={cn('icon-button tap', className)}
       onClick={(e) => {
         sound.play('tick')
         onClick?.(e)

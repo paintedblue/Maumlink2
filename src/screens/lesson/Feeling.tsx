@@ -36,7 +36,7 @@ export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
   const tint = `var(--color-domain-${scenario.domain})`
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="lesson-question-screen flex flex-col gap-4">
       <h1 className="text-story font-bold text-ink" aria-live="polite">
         {L(q)}
       </h1>

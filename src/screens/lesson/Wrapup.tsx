@@ -4,7 +4,14 @@ import { getEmotion, nextScenarioInDomain } from '@/content/loader'
 import type { Scenario } from '@/content/schema'
 import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
 import { Card } from '@/design/Card'
-import { ArrowRightIcon, HelpIcon, HomeIcon, SettingsIcon, SpeakerIcon } from '@/design/icons'
+import {
+  ArrowRightIcon,
+  HelpIcon,
+  HomeIcon,
+  LinkMark,
+  SettingsIcon,
+  SpeakerIcon,
+} from '@/design/icons'
 import { chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
@@ -38,13 +45,19 @@ export function Wrapup({ scenario, state, onExit }: Props) {
 
   return (
     <div className="wrapup-screen">
-      <header className="wrapup-header flex justify-end gap-4">
-        <IconButton label={t('nav.replay')} onClick={() => void speak(scenario.closing)}>
-          <SpeakerIcon />
-        </IconButton>
-        <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
-          <SettingsIcon />
-        </IconButton>
+      <header className="wrapup-header">
+        <div className="brand-lockup">
+          <LinkMark size={44} />
+          <span className="brand-name">{t('app.name')}</span>
+        </div>
+        <div className="utility-controls">
+          <IconButton label={t('nav.replay')} onClick={() => void speak(scenario.closing)}>
+            <SpeakerIcon />
+          </IconButton>
+          <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
+            <SettingsIcon />
+          </IconButton>
+        </div>
       </header>
       <main className="mx-auto flex w-full max-w-[880px] flex-col items-center justify-center gap-6 bg-bg px-4 pb-safe pt-safe text-center md:px-8">
         <LinkAnimation />
@@ -134,7 +147,7 @@ function LinkAnimation() {
       />
       <path
         d="M144 50c0-10 8-18 18-18 7 0 12 4 15 9 3-5 8-9 15-9 10 0 18 8 18 18 0 16-22 28-33 34-11-6-33-18-33-34z"
-        fill="var(--color-go)"
+        fill="var(--color-brand-soft)"
       />
       <path
         d="M96 70 C 115 40, 125 40, 144 70"

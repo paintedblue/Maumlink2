@@ -3,14 +3,20 @@
   "id": "social-playground",
   "domain": "social",
   "order": 1,
-  "title": { "ko": "나와 너의 생각이 다를 수 있어!", "en": "You and I Can Think Differently!" },
+  "title": {
+    "ko": "나와 너의 생각이 다를 수 있어!",
+    "en": "You and I Can Think Differently!"
+  },
   "learningGoal": {
     "ko": "또래 상황에서 자신의 감정을 알아차리고, 상대의 관점을 생각하며 적절한 대처방법을 탐색할 수 있다.",
     "en": "In peer situations, can notice own feelings, consider the other's view, and explore suitable ways to respond."
   },
   "estimatedMinutes": 7,
   "situation": {
-    "title": { "ko": "친구들과 함께 놀고 싶어요", "en": "I want to play with my friends" },
+    "title": {
+      "ko": "친구들과 함께 놀고 싶어요",
+      "en": "I want to play with my friends"
+    },
     "story": [
       {
         "ko": "쉬는 시간에 친구들이 운동장에서 함께 놀고 있어요.",
@@ -21,8 +27,11 @@
         "en": "I want to join them, but they haven't called me yet."
       }
     ],
-    "keySentence": { "ko": "\"나도 같이 놀고 싶어!\"", "en": "\"I want to play too!\"" },
-    "image": "/img/social-playground.png",
+    "keySentence": {
+      "ko": "\"나도 같이 놀고 싶어!\"",
+      "en": "\"I want to play too!\""
+    },
+    "image": "/img/generated/social-playground-v2.png",
     "imageBrief": {
       "ko": "학교 운동장 / 친구 2~3명이 함께 놀이 중 / 주인공이 조금 떨어진 곳에서 바라보는 장면",
       "en": "School playground; 2–3 friends playing together; main character watching from a little way off"
@@ -47,13 +56,19 @@
   },
   "step3": {
     "type": "reason",
-    "question": { "ko": "왜 그런 기분이 들었을까요?", "en": "Why did I feel that way?" },
+    "question": {
+      "ko": "왜 그런 기분이 들었을까요?",
+      "en": "Why did I feel that way?"
+    },
     "byFeeling": {
       "annoyed": {
         "ko": "친구들이 나와 놀기 싫어한다고 생각해서",
         "en": "I think my friends don't want to play with me"
       },
-      "angry": { "ko": "나만 빼고 노는 것 같아서", "en": "It feels like they're leaving me out" },
+      "angry": {
+        "ko": "나만 빼고 노는 것 같아서",
+        "en": "It feels like they're leaving me out"
+      },
       "embarrassed": {
         "ko": "어떻게 같이 놀자고 말해야 할지 몰라서",
         "en": "I don't know how to ask to play"
@@ -63,7 +78,10 @@
         "en": "Because my friends didn't call me",
         "draft": true
       },
-      "worried": { "ko": "친구들이 거절할까 봐 걱정돼서", "en": "Afraid my friends will say no" }
+      "worried": {
+        "ko": "친구들이 거절할까 봐 걱정돼서",
+        "en": "Afraid my friends will say no"
+      }
     },
     "principle": {
       "ko": "같은 상황에서도 사람마다 다른 마음이 들 수 있어요.",

@@ -1,5 +1,5 @@
 import { PrimaryButton } from '@/design/Button'
-import { LinkMark } from '@/design/icons'
+import { ArrowRightIcon, LinkMark } from '@/design/icons'
 import { useT } from '@/i18n/useT'
 import { useSettings } from '@/services/settings'
 import { sound } from '@/services/sound'
@@ -11,15 +11,27 @@ export function StartGate() {
   const setStarted = useSettings((s) => s.setStarted)
   return (
     <main className="start-screen">
-      <div className="start-emblem" aria-hidden="true">
-        <LinkMark size={160} className="text-ink" />
+      <div className="start-art" aria-hidden="true">
+        <svg className="start-thread" viewBox="0 0 560 360" fill="none">
+          <path
+            d="M-30 250C140 380 90 90 250 120S375 360 590 90"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
+          <circle cx="120" cy="82" r="8" fill="currentColor" />
+          <circle cx="470" cy="270" r="5" fill="currentColor" />
+        </svg>
+        <div className="start-emblem" aria-hidden="true">
+          <LinkMark size={160} className="text-ink" />
+        </div>
       </div>
-      <div>
-        <h1 className="text-story font-bold leading-tight text-ink">{t('app.name')}</h1>
-        <p className="mt-2 text-body text-ink-soft">{t('app.tagline')}</p>
+      <div className="start-copy">
+        <h1 className="start-title">{t('app.name')}</h1>
+        <p className="start-description">{t('app.tagline')}</p>
       </div>
       <PrimaryButton
-        className="min-w-[min(100%,320px)] px-8"
+        className="start-action"
+        iconRight={<ArrowRightIcon />}
         onClick={() => {
           speech.unlock()
           sound.unlock()

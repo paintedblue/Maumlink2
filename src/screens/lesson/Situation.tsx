@@ -1,5 +1,4 @@
 import type { Scenario } from '@/content/schema'
-import { Card } from '@/design/Card'
 import { Illustration } from '@/design/Illustration'
 import { SpeechBubble } from '@/design/SpeechBubble'
 import { cn } from '@/design/cn'
@@ -28,7 +27,7 @@ export function Situation({ scenario, state, onAdvance }: Props) {
   useAutoRead(text, `situation-${state.sentenceIndex}`, current.audio?.[locale])
 
   return (
-    <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-center lg:gap-8 short:grid-cols-[160px_1fr] short:items-start short:gap-4">
+    <div className="situation-layout grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-center lg:gap-8 short:grid-cols-[160px_1fr] short:items-start short:gap-4">
       <div className="lg:col-span-7">
         <Illustration
           src={imageBase(scenario, locale)}
@@ -39,7 +38,7 @@ export function Situation({ scenario, state, onAdvance }: Props) {
         />
       </div>
       <div className="flex flex-col gap-4 lg:col-span-5">
-        <h1 className="flex flex-wrap items-baseline gap-x-3 px-1 text-body font-bold text-ink">
+        <h1 className="story-title text-body font-bold text-ink">
           <span className="text-caption font-bold uppercase tracking-wide text-ink">
             {t('step.situation')}
           </span>
@@ -55,16 +54,16 @@ export function Situation({ scenario, state, onAdvance }: Props) {
           aria-live="polite"
         >
           {keyVisible ? (
-            <SpeechBubble tail="left">{text}</SpeechBubble>
+            <SpeechBubble>{text}</SpeechBubble>
           ) : (
-            <Card className="min-h-[140px]">
-              <p className="text-story font-bold text-ink">{text}</p>
-            </Card>
+            <span className="story-text">
+              <span className="story-sentence text-story font-bold text-ink">{text}</span>
+            </span>
           )}
         </button>
         <div
           role="img"
-          className="flex items-center gap-2 px-2"
+          className="story-position flex items-center gap-2"
           aria-label={t('a11y.sentenceDots', {
             i: Math.min(state.sentenceIndex + 1, story.length + 1),
             n: story.length + 1,

@@ -38,8 +38,9 @@ export function ChoiceCard({
   const { t } = useT()
   return (
     <div
+      data-selected={selected}
       className={cn(
-        'relative flex min-h-[96px] flex-wrap items-stretch rounded-card border-2 bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
+        'choice-card relative flex min-h-[96px] flex-wrap items-stretch rounded-card border-2 bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
         selected ? 'border-select ring-2 ring-select' : 'border-line',
         dimmed && !selected && 'bg-bg',
       )}
@@ -82,12 +83,12 @@ export function ChoiceCard({
       >
         <span
           className={cn(
-            'flex size-12 shrink-0 items-center justify-center rounded-full text-btn font-bold',
+            'choice-letter flex size-12 shrink-0 items-center justify-center text-btn font-bold',
             badgeTint[domain],
           )}
           aria-hidden="true"
         >
-          {id}
+          {selected ? <CheckIcon size={26} /> : id}
         </span>
         <span className="flex-1 text-body text-ink">{text}</span>
       </button>
@@ -95,20 +96,12 @@ export function ChoiceCard({
         type="button"
         aria-label={t('a11y.speak')}
         title={text}
-        className="tap flex shrink-0 items-center justify-center self-center pr-3 text-ink-soft"
+        className="choice-speaker tap flex shrink-0 items-center justify-center self-center text-ink-soft"
         onClick={onSpeak}
       >
         <SpeakerIcon size={26} />
       </button>
-      {selected && (
-        <span
-          className="pointer-events-none absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-select text-white"
-          aria-hidden="true"
-        >
-          <CheckIcon size={22} />
-        </span>
-      )}
-      {children && <div className="basis-full px-5 pb-4 text-body text-ink-soft">{children}</div>}
+      {children && <div className="choice-ack basis-full text-body text-ink-soft">{children}</div>}
     </div>
   )
 }

@@ -14,7 +14,7 @@ interface Props {
 
 /**
  * Face icon + word (PRD §6.7). Tapping speaks the word (parent handles) and toggles.
- * Selected = 4 px select border + check badge + 2% scale — never color alone.
+ * Selected = strong outline and check badge without layout movement.
  */
 export function EmotionTile({ emotion, selected, dimmed, onSelect, size = 'normal' }: Props) {
   const { L, t } = useT()
@@ -27,7 +27,7 @@ export function EmotionTile({ emotion, selected, dimmed, onSelect, size = 'norma
       aria-label={word}
       data-emotion={emotion.id}
       className={cn(
-        'tap relative flex flex-col items-center justify-center gap-2 rounded-tile border-2 bg-surface p-3 text-ink transition-[transform,border-color] duration-150 motion-reduce:transition-none',
+        'emotion-tile tap relative flex flex-col items-center justify-center gap-2 rounded-tile border-2 bg-surface p-3 text-ink transition-[transform,border-color] duration-150 motion-reduce:transition-none',
         size === 'normal' ? 'min-h-[144px] w-full short:min-h-[112px]' : 'min-h-[120px] w-full',
         selected
           ? 'border-select ring-2 ring-select'
@@ -40,7 +40,7 @@ export function EmotionTile({ emotion, selected, dimmed, onSelect, size = 'norma
       }}
     >
       <span
-        className="flex size-[88px] items-center justify-center rounded-full short:size-[64px]"
+        className="emotion-face flex size-[88px] items-center justify-center rounded-full short:size-[64px]"
         style={{ backgroundColor: emotion.tint }}
       >
         <img

@@ -95,22 +95,22 @@ export const TextSizeIcon = (p: P) => (
   </Base>
 )
 
-/** The Maum:Link mark — two hearts, one line (PRD §6.1). */
+/** Two hearts joined by one continuous line: the shared app and install identity. */
 export function LinkMark({ size = 40, ...rest }: P) {
   return (
     <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true" {...rest}>
       <path
-        d="M14 40c0-4 3-7 7-7 3 0 5 2 6 4 1-2 3-4 6-4 4 0 7 3 7 7 0 6-9 11-13 13-4-2-13-7-13-13z"
+        d="M8 28c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S8 37 8 28Z"
         fill="var(--color-link)"
       />
       <path
-        d="M40 24c0-3 2-5 5-5 2 0 3 1 4 2 1-1 2-2 4-2 3 0 5 2 5 5 0 4-6 8-9 9-3-1-9-5-9-9z"
-        fill="var(--color-go)"
+        d="M26 21c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S26 30 26 21Z"
+        fill="var(--color-brand-soft)"
       />
       <path
-        d="M27 36c6-6 10-10 16-10"
-        stroke="currentColor"
-        strokeWidth={3}
+        d="M20 35c7 6 17-9 24-6"
+        stroke="var(--color-brand)"
+        strokeWidth="3"
         strokeLinecap="round"
       />
     </svg>
