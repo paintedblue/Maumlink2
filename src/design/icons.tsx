@@ -35,6 +35,11 @@ export const SpeakerIcon = (p: P) => (
     <path d="M16 9.5a4 4 0 0 1 0 5" />
   </Base>
 )
+export const SpeakerReadyIcon = (p: P) => (
+  <Base {...p}>
+    <path d="M4 10v4h3l5 4V6L7 10z" />
+  </Base>
+)
 export const SpeakerMutedIcon = (p: P) => (
   <Base {...p}>
     <path d="M4 10v4h3l5 4V6L7 10z" />

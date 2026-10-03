@@ -100,3 +100,11 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ Removed Home's `준비 중` entry. Full lesson tests confirm it is absent.
 - ☑ 78 tests, lint and production build pass. Added cases for fresh-document activation, blocked retry, navigation replacement, mute cancellation and clicking the blocked voice control.
 - ☐ Actual Mac Chrome audible playback verification remains pending; no browser connection is available in this session.
+
+
+## 2026-10-03 — Korean voice reliability follow-up
+
+- ☑ Refreshed/late-loaded Korean voice selection, local preference, bounded failure/start-timeout fallback, utterance retention, and cancellation during all stages.
+- ☑ Actual browser playback state replaces optimistic playing signals; ready/error states can be retried. Settings includes a voice check and explanatory playback status.
+- ☑ 85 tests, lint and production build pass. Tests cover delayed inventory, local voice preference, actual start events, fallback, stalled engines, stale callbacks, cancellation, language errors and retry UI.
+- ☐ Actual audible playback on Mac Chrome remains unverified because the browser connection is unavailable. No new image, lesson content or external runtime service was introduced.

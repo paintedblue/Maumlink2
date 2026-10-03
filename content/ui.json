@@ -28,6 +28,30 @@
   "nav.tryAnother": { "ko": "다른 방법 해보기", "en": "Try another way" },
   "nav.practiceAnother": { "ko": "다른 상황 연습하기", "en": "Practice another situation" },
   "nav.help": { "ko": "도와줘요", "en": "Help me" },
+  "voice.test": { "ko": "음성 확인", "en": "Test voice" },
+  "voice.status.idle": {
+    "ko": "음성 확인 버튼을 눌러 소리를 확인해 보세요.",
+    "en": "Press Test voice to check playback."
+  },
+  "voice.status.off": { "ko": "음성이 꺼져 있어요.", "en": "Voice is off." },
+  "voice.status.loading": { "ko": "읽어주기를 준비하고 있어요.", "en": "Preparing the voice." },
+  "voice.status.speaking": { "ko": "읽어주고 있어요.", "en": "Reading aloud." },
+  "voice.status.blocked": {
+    "ko": "음성 버튼을 눌러 읽어주세요.",
+    "en": "Press the voice button to start reading."
+  },
+  "voice.status.noVoice": {
+    "ko": "이 브라우저에서 한국어 음성을 사용할 수 없어요. 기기의 음성 설정을 확인해 주세요.",
+    "en": "No usable voice is available for this language. Check the device voice settings."
+  },
+  "voice.status.output": {
+    "ko": "소리를 내보내지 못했어요. 기기의 소리 출력을 확인해 주세요.",
+    "en": "Audio output is unavailable. Check the device sound output."
+  },
+  "voice.status.error": {
+    "ko": "읽어주기를 시작하지 못했어요. 음성 버튼을 다시 눌러 주세요.",
+    "en": "Reading could not start. Press the voice button to try again."
+  },
   "voice.label": { "ko": "음성", "en": "Voice" },
   "voice.turnOff": { "ko": "음성 끄기", "en": "Turn voice off" },
   "voice.turnOn": { "ko": "음성 켜기", "en": "Turn voice on" },

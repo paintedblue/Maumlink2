@@ -4,12 +4,20 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { VoiceToggle } from '@/design/VoiceToggle'
 import { useSettings } from '@/services/settings'
 import { speech } from '@/services/speech'
+import { installSynth } from '../fixtures/speech'
 import { useAutoRead } from '@/services/useSpeak'
 
-beforeEach(() => useSettings.setState({ voiceEnabled: true, autoRead: true, locale: 'ko' }))
+beforeEach(() => {
+  installSynth()
+  speech.setEnabled(false)
+  speech.setEnabled(true)
+  useSettings.setState({ voiceEnabled: true, autoRead: true, locale: 'ko' })
+})
 afterEach(() => {
   speech.cancel()
   Reflect.deleteProperty(navigator, 'userActivation')
+  Reflect.deleteProperty(window, 'speechSynthesis')
+  Reflect.deleteProperty(window, 'SpeechSynthesisUtterance')
   vi.restoreAllMocks()
   useSettings.setState({ voiceEnabled: true })
 })
@@ -72,4 +80,23 @@ it('restores muted state from saved settings before the next narration', async (
   expect(enabled).toHaveBeenCalledWith(false)
   render(<VoiceToggle supported onEnable={() => {}} />)
   expect(screen.getByRole('button', { name: '음성' })).toHaveAttribute('data-voice', 'off')
+})
+
+it('shows real playback and makes a failed voice retryable without toggling it off first', async () => {
+  const { spoken } = installSynth()
+  useSettings.getState().setVoiceEnabled(false)
+  const read = () => void speech.speak({ text: '안녕하세요', locale: 'ko' })
+  render(<VoiceToggle supported onEnable={read} />)
+  const control = screen.getByRole('button', { name: '음성' })
+  await userEvent.click(control)
+  expect(control).toHaveAttribute('data-playback', 'loading')
+  act(() => spoken[0]!.onstart?.())
+  expect(control).toHaveAttribute('data-playback', 'speaking')
+  act(() => spoken[0]!.onerror?.({ error: 'audio-hardware' }))
+  expect(control).toHaveAttribute('data-voice', 'off')
+  expect(screen.getByRole('status')).toHaveTextContent('기기의 소리 출력을 확인')
+  await userEvent.click(control)
+  expect(spoken).toHaveLength(2)
+  expect(control).toHaveAttribute('data-playback', 'loading')
+  expect(screen.queryByRole('status')).not.toBeInTheDocument()
 })

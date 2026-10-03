@@ -2,6 +2,11 @@ import { Sheet } from '@/design/Sheet'
 import { useT } from '@/i18n/useT'
 import { useSettings } from '@/services/settings'
 import { sound } from '@/services/sound'
+import { speech } from '@/services/speech'
+import { speechStatusKey, useSpeechStatus } from '@/services/useSpeechStatus'
+import { useSpeak } from '@/services/useSpeak'
+import { SecondaryButton } from '@/design/Button'
+import { SpeakerIcon } from '@/design/icons'
 
 function Segmented<T extends string>({
   label,
@@ -71,9 +76,27 @@ function Segmented<T extends string>({
 export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
   const { t } = useT()
   const s = useSettings()
+  const status = useSpeechStatus()
+  const { speak } = useSpeak()
   return (
     <Sheet open={open} onClose={onClose} title={t('settings.title')}>
       <div className="divide-y divide-line">
+        <div className="settings-row">
+          <SecondaryButton
+            icon={<SpeakerIcon />}
+            onClick={() => {
+              s.setVoiceEnabled(true)
+              speech.unlock()
+              void speak(t('home.greeting'))
+            }}
+          >
+            {t('voice.test')}
+          </SecondaryButton>
+          <p role="status" className="text-caption text-ink-soft">
+            {t(s.voiceEnabled ? speechStatusKey(status) : 'voice.status.off')}
+          </p>
+          {status.voice && <p className="text-caption text-ink-soft">{status.voice}</p>}
+        </div>
         <Segmented
           label={t('settings.textSize')}
           value={s.textSize}

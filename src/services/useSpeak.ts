@@ -1,9 +1,10 @@
 /** React bindings for the speech service: auto-read on screen entry + manual speak. */
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import type { LString } from '@/content/schema'
 import { resolveL } from '@/i18n/useT'
 import { useSettings } from './settings'
 import { speech } from './speech'
+import { useSpeechStatus } from './useSpeechStatus'
 
 export function useSpeak() {
   const locale = useSettings((s) => s.locale)
@@ -34,7 +35,5 @@ export function useAutoRead(text: string | undefined, key: string, audioUrl?: st
 }
 
 export function useSpeaking(): boolean {
-  const [speaking, setSpeaking] = useState(false)
-  useEffect(() => speech.onChange(setSpeaking), [])
-  return speaking
+  return useSpeechStatus().phase === 'speaking'
 }
