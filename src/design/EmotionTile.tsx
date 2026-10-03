@@ -27,9 +27,11 @@ export function EmotionTile({ emotion, selected, dimmed, onSelect, size = 'norma
       aria-label={word}
       data-emotion={emotion.id}
       className={cn(
-        'tap relative flex flex-col items-center justify-center gap-2 rounded-tile border-[3px] bg-surface p-3 text-ink transition-[transform,border-color] duration-150 motion-reduce:transition-none',
+        'tap relative flex flex-col items-center justify-center gap-2 rounded-tile border-2 bg-surface p-3 text-ink transition-[transform,border-color] duration-150 motion-reduce:transition-none',
         size === 'normal' ? 'min-h-[144px] w-full short:min-h-[112px]' : 'min-h-[120px] w-full',
-        selected ? 'scale-[1.02] border-select' : 'border-line hoverable:hover:border-ink-soft',
+        selected
+          ? 'border-select ring-2 ring-select'
+          : 'border-line hoverable:hover:border-ink-soft hoverable:hover:-translate-y-1',
         dimmed && !selected && 'opacity-60',
       )}
       onClick={() => {

@@ -1,5 +1,5 @@
 /** React bindings for the speech service: auto-read on screen entry + manual speak. */
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import type { LString } from '@/content/schema'
 import { resolveL } from '@/i18n/useT'
 import { useSettings } from './settings'
@@ -25,12 +25,11 @@ export function useSpeak() {
 export function useAutoRead(text: string | undefined, key: string, audioUrl?: string): void {
   const autoRead = useSettings((s) => s.autoRead)
   const locale = useSettings((s) => s.locale)
-  const last = useRef<string>('')
   useEffect(() => {
-    if (!autoRead || !text || last.current === key) return
-    last.current = key
-    void speech.speak({ text, locale, audioUrl })
-    return () => speech.cancel()
+    if (!autoRead || !text) return
+    const request = { text, locale, audioUrl }
+    void speech.speak(request)
+    return () => speech.cancel(request)
   }, [autoRead, text, key, locale, audioUrl])
 }
 

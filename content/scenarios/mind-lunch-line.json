@@ -22,17 +22,24 @@
         "ko": "급식실에서 내 앞으로 슬그머니 새치기를 하는 친구가 있어요.",
         "en": "In the lunchroom, a friend sneaks in line in front of me."
       },
-      { "ko": "이번이 첫 번째가 아니에요.", "en": "It's not the first time." },
+      {
+        "ko": "이번이 첫 번째가 아니에요.",
+        "en": "It's not the first time."
+      },
       {
         "ko": "뭐라고 이야기하고 싶은데, 친구에게 어떻게 말해야 할지 모르겠어요.",
         "en": "I want to say something, but I don't know how to say it to my friend."
       }
     ],
-    "keySentence": { "ko": "새치기 하는 친구가 있어요", "en": "A friend cuts in line" },
+    "keySentence": {
+      "ko": "새치기 하는 친구가 있어요",
+      "en": "A friend cuts in line"
+    },
     "imageBrief": {
       "ko": "학교 급식실에서 줄을 선 아이들 사이에 슬쩍 들어가 서는 아이의 모습. 뒤에 서 있는 아이는 어떻게 해야 할지 난감해하는 표정.",
       "en": "In the school lunchroom, a child slips into the line. The child behind hesitates, unsure what to do."
-    }
+    },
+    "image": "/img/generated/mind-lunch-line.png"
   },
   "feeling": {
     "subject": "self",
@@ -53,7 +60,10 @@
   },
   "step3": {
     "type": "reason",
-    "question": { "ko": "왜 그런 마음이 들었을까요?", "en": "Why did I feel that way?" },
+    "question": {
+      "ko": "왜 그런 마음이 들었을까요?",
+      "en": "Why did I feel that way?"
+    },
     "byFeeling": {
       "upset": {
         "ko": "친구가 내 앞으로 자주 새치기를 해서",

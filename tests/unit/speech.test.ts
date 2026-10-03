@@ -54,6 +54,19 @@ describe('speech service', () => {
     delete window.SpeechSynthesisUtterance
   })
 
+  it('an old screen cleanup cannot cancel a newer manual request', async () => {
+    const { synth } = installSynth()
+    const { speech } = await import('../../src/services/speech')
+    const oldRequest = { text: '힌트', locale: 'ko' as const }
+    void speech.speak(oldRequest)
+    void speech.speak({ text: '속상해요', locale: 'ko' })
+    const calls = synth.cancel.mock.calls.length
+    speech.cancel(oldRequest)
+    expect(synth.cancel).toHaveBeenCalledTimes(calls)
+    speech.cancel()
+    expect(synth.cancel).toHaveBeenCalledTimes(calls + 1)
+  })
+
   it('speaks Korean at rate 0.9 with a Korean voice and resolves on end (FR-AUD-01)', async () => {
     const { synth, spoken } = installSynth()
     const { speech } = await import('../../src/services/speech')

@@ -37,16 +37,19 @@
       "ko": "속상한 마음을 혼자 해결하고 싶어",
       "en": "I want to handle my upset feelings on my own"
     },
-    "imageByLocale": { "ko": "/img/self-presentation-teasing.png" },
     "imageBrief": {
       "ko": "교실에서 발표를 마친 아이가 고개를 숙이고 있고, 친구들이 웃으며 놀리는 장면. 표정은 과하게 강조하지 않기.",
       "en": "A child who just finished presenting looks down while classmates laugh and tease. Don't exaggerate faces.",
       "draft": true
-    }
+    },
+    "image": "/img/generated/self-presentation-teasing-v2.png"
   },
   "feeling": {
     "subject": "self",
-    "question": { "ko": "그때 내 기분은 어떨까요?", "en": "How do I feel then?" },
+    "question": {
+      "ko": "그때 내 기분은 어떨까요?",
+      "en": "How do I feel then?"
+    },
     "options": ["angry", "worried", "upset", "nervous", "shy", "scared", "not-sure"],
     "multiSelect": false,
     "hint": {
@@ -60,7 +63,10 @@
   },
   "step3": {
     "type": "body-reaction",
-    "question": { "ko": "그때 내 몸의 반응은 어떤가요?", "en": "How does my body react then?" },
+    "question": {
+      "ko": "그때 내 몸의 반응은 어떤가요?",
+      "en": "How does my body react then?"
+    },
     "byFeeling": {
       "angry": {
         "text": {
@@ -164,7 +170,10 @@
       },
       {
         "id": "D",
-        "text": { "ko": "숨을 크게 내쉬어보기", "en": "Take a deep breath" },
+        "text": {
+          "ko": "숨을 크게 내쉬어보기",
+          "en": "Take a deep breath"
+        },
         "quality": "recommended",
         "feedback": {
           "ko": "숨을 크게 내쉬어 봐요. 그래도 기분이 풀리지 않는다면 선생님께도 이야기할 수 있어요.",

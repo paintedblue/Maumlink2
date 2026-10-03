@@ -18,7 +18,7 @@ const out = (dir: string) => {
 
 const SW = 2.5
 const wrap = (body: string, size = 64) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${SW}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n${body}\n</svg>\n`
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${size}" height="${size}" color="#23313F" fill="none" stroke="currentColor" stroke-width="${SW}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">\n${body}\n</svg>\n`
 
 // ---------- emotion faces ----------
 const head = `<circle cx="32" cy="32" r="26"/>`
@@ -88,9 +88,9 @@ const outcomes: Record<string, string> = {
 
 // ---------- domain icons (Home cards) ----------
 const domains: Record<string, string> = {
-  self: `<circle cx="32" cy="20" r="9"/><path d="M13 54q0-17 19-17t19 17"/><path d="M32 50q-7-5-7-9a3.5 3.5 0 0 1 7-1 3.5 3.5 0 0 1 7 1q0 4-7 9z" fill="currentColor" stroke="none" opacity=".85"/>`,
-  social: `<circle cx="22" cy="22" r="7"/><circle cx="44" cy="26" r="6"/><path d="M8 50q0-14 14-14 6 0 10 3"/><path d="M32 52q0-11 12-11t12 11"/>`,
-  relation: `<circle cx="24" cy="32" r="13"/><circle cx="40" cy="32" r="13"/>`,
+  self: `<rect x="15" y="6" width="34" height="40" rx="17"/><path d="M28 46v12h8V46"/><path d="M22 21q10-12 20 0"/><circle cx="26" cy="26" r="1.5" fill="currentColor" stroke="none"/><circle cx="38" cy="26" r="1.5" fill="currentColor" stroke="none"/><path d="M27 33q5 5 10 0"/>`,
+  social: `<circle cx="20" cy="22" r="9"/><circle cx="45" cy="26" r="8"/><path d="M6 51v-4q0-12 14-12t14 12v4M35 39q15-7 23 9v4"/><path d="M17 25q3 3 6 0M42 29q3 3 6 0"/>`,
+  relation: `<path d="M5 30l12-13 10 4 8-4 12 5 12 12-12 15-7 3-20-10z"/><path d="M27 21l-8 9q3 6 8 2l6-4 14 13M24 37l12 12M30 33l13 13"/><path d="M5 30l9 9M47 22l12 12"/>`,
   mind: `<path d="M32 54q-20-12-20-26a10 10 0 0 1 20-4 10 10 0 0 1 20 4q0 14-20 26z"/><path d="M32 54q-2-14 10-24"/>`,
   reserved: `<path d="M32 10l6 14 15 2-11 10 3 15-13-7-13 7 3-15L11 26l15-2z"/>`,
 }

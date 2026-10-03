@@ -16,9 +16,9 @@ function Segmented<T extends string>({
   onChange: (v: T) => void
 }) {
   return (
-    <div className="flex flex-col gap-2 py-3 md:flex-row md:items-center md:justify-between">
+    <div className="flex flex-col gap-4 py-3 md:flex-row md:items-center md:justify-between">
       <span className="text-body font-bold text-ink">{label}</span>
-      <div role="radiogroup" aria-label={label} className="flex gap-2">
+      <div role="radiogroup" aria-label={label} className="flex gap-4">
         {options.map((o) => {
           const on = o.value === value
           return (
@@ -33,6 +33,32 @@ function Segmented<T extends string>({
                   ? 'border-select bg-domain-social text-ink'
                   : 'border-line bg-surface text-ink-soft',
               )}
+              onKeyDown={(event) => {
+                if (
+                  !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(
+                    event.key,
+                  )
+                )
+                  return
+                event.preventDefault()
+                const buttons = Array.from(
+                  event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>(
+                    '[role="radio"]',
+                  ) ?? [],
+                )
+                const index = buttons.indexOf(event.currentTarget)
+                const next =
+                  event.key === 'Home'
+                    ? 0
+                    : event.key === 'End'
+                      ? buttons.length - 1
+                      : (index +
+                          (['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1) +
+                          buttons.length) %
+                        buttons.length
+                buttons[next]?.focus()
+                buttons[next]?.click()
+              }}
               onClick={() => {
                 sound.play('tick')
                 onChange(o.value)

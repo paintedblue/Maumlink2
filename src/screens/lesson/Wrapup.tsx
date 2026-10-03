@@ -1,16 +1,16 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { getEmotion, nextScenarioInDomain } from '@/content/loader'
 import type { Scenario } from '@/content/schema'
-import { PrimaryButton, SecondaryButton } from '@/design/Button'
+import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
 import { Card } from '@/design/Card'
-import { ArrowRightIcon, HelpIcon, HomeIcon } from '@/design/icons'
+import { ArrowRightIcon, HelpIcon, HomeIcon, SettingsIcon, SpeakerIcon } from '@/design/icons'
 import { chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
-import { useProgress } from '@/services/progress'
+import { SettingsSheet } from '../SettingsSheet'
 import { sound } from '@/services/sound'
-import { useAutoRead } from '@/services/useSpeak'
+import { useAutoRead, useSpeak } from '@/services/useSpeak'
 
 interface Props {
   scenario: Scenario
@@ -22,90 +22,101 @@ interface Props {
 export function Wrapup({ scenario, state, onExit }: Props) {
   const { t, L, locale } = useT()
   const navigate = useNavigate()
-  const markCompleted = useProgress((s) => s.markCompleted)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const { speak } = useSpeak()
   const reset = useLesson((l) => l.reset)
   const closing = L(scenario.closing)
   useAutoRead(closing, `closing-${scenario.id}`, scenario.closing.audio?.[locale])
 
   useEffect(() => {
-    markCompleted(scenario.id)
     sound.play('chime')
-  }, [scenario.id, markCompleted])
+  }, [scenario.id])
 
   const action = chosenAction(state, scenario)
   const next = nextScenarioInDomain(scenario)
   const feelings = state.feelingIds.map(getEmotion)
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-[880px] flex-col items-center justify-center gap-6 bg-bg px-4 pb-safe pt-safe text-center md:px-8">
-      <LinkAnimation />
-      <h1 className="text-story font-bold text-ink">{t('wrapup.title')}</h1>
-      <Card className="w-full" data-testid="closing-card" aria-live="polite">
-        <p className="text-story font-bold text-ink">{closing}</p>
-      </Card>
+    <div className="wrapup-screen">
+      <header className="wrapup-header flex justify-end gap-4">
+        <IconButton label={t('nav.replay')} onClick={() => void speak(scenario.closing)}>
+          <SpeakerIcon />
+        </IconButton>
+        <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
+          <SettingsIcon />
+        </IconButton>
+      </header>
+      <main className="mx-auto flex w-full max-w-[880px] flex-col items-center justify-center gap-6 bg-bg px-4 pb-safe pt-safe text-center md:px-8">
+        <LinkAnimation />
+        <h1 className="text-story font-bold text-ink">{t('wrapup.title')}</h1>
+        <Card className="w-full" data-testid="closing-card" aria-live="polite">
+          <p className="text-story font-bold text-ink">{closing}</p>
+        </Card>
 
-      <div
-        className="flex flex-wrap items-center justify-center gap-3"
-        aria-label={t('wrapup.path')}
-      >
-        <span className="text-caption font-bold text-ink-soft">{t('wrapup.path')}</span>
-        {feelings.map((f) => (
+        <div
+          className="flex flex-wrap items-center justify-center gap-3"
+          aria-label={t('wrapup.path')}
+        >
+          <span className="text-caption font-bold text-ink-soft">{t('wrapup.path')}</span>
+          {feelings.map((f) => (
+            <span
+              key={f.id}
+              className="flex size-12 items-center justify-center rounded-full"
+              style={{ backgroundColor: f.tint }}
+              title={L(f.word)}
+            >
+              <img
+                src={`/icons/emotions/${f.icon}`}
+                alt={L(f.word)}
+                width={36}
+                height={36}
+                className="size-9"
+              />
+            </span>
+          ))}
+          <ArrowRightIcon size={22} className="text-ink-soft" />
           <span
-            key={f.id}
-            className="flex size-12 items-center justify-center rounded-full"
-            style={{ backgroundColor: f.tint }}
-            title={L(f.word)}
+            className="flex size-12 items-center justify-center rounded-full bg-domain-reserved text-ink"
+            aria-hidden="true"
           >
-            <img
-              src={`/icons/emotions/${f.icon}`}
-              alt={L(f.word)}
-              width={36}
-              height={36}
-              className="size-9"
-            />
+            <HelpIcon size={26} />
           </span>
-        ))}
-        <ArrowRightIcon size={22} className="text-ink-soft" />
-        <span
-          className="flex size-12 items-center justify-center rounded-full bg-domain-reserved text-ink"
-          aria-hidden="true"
-        >
-          <HelpIcon size={26} />
-        </span>
-        <ArrowRightIcon size={22} className="text-ink-soft" />
-        {action && (
-          <span className="flex size-12 items-center justify-center rounded-full bg-surface border-2 border-line text-btn font-bold text-ink">
-            {action.id}
-          </span>
-        )}
-      </div>
+          <ArrowRightIcon size={22} className="text-ink-soft" />
+          {action && (
+            <span className="flex size-12 items-center justify-center rounded-full bg-surface border-2 border-line text-btn font-bold text-ink">
+              {action.id}
+            </span>
+          )}
+        </div>
 
-      <div className="flex w-full flex-col gap-3 md:flex-row md:justify-center">
-        <SecondaryButton
-          icon={<HomeIcon size={26} />}
-          onClick={onExit}
-          data-testid="wrapup-home"
-          full
-          className="md:w-auto"
-        >
-          {t('nav.home')}
-        </SecondaryButton>
-        <PrimaryButton
-          data-testid="wrapup-next"
-          iconRight={<ArrowRightIcon size={26} />}
-          full
-          className="md:w-auto"
-          onClick={() => {
-            if (next) {
-              reset()
-              navigate(`/lesson/${next.id}`)
-            } else onExit()
-          }}
-        >
-          {t('nav.practiceAnother')}
-        </PrimaryButton>
-      </div>
-    </main>
+        <div className="flex w-full flex-col gap-3 md:flex-row md:justify-center">
+          <SecondaryButton
+            icon={<HomeIcon size={26} />}
+            onClick={onExit}
+            data-testid="wrapup-home"
+            full
+            className="md:w-auto"
+          >
+            {t('nav.home')}
+          </SecondaryButton>
+          <PrimaryButton
+            data-testid="wrapup-next"
+            iconRight={<ArrowRightIcon size={26} />}
+            full
+            className="md:w-auto"
+            onClick={() => {
+              if (next) {
+                reset()
+                navigate(`/lesson/${next.id}`)
+              } else onExit()
+            }}
+          >
+            {t('nav.practiceAnother')}
+          </PrimaryButton>
+        </div>
+      </main>
+      <SettingsSheet open={settingsOpen} onClose={() => setSettingsOpen(false)} />
+    </div>
   )
 }
 

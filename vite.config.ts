@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig, type Plugin } from 'vite'
-import { formatReport, validateAll } from './scripts/validate-core'
+import { formatReport, validateAll } from './scripts/validate-core.ts'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
 

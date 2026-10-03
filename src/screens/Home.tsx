@@ -2,11 +2,19 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { scenariosByDomain } from '@/content/loader'
 import type { Domain, Scenario } from '@/content/schema'
+import { DomainArt } from '@/design/DomainArt'
 import { IconButton } from '@/design/Button'
 import { domainSurface } from '@/design/domain'
 import { Sheet } from '@/design/Sheet'
 import { cn } from '@/design/cn'
-import { CheckIcon, LinkMark, SettingsIcon, SpeakerIcon, SpeakerMutedIcon } from '@/design/icons'
+import {
+  CheckIcon,
+  ChevronRightIcon,
+  LinkMark,
+  SettingsIcon,
+  SpeakerIcon,
+  SpeakerMutedIcon,
+} from '@/design/icons'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
 import { useProgress } from '@/services/progress'
@@ -44,11 +52,11 @@ function HomeInner() {
   }
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-[1280px] flex-col px-4 pb-safe pt-safe md:px-8">
-      <header className="flex items-center justify-between py-4 md:py-6">
+    <main className="home-screen">
+      <header className="home-header">
         <div className="flex items-center gap-3">
           <LinkMark size={44} className="text-ink" />
-          <span className="text-body font-bold text-ink">{t('app.name')}</span>
+          <span className="text-story font-bold text-ink">{t('app.name')}</span>
         </div>
         <div className="flex items-center gap-3">
           <IconButton
@@ -68,19 +76,16 @@ function HomeInner() {
         </div>
       </header>
 
-      <h1 className="py-4 text-center text-story font-bold text-ink md:py-8">{greeting}</h1>
+      <h1 className="home-question text-story font-bold text-ink">{greeting}</h1>
       {!supported && (
         <p className="mb-4 text-center text-caption text-ink-soft">{t('tts.unavailable')}</p>
       )}
 
-      <section
-        aria-label={t('home.pick')}
-        className="grid grid-cols-1 gap-4 pb-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-6"
-      >
+      <section aria-label={t('home.pick')} className="domain-grid">
         {ORDER.map((d) => {
           const list = scenariosByDomain[d]
           const reserved = d === 'reserved' || list.length === 0
-          const done = list.some((s) => entries[s.id])
+          const done = list.length > 0 && list.every((s) => entries[s.id])
           return (
             <button
               key={d}
@@ -88,13 +93,7 @@ function HomeInner() {
               data-domain={d}
               disabled={reserved}
               aria-label={`${t(`domain.${d}`)}${reserved ? ` (${t('home.reserved')})` : ''}`}
-              className={cn(
-                'relative flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-card border-[3px] p-5 text-ink transition-transform duration-150 active:scale-[0.98] motion-reduce:transition-none lg:min-h-[280px]',
-                domainSurface[d],
-                reserved
-                  ? 'cursor-default opacity-50 grayscale'
-                  : 'hoverable:hover:brightness-[1.02]',
-              )}
+              className={cn('domain-card', reserved && 'domain-card--reserved')}
               onClick={() => {
                 if (reserved) return
                 sound.play('tick')
@@ -102,16 +101,17 @@ function HomeInner() {
                 else setPicker(d)
               }}
             >
-              <img
-                src={`/icons/domain/${d}.svg`}
-                alt=""
-                width={96}
-                height={96}
-                className="size-20 lg:size-24"
-              />
-              <span className="text-story font-bold leading-tight">{t(`domain.${d}`)}</span>
-              <span className="text-body text-ink-soft">
-                {reserved ? t('home.reserved') : t('home.count', { n: list.length })}
+              <DomainArt domain={d} />
+              <span className="domain-card-content">
+                <span className="text-body font-bold">{t(`domain.${d}`)}</span>
+                {!reserved && (
+                  <span className="domain-card-meta">
+                    <span className="text-caption text-ink-soft">
+                      {t('home.count', { n: list.length })}
+                    </span>
+                    <ChevronRightIcon size={24} />
+                  </span>
+                )}
               </span>
               {done && (
                 <span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-surface px-3 py-1 text-caption font-bold text-ink">

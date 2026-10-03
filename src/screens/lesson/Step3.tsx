@@ -30,6 +30,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
     step3.type === 'reason' && first ? L(step3.byFeeling[first.id] ?? { ko: '' }) : '',
     step3.type === 'body-reaction' && first ? L(step3.byFeeling[first.id]?.text ?? { ko: '' }) : '',
   ]
+    .concat(L(step3.principle))
     .filter(Boolean)
     .join(' ')
   useAutoRead(intro, `step3-${state.feelingIds.join(',')}`)
@@ -105,7 +106,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
             role="radiogroup"
             aria-label={L(step3.question)}
             className={cn(
-              'grid grid-cols-1 gap-3 md:grid-cols-2',
+              'grid grid-cols-1 gap-4 md:grid-cols-2',
               wiggle > 0 && 'motion-safe:animate-[wiggle_300ms_ease-in-out_1]',
             )}
           >
@@ -119,10 +120,10 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
                   text={L(o.text)}
                   selected={selected}
                   onSelect={(id) => {
-                    void speak(o.text)
+                    void speak(`${L(o.text)} ${L(o.ack)}`)
                     dispatch({ type: 'SELECT_STEP3_OPTION', id })
                   }}
-                  onSpeak={() => void speak(o.text)}
+                  onSpeak={() => void speak(`${L(o.text)} ${L(o.ack)}`)}
                 >
                   {selected ? L(o.ack) : undefined}
                 </ChoiceCard>

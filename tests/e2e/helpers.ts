@@ -43,7 +43,7 @@ export async function openScenario(page: Page, scenario: Scenario) {
   if (await picker.isVisible().catch(() => false)) {
     await picker.getByRole('button', { name: scenario.title.ko }).click()
   }
-  await page.waitForURL(new RegExp(`/lesson/${scenario.id}$`))
+  await page.waitForURL(new RegExp(`/lesson/${scenario.id}(?:\\?|$)`))
   await expect(page.getByTestId('story-card')).toBeVisible()
 }
 

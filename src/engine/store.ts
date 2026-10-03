@@ -1,4 +1,5 @@
 /** Lesson store — wraps the pure reducer, persists every transition to sessionStorage. */
+import { useProgress } from '@/services/progress'
 import { create } from 'zustand'
 import type { Scenario } from '@/content/schema'
 import { initialLessonState, reduce, type LessonEvent, type LessonState } from './lessonMachine'
@@ -21,7 +22,7 @@ export const useLesson = create<LessonStore>()((set, get) => ({
     set({ scenario: undefined, state: undefined })
   },
   start: (scenario) => {
-    const state = loadSession(scenario.id) ?? initialLessonState(scenario.id)
+    const state = loadSession(scenario) ?? initialLessonState(scenario.id)
     saveSession(state)
     set({ scenario, state })
   },
@@ -30,6 +31,7 @@ export const useLesson = create<LessonStore>()((set, get) => ({
     if (!scenario || !state) return
     const next = reduce(state, event, scenario)
     if (next !== state) {
+      if (next.completed && !state.completed) useProgress.getState().markCompleted(scenario.id)
       saveSession(next)
       set({ state: next })
     }

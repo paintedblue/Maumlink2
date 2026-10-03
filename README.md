@@ -5,6 +5,7 @@ Social-emotional learning web app for 3rd-grade slow learners. A child works thr
 Built as a static, offline-first PWA: React 19 · TypeScript · Vite · Tailwind 4 · Zustand · Zod. No backend, no accounts, no analytics.
 
 - Product spec: [`PRD-v1.md`](./PRD-v1.md) · proposal: [`APP_PROPOSAL.md`](./APP_PROPOSAL.md) · source analysis: [`ANALYSIS_REPORT.md`](./ANALYSIS_REPORT.md)
+- Latest review: [`docs/REVIEW.md`](./docs/REVIEW.md) · generated artwork and prompts: [`docs/ILLUSTRATIONS.md`](./docs/ILLUSTRATIONS.md)
 - Implementation log: [`docs/PROGRESS.md`](./docs/PROGRESS.md) · decisions: [`docs/DECISIONS.md`](./docs/DECISIONS.md)
 - For the content team: [`docs/ADDING_A_SCENARIO.md`](./docs/ADDING_A_SCENARIO.md) (Korean) · draft strings awaiting sign-off: [`docs/DRAFT_STRINGS.md`](./docs/DRAFT_STRINGS.md)
 - Manual device test: [`docs/TABLET_TEST_CHECKLIST.md`](./docs/TABLET_TEST_CHECKLIST.md)

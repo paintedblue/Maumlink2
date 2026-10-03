@@ -123,6 +123,7 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
     case 'feeling': {
       switch (event.type) {
         case 'SELECT_FEELING': {
+          if (!scenario.feeling.options.includes(event.id)) return s
           if (event.id === NOT_SURE) {
             const count = s.notSureCount + 1
             if (count >= 2) {
@@ -155,6 +156,7 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
         case 'CLOSE_HINT':
           return { ...s, hintOpen: false }
         case 'SELECT_HINT_FEELING': {
+          if (!scenario.feeling.hint.suggest.includes(event.id)) return s
           const ids = scenario.feeling.multiSelect
             ? s.feelingIds.includes(event.id)
               ? s.feelingIds
@@ -197,7 +199,7 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
           if (!canProceed(s, scenario)) return { ...s, announce: { kind: 'pickFirst' } }
           return { ...s, step: 'action' }
         case 'BACK':
-          return { ...s, step: 'feeling', hintOpen: false, hintAutoShown: true }
+          return { ...s, step: 'feeling', hintOpen: false, hintAutoShown: false }
       }
       return s
     }
@@ -206,7 +208,7 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
     case 'action': {
       switch (event.type) {
         case 'SELECT_ACTION':
-          return { ...s, actionId: event.id }
+          return { ...s, actionId: s.actionId === event.id ? undefined : event.id }
         case 'CHOOSE':
         case 'NEXT':
           if (s.actionId === undefined) return { ...s, announce: { kind: 'pickFirst' } }

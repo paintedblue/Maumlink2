@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { useEffect, useRef, type ReactNode } from 'react'
 import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
 import { ProgressLink } from '@/design/ProgressLink'
 import {
@@ -46,19 +46,29 @@ export function LessonShell({
   screenKey,
 }: Props) {
   const { t } = useT()
+  const content = useRef<HTMLElement>(null)
+  useEffect(() => {
+    content.current?.scrollTo?.({ top: 0 })
+    const heading = content.current?.querySelector('h1')
+    heading?.setAttribute('tabindex', '-1')
+    heading?.focus({ preventScroll: true })
+  }, [screenKey])
   return (
-    <div className="flex h-dvh flex-col bg-bg text-ink">
+    <div className="lesson-shell flex h-dvh flex-col bg-bg text-ink">
       <header
-        className="flex shrink-0 items-center justify-between gap-3 px-3 pt-safe px-safe md:px-6"
+        className="lesson-header flex shrink-0 items-center justify-between gap-4"
         style={{ minHeight: 'calc(var(--h-topbar) + var(--safe-top))' }}
       >
         <IconButton label={t('nav.home')} onClick={onHome}>
           <HomeIcon />
         </IconButton>
-        <div className="flex flex-1 justify-center">
+        <div className="flex min-w-0 flex-1 flex-col items-center justify-center gap-2">
           <ProgressLink index={progressIndex} />
+          <span className="hidden text-caption text-ink-soft md:block">
+            {t(`step.${screenKey}`)}
+          </span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <IconButton
             label={t('nav.replay')}
             onClick={onReplay}
@@ -75,24 +85,26 @@ export function LessonShell({
       </header>
 
       <main
+        ref={content}
         key={screenKey}
-        className="mx-auto flex w-full max-w-[1280px] flex-1 flex-col overflow-y-auto overflow-x-hidden px-4 py-3 px-safe motion-safe:animate-[slideIn_240ms_ease-out] md:px-8 lg:justify-center"
+        className="lesson-content mx-auto flex min-h-0 w-full max-w-[1280px] flex-1 flex-col overflow-y-auto motion-safe:animate-[slideIn_240ms_ease-out]"
       >
         {children}
       </main>
 
       <footer
-        className="shrink-0 border-t-2 border-line bg-bg px-4 pb-safe px-safe md:px-8"
+        className="lesson-footer shrink-0 border-t-2 border-line bg-surface"
         style={{ minHeight: 'calc(var(--h-bottombar) + var(--safe-bottom))' }}
       >
         <div
           className={cn(
-            'mx-auto flex w-full max-w-[1280px] flex-col-reverse gap-3 py-3 md:flex-row md:items-center md:justify-between',
+            'mx-auto flex w-full max-w-[1280px] flex-col-reverse gap-4 py-3 md:grid md:grid-cols-[minmax(0,1fr)_minmax(160px,0.7fr)] md:items-center',
           )}
         >
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-4">
             {bottom.back && (
               <SecondaryButton
+                quiet
                 icon={<ArrowLeftIcon size={26} />}
                 onClick={bottom.back.onClick}
                 data-testid="nav-back"
@@ -104,9 +116,10 @@ export function LessonShell({
             {bottom.extra}
           </div>
           <PrimaryButton
+            quiet
             data-testid="nav-primary"
             full
-            className="md:w-auto md:min-w-[220px]"
+            className="md:ml-auto md:w-full md:min-w-0 md:max-w-[320px]"
             softDisabled={bottom.primary.softDisabled}
             onClick={bottom.primary.onClick}
             icon={bottom.primary.icon}

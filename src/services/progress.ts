@@ -1,5 +1,6 @@
 /** Completion marks — PRD §11.4 `maumlink.progress.v1`. No personal data. */
 import { create } from 'zustand'
+import { z } from 'zod'
 import { persist } from 'zustand/middleware'
 
 interface ProgressEntry {
@@ -11,6 +12,20 @@ interface ProgressState {
   markCompleted: (scenarioId: string) => void
   isCompleted: (scenarioId: string) => boolean
 }
+
+export const StoredProgress = z
+  .object({
+    entries: z
+      .record(
+        z.string(),
+        z.object({
+          completedAt: z.string(),
+          times: z.number().int().positive(),
+        }),
+      )
+      .catch({}),
+  })
+  .catch({ entries: {} })
 
 export const useProgress = create<ProgressState>()(
   persist(
@@ -25,6 +40,9 @@ export const useProgress = create<ProgressState>()(
         })),
       isCompleted: (id) => Boolean(get().entries[id]),
     }),
-    { name: 'maumlink.progress.v1' },
+    {
+      name: 'maumlink.progress.v1',
+      merge: (persisted, current) => ({ ...current, ...StoredProgress.parse(persisted) }),
+    },
   ),
 )

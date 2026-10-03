@@ -8,10 +8,11 @@ type Base = ButtonHTMLAttributes<HTMLButtonElement> & {
   /** When "soft-disabled", the button stays focusable/tappable and lets the parent respond (FR-S2-02). */
   softDisabled?: boolean
   full?: boolean
+  quiet?: boolean
 }
 
 const common =
-  'tap inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-btn px-6 text-btn font-bold select-none transition-[transform,background-color,opacity] duration-150 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100'
+  'tap inline-flex items-center justify-center gap-3 whitespace-normal rounded-btn px-6 py-3 text-btn font-bold select-none transition-[transform,background-color,opacity] duration-150 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100'
 
 /** The one green "go" button — always the same color, always the same place (PRD §6.2). */
 export function PrimaryButton({
@@ -19,6 +20,7 @@ export function PrimaryButton({
   iconRight,
   softDisabled,
   full,
+  quiet,
   className,
   onClick,
   children,
@@ -31,13 +33,13 @@ export function PrimaryButton({
       aria-disabled={softDisabled || undefined}
       className={cn(
         common,
-        'bg-go text-go-ink shadow-[0_2px_0_rgba(0,0,0,0.12)] hoverable:hover:brightness-105',
+        'bg-go text-go-ink shadow-[0_2px_0_var(--color-line)] hoverable:hover:brightness-105',
         softDisabled && 'opacity-40',
         full && 'w-full',
         className,
       )}
       onClick={(e) => {
-        if (!softDisabled) sound.play('tick')
+        if (!quiet && !softDisabled) sound.play('tick')
         onClick?.(e)
       }}
       {...rest}
@@ -53,6 +55,7 @@ export function SecondaryButton({
   icon,
   iconRight,
   full,
+  quiet,
   className,
   onClick,
   children,
@@ -69,7 +72,7 @@ export function SecondaryButton({
         className,
       )}
       onClick={(e) => {
-        sound.play('tick')
+        if (!quiet) sound.play('tick')
         onClick?.(e)
       }}
       {...rest}

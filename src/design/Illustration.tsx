@@ -35,7 +35,7 @@ export function Illustration({ src, alt, brief, domain, className }: Props) {
           height={1000}
           alt={alt}
           decoding="async"
-          className="size-full object-cover"
+          className="size-full object-contain"
         />
       ) : (
         <div

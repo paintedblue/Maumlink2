@@ -11,7 +11,7 @@ import {
   UiFile,
   type LString,
   type Scenario as ScenarioT,
-} from '../src/content/schema'
+} from '../src/content/schema.ts'
 
 export interface Issue {
   file: string

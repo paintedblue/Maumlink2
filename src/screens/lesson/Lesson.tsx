@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router'
+import { useCallback, useEffect, useLayoutEffect, useState } from 'react'
+import { Navigate, useLocation, useNavigate, useParams } from 'react-router'
 import { getEmotion, getScenario } from '@/content/loader'
 import { PrimaryButton, SecondaryButton } from '@/design/Button'
 import { Sheet } from '@/design/Sheet'
@@ -25,6 +25,7 @@ export function Lesson() {
   const { scenarioId = '' } = useParams()
   const scenario = getScenario(scenarioId)
   const navigate = useNavigate()
+  const location = useLocation()
   const { t, L } = useT()
   const { speak, supported } = useSpeak()
   const started = useSettings((s) => s.started)
@@ -33,20 +34,31 @@ export function Lesson() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [confirmHome, setConfirmHome] = useState(false)
   const [wiggle, setWiggle] = useState(0)
-  const [replayText, setReplayText] = useState('')
 
   useEffect(() => sound.setEnabled(soundOn), [soundOn])
 
   useEffect(() => {
     if (scenario) start(scenario)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [scenario?.id])
+  }, [scenario, start])
 
-  // Cancel speech whenever the screen changes so voices never overlap (FR-AUD-01).
-  const step = state?.step
-  useEffect(() => {
+  // Layout effects run before children's auto-read effects, so only the old screen is cancelled.
+  useLayoutEffect(() => {
     speech.cancel()
-  }, [step])
+  }, [state?.step])
+  useEffect(() => () => speech.cancel(), [])
+
+  const currentStep = state?.step
+  const currentScenarioId = state?.scenarioId
+
+  // The store owns progress. URL changes describe it; a deep link cannot skip a lesson.
+  useEffect(() => {
+    if (!currentStep || currentScenarioId !== scenarioId) return
+    const path = `/lesson/${scenarioId}${currentStep === 'wrapup' ? '/done' : ''}`
+    const params = new URLSearchParams(location.search)
+    params.set('step', currentStep)
+    const next = `${path}?${params}`
+    if (`${location.pathname}${location.search}` !== next) navigate(next, { replace: true })
+  }, [currentStep, currentScenarioId, scenarioId, location.pathname, location.search, navigate])
 
   // One-shot announcements from the reducer (pickFirst / notSureTwice).
   const announce = state?.announce
@@ -54,7 +66,6 @@ export function Lesson() {
     if (!announce) return
     if (announce.kind === 'pickFirst') {
       void speak(t('feeling.pickFirst'))
-      setWiggle((w) => w + 1)
     } else {
       void speak(t('feeling.notSureTwice', { emotion: L(getEmotion(announce.emotionId).word) }))
     }
@@ -71,7 +82,10 @@ export function Lesson() {
   if (!started) return <Navigate to="/" replace />
   if (!state || state.scenarioId !== scenario.id) return null
 
-  const d = (e: LessonEvent) => dispatch(e)
+  const d = (e: LessonEvent) => {
+    dispatch(e)
+    if (useLesson.getState().state?.announce?.kind === 'pickFirst') setWiggle((w) => w + 1)
+  }
 
   if (state.step === 'wrapup') return <Wrapup scenario={scenario} state={state} onExit={exit} />
 
@@ -171,7 +185,6 @@ export function Lesson() {
   // Replay reads the most relevant text for the current screen.
   const replay = () => {
     const text = currentText()
-    setReplayText(text)
     void speak(text)
   }
   function currentText(): string {
@@ -186,23 +199,36 @@ export function Lesson() {
       case 'step3': {
         const f = state!.feelingIds[0]
         const s3 = scenario!.step3
-        if (s3.type === 'reason' && f)
-          return `${L(s3.question)} ${L(s3.byFeeling[f] ?? { ko: '' })}`
-        if (s3.type === 'body-reaction' && f)
-          return `${L(s3.question)} ${L(s3.byFeeling[f]?.text ?? { ko: '' })}`
-        return L(s3.question)
+        const explanation =
+          s3.type === 'reason' && f
+            ? s3.byFeeling[f]
+            : s3.type === 'body-reaction' && f
+              ? s3.byFeeling[f]?.text
+              : undefined
+        const choice =
+          s3.type === 'multiple-choice'
+            ? s3.options.find((o) => o.id === state!.step3OptionId)
+            : undefined
+        return [
+          L(s3.question),
+          explanation && L(explanation),
+          choice && L(choice.ack),
+          L(s3.principle),
+          state!.moreShown && L(s3.more),
+        ]
+          .filter(Boolean)
+          .join(' ')
       }
       case 'action':
         return L(scenario!.action.question)
       case 'feedback': {
         const a = scenario!.action.options.find((o) => o.id === state!.actionId)
-        return a ? L(a.feedback) : ''
+        return a ? `${L(a.text)} ${L(a.feedback)}` : ''
       }
       default:
         return ''
     }
   }
-  void replayText
 
   return (
     <>

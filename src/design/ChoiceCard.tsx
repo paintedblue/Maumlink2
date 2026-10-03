@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import type { Domain, OptionId } from '@/content/schema'
+import { useT } from '@/i18n/useT'
 import { sound } from '@/services/sound'
 import { cn } from './cn'
 import { CheckIcon, SpeakerIcon } from './icons'
@@ -34,12 +35,13 @@ export function ChoiceCard({
   onSpeak,
   children,
 }: Props) {
+  const { t } = useT()
   return (
     <div
       className={cn(
-        'relative flex min-h-[96px] flex-wrap items-stretch rounded-card border-[3px] bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
-        selected ? 'border-select' : 'border-line',
-        dimmed && !selected && 'opacity-60',
+        'relative flex min-h-[96px] flex-wrap items-stretch rounded-card border-2 bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
+        selected ? 'border-select ring-2 ring-select' : 'border-line',
+        dimmed && !selected && 'bg-bg',
       )}
     >
       <button
@@ -47,7 +49,32 @@ export function ChoiceCard({
         role="radio"
         aria-checked={selected}
         data-option={id}
-        className="flex flex-1 items-center gap-4 px-4 py-4 text-left md:px-5"
+        className="tap min-w-0 flex flex-1 items-center gap-3 px-4 py-4 text-left md:px-5"
+        onKeyDown={(event) => {
+          if (
+            !['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'].includes(event.key)
+          )
+            return
+          const options = Array.from(
+            event.currentTarget
+              .closest('[role="radiogroup"]')
+              ?.querySelectorAll<HTMLButtonElement>('[role="radio"]') ?? [],
+          )
+          if (!options.length) return
+          event.preventDefault()
+          const i = options.indexOf(event.currentTarget)
+          const next =
+            event.key === 'Home'
+              ? 0
+              : event.key === 'End'
+                ? options.length - 1
+                : (i +
+                    (['ArrowRight', 'ArrowDown'].includes(event.key) ? 1 : -1) +
+                    options.length) %
+                  options.length
+          options[next]?.focus()
+          options[next]?.click()
+        }}
         onClick={() => {
           sound.play('tick')
           onSelect(id)
@@ -66,7 +93,8 @@ export function ChoiceCard({
       </button>
       <button
         type="button"
-        aria-label="읽어주기"
+        aria-label={t('a11y.speak')}
+        title={text}
         className="tap flex shrink-0 items-center justify-center self-center pr-3 text-ink-soft"
         onClick={onSpeak}
       >
@@ -74,7 +102,7 @@ export function ChoiceCard({
       </button>
       {selected && (
         <span
-          className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-select text-white"
+          className="pointer-events-none absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-select text-white"
           aria-hidden="true"
         >
           <CheckIcon size={22} />

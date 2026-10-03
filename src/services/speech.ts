@@ -17,6 +17,8 @@ const LANG: Record<Locale, string> = { ko: 'ko-KR', en: 'en-US' }
 const RATE = 0.9
 
 class SpeechService {
+  private request?: SpeakRequest
+  private textListeners = new Set<(text: string) => void>()
   private current?: { cancel: () => void }
   private listeners = new Set<Listener>()
   private voices: SpeechSynthesisVoice[] = []
@@ -45,6 +47,13 @@ class SpeechService {
   onChange(l: Listener): () => void {
     this.listeners.add(l)
     return () => this.listeners.delete(l)
+  }
+
+  onText(listener: (text: string) => void): () => void {
+    this.textListeners.add(listener)
+    return () => {
+      this.textListeners.delete(listener)
+    }
   }
 
   private emit(speaking: boolean) {
@@ -77,13 +86,17 @@ class SpeechService {
     }
   }
 
-  cancel(): void {
+  cancel(request?: SpeakRequest): void {
+    if (request && request !== this.request) return
     this.current?.cancel()
     this.current = undefined
+    this.request = undefined
   }
 
   speak(req: SpeakRequest): Promise<void> {
     this.cancel()
+    this.request = req
+    for (const listener of this.textListeners) listener(req.text)
     if (!req.text.trim() && !req.audioUrl) return Promise.resolve()
 
     if (req.audioUrl) return this.playAudio(req.audioUrl)

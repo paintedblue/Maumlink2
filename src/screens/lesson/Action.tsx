@@ -26,7 +26,7 @@ export function Action({ scenario, state, dispatch, wiggle }: Props) {
         role="radiogroup"
         aria-label={L(q)}
         className={cn(
-          'grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4',
+          'grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4',
           wiggle > 0 && 'motion-safe:animate-[wiggle_300ms_ease-in-out_1]',
         )}
       >

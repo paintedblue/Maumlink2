@@ -1,9 +1,8 @@
-import { useEffect, useId, useRef, type ReactNode } from 'react'
+import { useEffect, useEffectEvent, useId, useRef, type ReactNode } from 'react'
 import { createPortal } from 'react-dom'
 import { useT } from '@/i18n/useT'
 import { cn } from './cn'
-import { CloseIcon } from './icons'
-import { IconButton } from './Button'
+import { SecondaryButton } from './Button'
 
 interface Props {
   open: boolean
@@ -25,10 +24,15 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
   const panel = useRef<HTMLDivElement>(null)
   const restore = useRef<HTMLElement | null>(null)
 
+  const close = useEffectEvent(onClose)
+
   useEffect(() => {
     if (!open) return
     // The sheet is portaled to <body>; everything in the app root becomes inert while it is open.
     const app = document.getElementById('root')
+    const wasInert = app?.hasAttribute('inert')
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     app?.setAttribute('inert', '')
     restore.current = document.activeElement as HTMLElement | null
     const first = panel.current?.querySelector<HTMLElement>(
@@ -36,7 +40,10 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
     )
     first?.focus()
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        close()
+      }
       if (e.key === 'Tab' && panel.current) {
         const f = panel.current.querySelectorAll<HTMLElement>(
           'button, [href], [tabindex]:not([tabindex="-1"])',
@@ -56,10 +63,11 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
     document.addEventListener('keydown', onKey)
     return () => {
       document.removeEventListener('keydown', onKey)
-      app?.removeAttribute('inert')
+      document.body.style.overflow = previousOverflow
+      if (!wasInert) app?.removeAttribute('inert')
       restore.current?.focus?.()
     }
-  }, [open, onClose])
+  }, [open])
 
   if (!open) return null
   return createPortal(
@@ -78,7 +86,7 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
         aria-modal="true"
         aria-labelledby={`${id}-title`}
         className={cn(
-          'relative flex max-h-[70dvh] w-full flex-col rounded-t-card border-2 border-line bg-surface pb-safe shadow-[0_-2px_0_var(--color-line)] motion-safe:animate-[slideUp_240ms_ease-out] md:max-h-[60dvh] lg:max-h-[80dvh] lg:w-[560px] lg:rounded-card',
+          'relative flex max-h-[85dvh] w-full flex-col rounded-t-card border-2 border-line bg-surface pb-safe shadow-[0_-2px_0_var(--color-line)] motion-safe:animate-[slideUp_240ms_ease-out] md:max-h-[85dvh] lg:max-h-[80dvh] lg:w-[560px] lg:rounded-card',
         )}
         style={tint ? { backgroundColor: tint } : undefined}
       >
@@ -86,17 +94,13 @@ export function Sheet({ open, onClose, title, children, tint, modal }: Props) {
           className="mx-auto mt-2 h-1.5 w-12 rounded-full bg-line lg:hidden"
           aria-hidden="true"
         />
-        <div className="flex items-center justify-between px-5 pt-3">
+        <div className="flex shrink-0 items-center justify-between gap-4 px-5 pt-3">
           <h2 id={`${id}-title`} className="text-body font-bold text-ink">
             {title}
           </h2>
-          {!modal && (
-            <IconButton label={t('nav.close')} onClick={onClose} className="">
-              <CloseIcon size={22} />
-            </IconButton>
-          )}
+          {!modal && <SecondaryButton onClick={onClose}>{t('nav.close')}</SecondaryButton>}
         </div>
-        <div className="overflow-y-auto px-5 pb-6 pt-3">{children}</div>
+        <div className="min-h-0 overflow-y-auto px-5 pb-6 pt-3">{children}</div>
       </div>
     </div>,
     document.body,

@@ -30,3 +30,14 @@ Format: date · decision · why · PRD reference.
 - **Caption/label color.** `--ink-soft` (#5B6B7B) passes 4.5:1 on the page background and white cards but not on the domain tints; captions and card labels on tinted surfaces now use `--ink`. Token set unchanged.
 - **Headings.** Every lesson screen exposes exactly one `<h1>` (visible question on S1–S4, visually hidden "피드백" on S5, "잘했어요!" on S6) so screen-reader users can jump to the task.
 - **No deployment performed.** No hosting credentials were provided; the README documents the three one-command options and the required cache headers.
+
+## 2026-10-03 — Senior UI and reliability review
+
+- **PRD scope retained.** No backend, accounts, tracking, scores, new teaching text or runtime AI. Existing 18 draft strings stay flagged. Review findings and verification limits are in `REVIEW.md`.
+- **Accessible action green takes precedence over the erroneous contrast claim.** PRD §6.3's #3E9B6E measures 3.43:1 against white, not 4.6:1. The single green action token is now #28794F (5.33:1); domain colors remain unchanged. This resolves the conflict with §6.12.
+- **Home composition.** Four active domain cards retain their names, counts, order and actions; the fifth reserved domain becomes a compact secondary row. This deliberately refines §6.2's reserved-card size without changing the available learning choices.
+- **Illustrations.** The user authorized generated artwork. Two placeholders and the text-baked presentation slide now use locally stored, text-free illustrations made from their PRD briefs. Original assets remain intact. Exact prompts and review status are in `ILLUSTRATIONS.md`.
+- **Scrolling remains available when needed.** Auto margins center short lesson content, while tall or large-text content starts at a reachable top edge. We do not hide overflow to simulate a no-scroll desktop pass.
+- **URL mirrors state, never authorizes progression.** `?step=` and `/done` describe validated store state. Reload uses session state; a manually entered future-step URL cannot bypass choices.
+- **Dependency pinning.** Pin exact versions already installed in this checkout (including React 19.3.0, Vite 8.3.2, TypeScript 6.0.3), rather than changing the runtime during a UI review. Node's `--import tsx` runs content tooling without the CLI's unnecessary IPC listener.
+- **Acceptance status.** Preserve old screenshot baselines until they can be regenerated and reviewed with a working browser. The sandbox prevents the server/browser launch, and no computer-use surface is enabled. This revision has unit/build verification, not a new browser/a11y/performance sign-off.

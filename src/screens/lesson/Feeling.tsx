@@ -33,7 +33,7 @@ export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
 
   const options = scenario.feeling.options.map(getEmotion)
   const cols = options.length >= 7 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
-  const tint = domainTint(scenario.domain)
+  const tint = `var(--color-domain-${scenario.domain})`
 
   return (
     <div className="flex flex-col gap-4">
@@ -45,7 +45,7 @@ export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
         role="group"
         aria-label={L(q)}
         className={cn(
-          'grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4',
+          'grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-4',
           cols,
           wiggle > 0 && 'motion-safe:animate-[wiggle_300ms_ease-in-out_1]',
         )}
@@ -88,7 +88,7 @@ function HintBody({ scenario, onPick }: { scenario: Scenario; onPick: (id: strin
     <div className="flex flex-col gap-4">
       <p className="text-body text-ink">{L(hint.text)}</p>
       <p className="text-caption font-bold text-ink">{t('hint.maybe')}</p>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-4">
         {suggestions.map((e) => (
           <EmotionTile
             key={e.id}
@@ -105,17 +105,6 @@ function HintBody({ scenario, onPick }: { scenario: Scenario; onPick: (id: strin
       </div>
     </div>
   )
-}
-
-function domainTint(domain: Scenario['domain']): string {
-  const map: Record<Scenario['domain'], string> = {
-    self: '#FCF0C2',
-    social: '#DCEBFA',
-    relation: '#F9DEDC',
-    mind: '#DDEFE0',
-    reserved: '#E7E0F5',
-  }
-  return map[domain]
 }
 
 export { IDLE_MS }

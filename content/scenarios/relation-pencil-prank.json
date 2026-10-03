@@ -18,7 +18,10 @@
       "en": "It was a joke to me, but my friend is upset"
     },
     "story": [
-      { "ko": "쉬는 시간이에요.", "en": "It's break time." },
+      {
+        "ko": "쉬는 시간이에요.",
+        "en": "It's break time."
+      },
       {
         "ko": "나는 친구를 웃겨주려고 친구의 연필을 살짝 숨겼어요.",
         "en": "I secretly hid my friend's pencil to make them laugh."
@@ -35,7 +38,8 @@
     "imageBrief": {
       "ko": "초등학교 교실 / 주인공이 친구 연필을 살짝 숨기는 모습 / 친구는 연필을 찾고 있음 / 표정은 과하게 강조하지 않기",
       "en": "Elementary classroom; main character secretly hides a friend's pencil; friend is looking for it; don't exaggerate facial expressions"
-    }
+    },
+    "image": "/img/generated/relation-pencil-prank.png"
   },
   "feeling": {
     "subject": "other",
@@ -87,7 +91,10 @@
       },
       {
         "id": "C",
-        "text": { "ko": "연필을 찾지 못해 속상했어요.", "en": "Upset at not finding the pencil." },
+        "text": {
+          "ko": "연필을 찾지 못해 속상했어요.",
+          "en": "Upset at not finding the pencil."
+        },
         "ack": {
           "ko": "그럴 수 있어요. 찾아도 없으면 속상해요.",
           "en": "That could be. It's upsetting when you can't find it.",

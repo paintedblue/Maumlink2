@@ -3,6 +3,7 @@
  * `locale` is only ever changed by the dev `?lang=en` URL flag and is never persisted as 'en'.
  */
 import { create } from 'zustand'
+import { z } from 'zod'
 import { persist } from 'zustand/middleware'
 
 export type TextSize = 'normal' | 'large'
@@ -25,6 +26,15 @@ function devLocaleFromUrl(): Locale {
   if (typeof window === 'undefined') return 'ko'
   return new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'ko'
 }
+
+export const StoredSettings = z
+  .object({
+    textSize: z.enum(['normal', 'large']).catch('normal'),
+    sound: z.boolean().catch(true),
+    autoRead: z.boolean().catch(true),
+    started: z.boolean().catch(false),
+  })
+  .catch({ textSize: 'normal', sound: true, autoRead: true, started: false })
 
 export const useSettings = create<SettingsState>()(
   persist(
@@ -50,7 +60,7 @@ export const useSettings = create<SettingsState>()(
       }),
       merge: (persisted, current) => ({
         ...current,
-        ...(persisted as Partial<SettingsState>),
+        ...StoredSettings.parse(persisted),
         locale: devLocaleFromUrl(),
       }),
     },
