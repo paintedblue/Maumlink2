@@ -79,3 +79,9 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ Replaced shared styles; retained reading sizes, 64px targets, keyboard behavior, reduced motion and compact navigation.
 - ☑ Scenario/content diff empty; four new full-lesson interaction tests, 69 tests total. Lint and production build pass.
 - ☐ Browser/axe/responsive and deployment verification: Chrome is unconnected and preview startup returns `listen EPERM`. Existing screenshots are not current acceptance evidence.
+
+
+## 2026-10-03 — Default typography adjustment
+
+- ☑ Reduced default reading, control, caption and heading sizes at the user's request; retained large text and touch targets.
+- Validation: lint and production build pass; browser verification remains unavailable in this session.

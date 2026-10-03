@@ -58,3 +58,9 @@ Format: date · decision · why · PRD reference.
 - A contextual scene thumbnail bridges questions across steps; the ending shows the actual chosen emotion and action instead of abstract recap symbols. Audio replay includes this recap.
 - Reuse the existing school illustrations and introduce small local vector companions derived from the linked-heart identity. No new dependency, external service or runtime asset network was introduced.
 - Verification remains unit/integration/build plus asset inspection. Chrome and local preview are blocked in this environment; visual/browser acceptance is explicitly pending.
+
+
+## 2026-10-03 — Smaller default typography
+
+- User reported that default text was too large. Default story/question type is now 22–26px (previously 28–32px), body 18–20px (22–24px), buttons 18px (22px), emotion labels 18px (20px), and captions 14px (16px). Brand and introductory headings are reduced proportionally. This explicitly supersedes the original normal-size values in PRD §6.4.
+- The existing large-text setting and 64px minimum touch targets remain unchanged. Only visual sizing changes; lesson content and behavior stay intact.

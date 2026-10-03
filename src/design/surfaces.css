@@ -269,7 +269,7 @@
   max-width: 30ch;
 }
 .start-title {
-  font-size: clamp(40px, 6vw, 64px);
+  font-size: clamp(34px, 5vw, 48px);
   color: var(--color-brand);
   font-weight: 700;
   letter-spacing: -0.06em;
@@ -540,7 +540,7 @@
     gap: 8px;
   }
   .brand-name {
-    font-size: 26px;
+    font-size: var(--text-brand);
   }
   .brand-symbol svg {
     width: 32px;
@@ -550,7 +550,7 @@
     gap: 8px;
   }
   .home-question {
-    font-size: 28px;
+    font-size: var(--text-display);
   }
   .home-friends {
     width: 88px;
