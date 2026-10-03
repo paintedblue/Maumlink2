@@ -1,0 +1,121 @@
+import { getEmotion } from '@/content/loader'
+import type { Scenario } from '@/content/schema'
+import { EmotionTile } from '@/design/EmotionTile'
+import { Sheet } from '@/design/Sheet'
+import { cn } from '@/design/cn'
+import type { LessonEvent, LessonState } from '@/engine/lessonMachine'
+import { useT } from '@/i18n/useT'
+import { useIdle } from '@/services/idle'
+import { sound } from '@/services/sound'
+import { useAutoRead, useSpeak } from '@/services/useSpeak'
+
+const IDLE_MS = 20_000
+
+interface Props {
+  scenario: Scenario
+  state: LessonState
+  dispatch: (e: LessonEvent) => void
+  wiggle: number
+}
+
+/** S2 — emotion grid, help button, hint sheet, idle auto-hint, not-sure flow (FR-S2-*). */
+export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
+  const { t, L, locale } = useT()
+  const { speak } = useSpeak()
+  const q = scenario.feeling.question
+  useAutoRead(L(q), 'feeling', q.audio?.[locale])
+
+  useIdle(
+    IDLE_MS,
+    () => dispatch({ type: 'IDLE_TICK' }),
+    !state.hintOpen && !state.hintAutoShown && state.feelingIds.length === 0,
+  )
+
+  const options = scenario.feeling.options.map(getEmotion)
+  const cols = options.length >= 7 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'
+  const tint = domainTint(scenario.domain)
+
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="text-story font-bold text-ink" aria-live="polite">
+        {L(q)}
+      </h1>
+      <div
+        key={wiggle}
+        role="group"
+        aria-label={L(q)}
+        className={cn(
+          'grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4',
+          cols,
+          wiggle > 0 && 'motion-safe:animate-[wiggle_300ms_ease-in-out_1]',
+        )}
+      >
+        {options.map((e) => (
+          <EmotionTile
+            key={e.id}
+            emotion={e}
+            selected={state.feelingIds.includes(e.id)}
+            onSelect={(id) => {
+              void speak(e.word)
+              dispatch({ type: 'SELECT_FEELING', id })
+            }}
+          />
+        ))}
+      </div>
+
+      <Sheet
+        open={state.hintOpen}
+        onClose={() => dispatch({ type: 'CLOSE_HINT' })}
+        title={t('hint.title')}
+        tint={tint}
+      >
+        <HintBody
+          scenario={scenario}
+          onPick={(id) => dispatch({ type: 'SELECT_HINT_FEELING', id })}
+        />
+      </Sheet>
+    </div>
+  )
+}
+
+function HintBody({ scenario, onPick }: { scenario: Scenario; onPick: (id: string) => void }) {
+  const { t, L, locale } = useT()
+  const { speak } = useSpeak()
+  const hint = scenario.feeling.hint
+  useAutoRead(L(hint.text), `hint-${scenario.id}`, hint.text.audio?.[locale])
+  const suggestions = hint.suggest.map(getEmotion)
+  return (
+    <div className="flex flex-col gap-4">
+      <p className="text-body text-ink">{L(hint.text)}</p>
+      <p className="text-caption font-bold text-ink-soft">{t('hint.maybe')}</p>
+      <div className="grid grid-cols-2 gap-3">
+        {suggestions.map((e) => (
+          <EmotionTile
+            key={e.id}
+            emotion={e}
+            selected={false}
+            size="compact"
+            onSelect={(id) => {
+              sound.play('chime')
+              void speak(e.word)
+              onPick(id)
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function domainTint(domain: Scenario['domain']): string {
+  const map: Record<Scenario['domain'], string> = {
+    self: '#FCF0C2',
+    social: '#DCEBFA',
+    relation: '#F9DEDC',
+    mind: '#DDEFE0',
+    reserved: '#E7E0F5',
+  }
+  return map[domain]
+}
+
+export { IDLE_MS }

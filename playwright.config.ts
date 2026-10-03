@@ -15,12 +15,17 @@ export default defineConfig({
     baseURL: 'http://localhost:4173',
     trace: 'retain-on-failure',
     locale: 'ko-KR',
+    // Animations are visual polish only; disable them so layout assertions are deterministic.
+    reducedMotion: 'reduce',
   },
+  globalSetup: './tests/e2e/global-setup.ts',
   webServer: {
-    command: 'pnpm build && pnpm preview',
+    // A single process (no shell chain) so Playwright can always kill it; never reuse a
+    // stray server — that silently tests a stale build.
+    command: 'node node_modules/vite/bin/vite.js preview --port 4173 --strictPort',
     url: 'http://localhost:4173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 180_000,
+    reuseExistingServer: false,
+    timeout: 60_000,
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

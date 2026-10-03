@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "social-playground",
+  "domain": "social",
+  "order": 1,
+  "title": { "ko": "나와 너의 생각이 다를 수 있어!", "en": "You and I Can Think Differently!" },
+  "learningGoal": {
+    "ko": "또래 상황에서 자신의 감정을 알아차리고, 상대의 관점을 생각하며 적절한 대처방법을 탐색할 수 있다.",
+    "en": "In peer situations, can notice own feelings, consider the other's view, and explore suitable ways to respond."
+  },
+  "estimatedMinutes": 7,
+  "situation": {
+    "title": { "ko": "친구들과 함께 놀고 싶어요", "en": "I want to play with my friends" },
+    "story": [
+      {
+        "ko": "쉬는 시간에 친구들이 운동장에서 함께 놀고 있어요.",
+        "en": "At break, my friends are playing together on the playground."
+      },
+      {
+        "ko": "나는 친구들과 같이 놀고 싶지만, 친구들은 아직 나를 부르지 않았어요.",
+        "en": "I want to join them, but they haven't called me yet."
+      }
+    ],
+    "keySentence": { "ko": "\"나도 같이 놀고 싶어!\"", "en": "\"I want to play too!\"" },
+    "image": "/img/social-playground.png",
+    "imageBrief": {
+      "ko": "학교 운동장 / 친구 2~3명이 함께 놀이 중 / 주인공이 조금 떨어진 곳에서 바라보는 장면",
+      "en": "School playground; 2–3 friends playing together; main character watching from a little way off"
+    }
+  },
+  "feeling": {
+    "subject": "self",
+    "question": {
+      "ko": "이 상황에서 나는 어떤 기분이 들까요?",
+      "en": "How would I feel in this situation?"
+    },
+    "options": ["annoyed", "angry", "embarrassed", "hurt", "worried", "not-sure"],
+    "multiSelect": false,
+    "hint": {
+      "text": {
+        "ko": "나는 친구들과 놀고 싶은데 아직 아무도 나를 부르지 않았어요. 어떤 마음이 들까요?",
+        "en": "I want to play, but nobody has called me yet. How might that feel?",
+        "draft": true
+      },
+      "suggest": ["hurt", "worried"]
+    }
+  },
+  "step3": {
+    "type": "reason",
+    "question": { "ko": "왜 그런 기분이 들었을까요?", "en": "Why did I feel that way?" },
+    "byFeeling": {
+      "annoyed": {
+        "ko": "친구들이 나와 놀기 싫어한다고 생각해서",
+        "en": "I think my friends don't want to play with me"
+      },
+      "angry": { "ko": "나만 빼고 노는 것 같아서", "en": "It feels like they're leaving me out" },
+      "embarrassed": {
+        "ko": "어떻게 같이 놀자고 말해야 할지 몰라서",
+        "en": "I don't know how to ask to play"
+      },
+      "hurt": {
+        "ko": "친구들이 나를 불러주지 않아서",
+        "en": "Because my friends didn't call me",
+        "draft": true
+      },
+      "worried": { "ko": "친구들이 거절할까 봐 걱정돼서", "en": "Afraid my friends will say no" }
+    },
+    "principle": {
+      "ko": "같은 상황에서도 사람마다 다른 마음이 들 수 있어요.",
+      "en": "People can feel differently in the same situation."
+    },
+    "more": {
+      "ko": "같은 일이 있어도 어떤 친구는 서운하고, 어떤 친구는 걱정돼요. 둘 다 괜찮아요.",
+      "en": "In the same situation, one friend may feel hurt and another may feel worried. Both are okay.",
+      "draft": true
+    }
+  },
+  "action": {
+    "question": {
+      "ko": "친구들과 함께 놀고 싶다면 어떻게 해볼 수 있을까요?",
+      "en": "What can I do if I want to play with my friends?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "ko": "친구들에게 화를 내며 \"왜 나만 빼고 놀아!\"라고 말해요.",
+          "en": "Get angry and say, \"Why are you leaving me out?!\""
+        },
+        "quality": "reconsider",
+        "feedback": {
+          "ko": "화가 날 수 있어요. 하지만 화를 내며 말하면 친구들이 놀라거나 속상할 수 있어요. \"나도 같이 놀고 싶어.\"라고 말해보면 어떨까요?",
+          "en": "It's okay to feel angry. But speaking angrily may scare or upset your friends. How about saying, \"I want to play too\"?"
+        },
+        "outcomeIcon": "think"
+      },
+      {
+        "id": "B",
+        "text": {
+          "ko": "가까이에 가서 조용히 친구들을 기다려요.",
+          "en": "Go close and quietly wait for my friends."
+        },
+        "quality": "acceptable",
+        "feedback": {
+          "ko": "가까이에서 기다리면 친구들이 내 마음을 알아줄 수도 있지만, 모를 수도 있어요. 함께 놀고 싶다면 내 마음을 말해보는 건 어떨까요?",
+          "en": "If you wait nearby, your friends might notice how you feel, or they might not. If you want to play together, why not tell them?"
+        },
+        "outcomeIcon": "wait"
+      },
+      {
+        "id": "C",
+        "text": {
+          "ko": "친구들에게 \"나도 같이 놀아도 돼?\"라고 물어봐요.",
+          "en": "Ask my friends, \"Can I play too?\""
+        },
+        "quality": "recommended",
+        "feedback": {
+          "ko": "좋은 방법이에요. \"나도 같이 놀아도 돼?\" 함께하고 싶은 마음을 말로 표현하면 친구가 내 마음을 알 수 있어요.",
+          "en": "Good idea! \"Can I play too?\" When you say you want to join, your friends can know how you feel."
+        },
+        "outcomeIcon": "talk"
+      },
+      {
+        "id": "D",
+        "text": {
+          "ko": "친구에게 말하기 어렵다면 선생님에게 \"저도 같이 놀고 싶어요\"라고 말해요.",
+          "en": "If it's hard to tell my friends, tell the teacher, \"I want to play too.\""
+        },
+        "quality": "acceptable",
+        "feedback": {
+          "ko": "도움이 필요할 때 선생님에게 말할 수 있어요. 다음에는 용기를 내어 친구에게 내 마음을 직접 말해보는 것도 좋아요.",
+          "en": "You can tell your teacher when you need help. Next time, you could also be brave and tell your friend how you feel."
+        },
+        "outcomeIcon": "teacher"
+      }
+    ]
+  },
+  "closing": {
+    "ko": "내 마음은 말로 표현할 수 있어요. 친구에게 내가 원하는 것을 말해보고, 어려울 때 어른에게 도움을 요청해요.",
+    "en": "I can put my feelings into words. I tell my friend what I want, and ask an adult for help when it's hard."
+  }
+}

@@ -104,12 +104,7 @@
   --fs-caption: 18px;
 }
 
-@media (max-height: 499px) {
-  :root {
-    --h-topbar: 56px;
-    --h-bottombar: 80px;
-  }
-}
+/* Phone landscape keeps 72/96 px bars: 64 px tap targets (FR-RES-02) take precedence over §6.2.1's 56 px. */
 
 @layer base {
   html {
@@ -171,5 +166,80 @@
   .tap {
     min-width: var(--spacing-tap);
     min-height: var(--spacing-tap);
+  }
+}
+
+/* Motion (PRD §6.10) — 200–300 ms ease-out; all disabled under reduced motion via @layer base */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.85;
   }
 }

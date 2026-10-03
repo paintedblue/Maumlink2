@@ -37,7 +37,7 @@
   "step.action": { "ko": "어떻게 할까", "en": "Action" },
   "step.feedback": { "ko": "피드백", "en": "Feedback" },
   "progress.label": { "ko": "{n}단계 중 {i}단계", "en": "Step {i} of {n}" },
-  "feeling.chose": { "ko": "{emotion} 를 골랐어요.", "en": "You chose {emotion}." },
+  "feeling.chose": { "ko": "'{emotion}'를 골랐어요.", "en": "You chose '{emotion}'." },
   "feeling.pickFirst": { "ko": "먼저 하나를 골라요.", "en": "Choose one first." },
   "feeling.notSureTwice": {
     "ko": "괜찮아요. 함께 {emotion} 부터 살펴봐요.",

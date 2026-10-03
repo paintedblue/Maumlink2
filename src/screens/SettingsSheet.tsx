@@ -1,0 +1,90 @@
+import { Sheet } from '@/design/Sheet'
+import { cn } from '@/design/cn'
+import { useT } from '@/i18n/useT'
+import { useSettings } from '@/services/settings'
+import { sound } from '@/services/sound'
+
+function Segmented<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+}: {
+  label: string
+  value: T
+  options: { value: T; label: string }[]
+  onChange: (v: T) => void
+}) {
+  return (
+    <div className="flex flex-col gap-2 py-3 md:flex-row md:items-center md:justify-between">
+      <span className="text-body font-bold text-ink">{label}</span>
+      <div role="radiogroup" aria-label={label} className="flex gap-2">
+        {options.map((o) => {
+          const on = o.value === value
+          return (
+            <button
+              key={o.value}
+              type="button"
+              role="radio"
+              aria-checked={on}
+              className={cn(
+                'tap rounded-btn border-[3px] px-6 text-btn font-bold transition-colors',
+                on
+                  ? 'border-select bg-domain-social text-ink'
+                  : 'border-line bg-surface text-ink-soft',
+              )}
+              onClick={() => {
+                sound.play('tick')
+                onChange(o.value)
+              }}
+            >
+              {o.label}
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+/** PRD §6.7 / FR-SET-01 — text size, sound, auto-read. No language control (D17). */
+export function SettingsSheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const { t } = useT()
+  const s = useSettings()
+  return (
+    <Sheet open={open} onClose={onClose} title={t('settings.title')}>
+      <div className="divide-y divide-line">
+        <Segmented
+          label={t('settings.textSize')}
+          value={s.textSize}
+          options={[
+            { value: 'normal', label: t('settings.textNormal') },
+            { value: 'large', label: t('settings.textLarge') },
+          ]}
+          onChange={s.setTextSize}
+        />
+        <Segmented
+          label={t('settings.sound')}
+          value={s.sound ? 'on' : 'off'}
+          options={[
+            { value: 'on', label: t('settings.on') },
+            { value: 'off', label: t('settings.off') },
+          ]}
+          onChange={(v) => {
+            s.setSound(v === 'on')
+            sound.setEnabled(v === 'on')
+          }}
+        />
+        <Segmented
+          label={t('settings.autoRead')}
+          value={s.autoRead ? 'on' : 'off'}
+          options={[
+            { value: 'on', label: t('settings.on') },
+            { value: 'off', label: t('settings.off') },
+          ]}
+          onChange={(v) => s.setAutoRead(v === 'on')}
+        />
+      </div>
+    </Sheet>
+  )
+}

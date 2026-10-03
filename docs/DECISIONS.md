@@ -13,3 +13,13 @@ Format: date · decision · why · PRD reference.
 - **Emotion label mapping (PRD §7.1 note).** 창피해요 → "Embarrassed", 당황스러워요 → "Flustered", 부끄러워요 → "Shy" (differs from the `eng-ver` PDFs; English is dev-only under D17 so this has no child-facing effect).
 - **Validator severity.** Missing *emotion* icon files are warnings during M0–M1 (icons are produced in M1/M2); missing *outcome* icon files are errors as the PRD specifies. Missing `en` is a warning (D17).
 - **Repo location.** The app lives in `maumlink/` beside the client's original decks; the three planning documents are copied into the repo root per PRD §11.2 so the agent and CI have them in-tree.
+
+## 2026-10-03 — M1
+
+- **UI sounds are synthesized (WebAudio), not MP3 files.** Three tones (tick/chime/turn) per §6.11, generated at runtime with an envelope at ≤ −12 dBFS. No assets to precache, works offline from the first visit. `public/sounds/` is unused; the schema's `audio` fields for *speech* clips are untouched.
+- **64 px tap targets win over 56 px phone-landscape bars.** PRD §6.2.1 shrank bars at height < 500 px; FR-RES-02 requires ≥ 64 px targets at every viewport. Bars stay 72/96 px; the content zone scrolls. The `short:` variant is still used to shrink the S1 illustration to a thumbnail.
+- **"Fresh start" is explicit, not a navigation flag.** `location.state` survives reloads (it lives in `history.state`), which made a `{fresh:true}` flag restart the lesson on refresh. Home and Wrap-up now call `useLesson.reset()` before navigating; the Lesson screen always restores a matching session.
+- **Sheets portal to `<body>` and set `inert` on `#root`.** Real focus/pointer isolation for the hint, settings and confirm dialogs (keyboard + screen readers), beyond the JS focus trap.
+- **Korean particle in `feeling.chose`.** PRD §7.3 had "{emotion} 를 골랐어요."; shipped as "'{emotion}'를 골랐어요." — natural Korean, same meaning.
+- **E2E server hygiene.** The preview server is a single process launched by Playwright with `reuseExistingServer: false`, and the build runs in `globalSetup`. A leaked server had silently served a stale bundle during M1 development.
+- **Icon polish deferred to M3:** `unfair` and `frustrated` faces are subtle; `relation`/`self` domain pictograms could read more clearly.
