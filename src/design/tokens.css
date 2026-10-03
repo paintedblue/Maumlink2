@@ -1,7 +1,21 @@
 /* Maum:Link design tokens — PRD §6.3–6.5. Do not add colors/sizes outside this file. */
 @import 'tailwindcss';
-@import '@fontsource/noto-sans-kr/400.css';
-@import '@fontsource/noto-sans-kr/700.css';
+
+/* Self-hosted subset built by `pnpm fonts` (scripts/build-fonts.py) — D14/D15 */
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/NotoSansKR-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/NotoSansKR-700.woff2') format('woff2');
+}
 
 @theme {
   --font-sans:

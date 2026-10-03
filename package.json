@@ -16,13 +16,13 @@
     "typecheck": "tsc -b",
     "validate": "tsx scripts/validate-content.ts",
     "images": "tsx scripts/convert-images.ts",
+    "fonts": "uv run --quiet scripts/build-fonts.py",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install chromium webkit"
   },
   "dependencies": {
-    "@fontsource/noto-sans-kr": "^5.2.8",
     "@tailwindcss/vite": "^4.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

@@ -52,8 +52,6 @@ export default defineConfig({
       workbox: {
         // FR-PWA-02: everything the app needs offline is precached.
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2,mp3,json,webmanifest}'],
-        // fontsource emits .woff twins of every .woff2 subset; every supported browser (§9) uses woff2.
-        globIgnores: ['**/*.woff'],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
       },
