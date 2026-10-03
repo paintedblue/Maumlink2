@@ -115,7 +115,9 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
         if (!keySentenceVisible(s, scenario)) return { ...s, sentenceIndex: s.sentenceIndex + 1 }
         return { ...s, step: 'feeling', hintOpen: false, hintAutoShown: false }
       }
-      // BACK on S1 is "Home" and is handled by the UI with a confirm sheet (§5.2).
+      // Story pages participate in Back navigation; leaving uses the explicit Home control.
+      if (event.type === 'BACK' && s.sentenceIndex > 0)
+        return { ...s, sentenceIndex: s.sentenceIndex - 1 }
       return s
     }
 

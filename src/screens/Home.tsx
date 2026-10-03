@@ -3,12 +3,13 @@ import { useNavigate } from 'react-router'
 import { scenariosByDomain } from '@/content/loader'
 import type { Domain, Scenario } from '@/content/schema'
 import { VoiceToggle } from '@/design/VoiceToggle'
+import { BrandLogo } from '@/design/BrandLogo'
 import { HeartFriends } from '@/design/HeartFriends'
 import { IconButton } from '@/design/Button'
 import { domainSurface } from '@/design/domain'
 import { Sheet } from '@/design/Sheet'
 import { cn } from '@/design/cn'
-import { CheckIcon, ChevronRightIcon, LinkMark, SettingsIcon } from '@/design/icons'
+import { CheckIcon, ChevronRightIcon, SettingsIcon } from '@/design/icons'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
 import { useProgress } from '@/services/progress'
@@ -50,10 +51,7 @@ function HomeInner() {
       <header className="home-masthead">
         <div className="home-header">
           <div className="brand-lockup">
-            <span className="brand-symbol">
-              <LinkMark size={44} />
-            </span>
-            <span className="brand-name">{t('app.name')}</span>
+            <BrandLogo />
           </div>
           <div className="utility-controls">
             <VoiceToggle onEnable={() => void speak(greeting)} supported={supported} />

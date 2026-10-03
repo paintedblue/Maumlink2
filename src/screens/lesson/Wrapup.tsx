@@ -4,9 +4,10 @@ import { getEmotion, nextScenarioInDomain } from '@/content/loader'
 import type { Scenario } from '@/content/schema'
 import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
 import { VoiceToggle } from '@/design/VoiceToggle'
+import { BrandLogo } from '@/design/BrandLogo'
 import { HeartFriends } from '@/design/HeartFriends'
 import { Card } from '@/design/Card'
-import { ArrowRightIcon, HomeIcon, LinkMark, SettingsIcon } from '@/design/icons'
+import { ArrowRightIcon, HomeIcon, SettingsIcon } from '@/design/icons'
 import { chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
@@ -42,8 +43,7 @@ export function Wrapup({ scenario, state, onExit }: Props) {
     <div className="wrapup-screen">
       <header className="wrapup-header">
         <div className="brand-lockup">
-          <LinkMark size={44} />
-          <span className="brand-name">{t('app.name')}</span>
+          <BrandLogo />
         </div>
         <div className="utility-controls">
           <VoiceToggle

@@ -114,24 +114,18 @@ export const FeelingIcon = (p: P) => (
   </Base>
 )
 
-/** Two hearts joined by one continuous line: the shared app and install identity. */
+/** The shared vector master keeps in-app, favicon and installed identities consistent. */
 export function LinkMark({ size = 40, ...rest }: P) {
   return (
-    <svg width={size} height={size} viewBox="0 0 64 64" fill="none" aria-hidden="true" {...rest}>
-      <path
-        d="M8 28c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S8 37 8 28Z"
-        fill="var(--color-link)"
-      />
-      <path
-        d="M26 21c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S26 30 26 21Z"
-        fill="var(--color-brand-soft)"
-      />
-      <path
-        d="M20 35c7 6 17-9 24-6"
-        stroke="var(--color-brand)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 120 120"
+      aria-hidden="true"
+      focusable="false"
+      {...rest}
+    >
+      <image href="/brand/symbol.svg" width="120" height="120" />
     </svg>
   )
 }

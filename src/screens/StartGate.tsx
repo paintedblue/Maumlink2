@@ -1,3 +1,4 @@
+import { BrandLogo } from '@/design/BrandLogo'
 import { HeartFriends } from '@/design/HeartFriends'
 import { PrimaryButton } from '@/design/Button'
 import { ArrowRightIcon } from '@/design/icons'
@@ -16,7 +17,9 @@ export function StartGate() {
         <HeartFriends />
       </div>
       <div className="start-copy">
-        <h1 className="start-title">{t('app.name')}</h1>
+        <h1 className="start-title">
+          <BrandLogo className="start-wordmark" />
+        </h1>
         <p className="start-description">{t('home.greeting')}</p>
       </div>
       <PrimaryButton

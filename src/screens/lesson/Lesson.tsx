@@ -107,7 +107,7 @@ export function Lesson() {
         />
       )
       bottom = {
-        back: { label: t('nav.back'), onClick: () => setConfirmHome(true) },
+        back: state.sentenceIndex > 0 ? backTo() : undefined,
         primary: {
           label: t('nav.next'),
           onClick: () => {

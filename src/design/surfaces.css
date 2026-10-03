@@ -100,7 +100,7 @@
   font-weight: 700;
   letter-spacing: -0.06em;
   white-space: nowrap;
-  color: var(--color-brand);
+  color: #554478;
 }
 .heart-friends {
   display: block;
@@ -716,4 +716,16 @@
   .emotion-tile[aria-checked='true'] .emotion-face {
     transform: none;
   }
+}
+
+/* The logo has its own compact width so utility buttons retain their tap targets. */
+.brand-wordmark {
+  display: block;
+  width: clamp(144px, 19vw, 198px);
+  max-width: 100%;
+  height: auto;
+}
+.start-wordmark {
+  width: clamp(232px, 32vw, 310px);
+  margin-inline: auto;
 }

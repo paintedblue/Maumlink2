@@ -40,10 +40,19 @@ describe('S1 situation', () => {
     s = reduce(s, { type: 'NEXT' }, scenario)
     expect(s.step).toBe('feeling')
   })
-  it('BACK on situation is a no-op (UI shows Home confirm)', () => {
+  it('BACK returns to the previous story sentence', () => {
     const s = run([{ type: 'NEXT' }, { type: 'BACK' }])
     expect(s.step).toBe('situation')
-    expect(s.sentenceIndex).toBe(1)
+    expect(s.sentenceIndex).toBe(0)
+  })
+  it('BACK from the key sentence returns to the last story sentence', () => {
+    const s = run([{ type: 'NEXT' }, { type: 'NEXT' }, { type: 'BACK' }])
+    expect(s.step).toBe('situation')
+    expect(s.sentenceIndex).toBe(scenario.situation.story.length - 1)
+  })
+  it('BACK at the first sentence stays in the lesson without a negative index', () => {
+    const initial = initialLessonState(scenario.id)
+    expect(reduce(initial, { type: 'BACK' }, scenario)).toBe(initial)
   })
 })
 

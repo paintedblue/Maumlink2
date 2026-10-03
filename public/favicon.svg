@@ -1,6 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#5546A3"/>
-  <path d="M8 28c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S8 37 8 28Z" fill="#F3B290"/>
-  <path d="M26 21c0-7 9-11 15-3 6-8 15-4 15 3 0 9-15 18-15 18S26 30 26 21Z" fill="#C6BAF2"/>
-  <path d="M20 35c7 6 17-9 24-6" fill="none" stroke="#5546A3" stroke-width="3" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none"><rect width="120" height="120" rx="28" fill="#FFF9F1"/><g transform="translate(0 0) scale(1)"><defs>
+    <mask id="friend-gap-a" maskUnits="userSpaceOnUse" x="0" y="0" width="120" height="120">
+      <rect width="120" height="120" fill="white"/>
+      <path d="M84 52C73 37 55 43 55 58C55 72 70 85 84 95C98 85 112 72 112 58C112 43 95 37 84 52Z" fill="black" stroke="black" stroke-width="5" stroke-linejoin="round"/>
+    </mask>
+  </defs>
+  <g mask="url(#friend-gap-a)">
+    <path d="M52 34C40 15 13 24 14 44C15 60 33 76 52 89C68 79 89 59 90 42C91 22 66 14 52 34Z" fill="#FFB59B"/>
+    <g fill="#554478">
+      <ellipse cx="34" cy="46" rx="2.5" ry="3.2"/>
+      <ellipse cx="49" cy="46" rx="2.5" ry="3.2"/>
+    </g>
+    <path d="M37 55Q41.5 60 46 55" stroke="#554478" stroke-width="2.6" stroke-linecap="round"/>
+    <g fill="#EF907D"><ellipse cx="28" cy="53" rx="4" ry="2.4"/><ellipse cx="54" cy="53" rx="4" ry="2.4"/></g>
+  </g>
+  <path d="M84 52C73 37 55 43 55 58C55 72 70 85 84 95C98 85 112 72 112 58C112 43 95 37 84 52Z" fill="#B9A7EC"/>
+  <g fill="#554478"><ellipse cx="76" cy="64" rx="2.3" ry="2.9"/><ellipse cx="92" cy="64" rx="2.3" ry="2.9"/></g>
+  <path d="M80 73Q84 77 88 73" stroke="#554478" stroke-width="2.6" stroke-linecap="round"/>
+  <g fill="#A18AD8"><ellipse cx="69" cy="70" rx="3.5" ry="2.2"/><ellipse cx="99" cy="70" rx="3.5" ry="2.2"/></g></g>
 </svg>
