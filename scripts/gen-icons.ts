@@ -52,8 +52,14 @@ const faces: Record<string, string> = {
   annoyed: head + browsFlat + eyes() + mouth.wavy,
   upset: head + browsWorried + eyes() + mouth.frown + tear,
   hurt: head + browsWorried + eyesClosedDown + mouth.smallFrown,
-  frustrated: head + browsFlat + eyes() + mouth.tight,
-  unfair: head + browsWorried + eyes() + mouth.pressed + `<path d="M32 36v3"/>`,
+  frustrated:
+    head + browsFlat + eyes() + mouth.tight + `<path d="M26 17v4M32 16v5M38 17v4" opacity=".55"/>`,
+  unfair:
+    head +
+    browsWorried +
+    eyes() +
+    mouth.frown +
+    `<path d="M18 37q2 3 5 1" opacity=".7"/><path d="M46 37q-2 3-5 1" opacity=".7"/>`,
   worried: head + browsWorried + eyes() + mouth.smallFrown + sweat,
   nervous: head + browsWorried + eyesWide + mouth.wavy + sweat,
   embarrassed: head + browsWorried + eyesClosedDown + mouth.small + blush,
@@ -82,9 +88,9 @@ const outcomes: Record<string, string> = {
 
 // ---------- domain icons (Home cards) ----------
 const domains: Record<string, string> = {
-  self: `<ellipse cx="32" cy="26" rx="14" ry="18"/><path d="M26 50h12"/><path d="M32 44v12"/><circle cx="27" cy="22" r="2" fill="currentColor" stroke="none"/><circle cx="37" cy="22" r="2" fill="currentColor" stroke="none"/><path d="M27 31q5 4 10 0"/>`,
+  self: `<circle cx="32" cy="20" r="9"/><path d="M13 54q0-17 19-17t19 17"/><path d="M32 50q-7-5-7-9a3.5 3.5 0 0 1 7-1 3.5 3.5 0 0 1 7 1q0 4-7 9z" fill="currentColor" stroke="none" opacity=".85"/>`,
   social: `<circle cx="22" cy="22" r="7"/><circle cx="44" cy="26" r="6"/><path d="M8 50q0-14 14-14 6 0 10 3"/><path d="M32 52q0-11 12-11t12 11"/>`,
-  relation: `<path d="M10 32l8-8 8 2 6-2 8 8"/><path d="M10 32l10 10 6-4 6 4 6-4 8-10"/>`,
+  relation: `<circle cx="24" cy="32" r="13"/><circle cx="40" cy="32" r="13"/>`,
   mind: `<path d="M32 54q-20-12-20-26a10 10 0 0 1 20-4 10 10 0 0 1 20 4q0 14-20 26z"/><path d="M32 54q-2-14 10-24"/>`,
   reserved: `<path d="M32 10l6 14 15 2-11 10 3 15-13-7-13 7 3-15L11 26l15-2z"/>`,
 }

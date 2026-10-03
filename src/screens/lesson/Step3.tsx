@@ -61,13 +61,15 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
         </div>
       )}
 
+      <h1 className="text-story font-bold text-ink">{L(step3.question)}</h1>
+
       {step3.type === 'reason' && (
         <div className="flex flex-col gap-3">
           {feelings.map((f) => {
             const text = step3.byFeeling[f.id]
             if (!text) return null
             return (
-              <Card key={f.id} label={L(step3.question)} tone="domain" domain={scenario.domain}>
+              <Card key={f.id} tone="domain" domain={scenario.domain}>
                 <p className="text-story font-bold text-ink">{L(text)}</p>
               </Card>
             )
@@ -87,7 +89,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
               const entry = step3.byFeeling[f.id]
               if (!entry) return null
               return (
-                <Card key={f.id} label={L(step3.question)} tone="domain" domain={scenario.domain}>
+                <Card key={f.id} tone="domain" domain={scenario.domain}>
                   <p className="text-story font-bold text-ink">{L(entry.text)}</p>
                 </Card>
               )
@@ -98,7 +100,6 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
 
       {step3.type === 'multiple-choice' && (
         <div className="flex flex-col gap-3">
-          <h2 className="text-story font-bold text-ink">{L(step3.question)}</h2>
           <div
             key={wiggle}
             role="radiogroup"

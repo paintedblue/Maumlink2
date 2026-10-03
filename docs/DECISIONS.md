@@ -23,3 +23,10 @@ Format: date · decision · why · PRD reference.
 - **Korean particle in `feeling.chose`.** PRD §7.3 had "{emotion} 를 골랐어요."; shipped as "'{emotion}'를 골랐어요." — natural Korean, same meaning.
 - **E2E server hygiene.** The preview server is a single process launched by Playwright with `reuseExistingServer: false`, and the build runs in `globalSetup`. A leaked server had silently served a stale bundle during M1 development.
 - **Icon polish deferred to M3:** `unfair` and `frustrated` faces are subtle; `relation`/`self` domain pictograms could read more clearly.
+
+## 2026-10-03 — M3/M4
+
+- **Accessibility gate is axe-core per screen, Lighthouse for budgets.** Lighthouse CLI cannot set the `started` flag, so it audits the start gate (perf/best-practices/CLS); `tests/e2e/a11y.spec.ts` runs axe (WCAG 2.x A/AA + best-practice) on every screen of every scenario and fails on *any* violation — stricter and more relevant than a page score.
+- **Caption/label color.** `--ink-soft` (#5B6B7B) passes 4.5:1 on the page background and white cards but not on the domain tints; captions and card labels on tinted surfaces now use `--ink`. Token set unchanged.
+- **Headings.** Every lesson screen exposes exactly one `<h1>` (visible question on S1–S4, visually hidden "피드백" on S5, "잘했어요!" on S6) so screen-reader users can jump to the task.
+- **No deployment performed.** No hosting credentials were provided; the README documents the three one-command options and the required cache headers.

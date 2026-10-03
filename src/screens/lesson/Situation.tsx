@@ -39,8 +39,8 @@ export function Situation({ scenario, state, onAdvance }: Props) {
         />
       </div>
       <div className="flex flex-col gap-4 lg:col-span-5">
-        <h1 className="flex flex-wrap items-baseline gap-x-3 px-1 text-body font-bold text-ink-soft">
-          <span className="text-caption font-bold uppercase tracking-wide text-ink-soft/80">
+        <h1 className="flex flex-wrap items-baseline gap-x-3 px-1 text-body font-bold text-ink">
+          <span className="text-caption font-bold uppercase tracking-wide text-ink">
             {t('step.situation')}
           </span>
           <span>{L(scenario.situation.title)}</span>
@@ -63,6 +63,7 @@ export function Situation({ scenario, state, onAdvance }: Props) {
           )}
         </button>
         <div
+          role="img"
           className="flex items-center gap-2 px-2"
           aria-label={t('a11y.sentenceDots', {
             i: Math.min(state.sentenceIndex + 1, story.length + 1),

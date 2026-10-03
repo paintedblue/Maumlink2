@@ -18,6 +18,7 @@ export function Feedback({ scenario, state }: Props) {
   if (!action) return null
   return (
     <div className="mx-auto flex w-full max-w-[880px] flex-col gap-4">
+      <h1 className="sr-only">{t('step.feedback')}</h1>
       <Card
         label={t('feedback.myChoice')}
         tone="domain"

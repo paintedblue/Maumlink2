@@ -28,7 +28,7 @@ export function Card({ label, domain, tone = 'surface', className, children, ...
       )}
       {...rest}
     >
-      {label && <div className="mb-2 text-caption font-bold text-ink-soft">{label}</div>}
+      {label && <div className="mb-2 text-caption font-bold text-ink">{label}</div>}
       {children}
     </div>
   )

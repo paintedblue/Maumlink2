@@ -50,8 +50,8 @@ export function Illustration({ src, alt, brief, domain, className }: Props) {
             height={96}
             className="size-24 opacity-70"
           />
-          <span className="text-body font-bold text-ink-soft">{t('image.placeholder')}</span>
-          {brief && <span className="max-w-[48ch] text-caption text-ink-soft">{brief}</span>}
+          <span className="text-body font-bold text-ink">{t('image.placeholder')}</span>
+          {brief && <span className="max-w-[48ch] text-caption text-ink">{brief}</span>}
         </div>
       )}
     </div>

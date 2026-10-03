@@ -87,7 +87,7 @@ function HintBody({ scenario, onPick }: { scenario: Scenario; onPick: (id: strin
   return (
     <div className="flex flex-col gap-4">
       <p className="text-body text-ink">{L(hint.text)}</p>
-      <p className="text-caption font-bold text-ink-soft">{t('hint.maybe')}</p>
+      <p className="text-caption font-bold text-ink">{t('hint.maybe')}</p>
       <div className="grid grid-cols-2 gap-3">
         {suggestions.map((e) => (
           <EmotionTile
