@@ -103,7 +103,7 @@ export async function playLesson(
     if (text) await expect(page.getByRole('main')).toContainText(text.ko.slice(0, 8))
   }
   await on('step3')
-  if (opts.tellMore) {
+  if (opts.tellMore && scenario.step3.more) {
     await page.getByTestId('nav-more').click()
     await expect(page.getByTestId('step3-more')).toContainText(scenario.step3.more.ko.slice(0, 8))
   }

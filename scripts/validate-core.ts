@@ -126,9 +126,12 @@ export function validateAll(root: string): Report {
     for (const id of s.feeling.options)
       if (!emotionIds.has(id))
         err('feeling.options', `unknown emotion "${id}" (add it to emotions.json)`)
-    if (s.feeling.options.at(-1) !== NOT_SURE)
+    if (s.feeling.options.includes(NOT_SURE) && s.feeling.options.at(-1) !== NOT_SURE)
       err('feeling.options', `"${NOT_SURE}" must be the last option`)
-    if (s.feeling.options.indexOf(NOT_SURE) !== s.feeling.options.length - 1)
+    if (
+      s.feeling.options.includes(NOT_SURE) &&
+      s.feeling.options.indexOf(NOT_SURE) !== s.feeling.options.length - 1
+    )
       err('feeling.options', `"${NOT_SURE}" may appear only once, at the end`)
     for (const id of s.feeling.hint.suggest) {
       if (!emotionIds.has(id)) err('feeling.hint.suggest', `unknown emotion "${id}"`)
@@ -140,9 +143,17 @@ export function validateAll(root: string): Report {
     // 4. byFeeling covers every option except not-sure, no extras
     if (s.step3.type === 'reason' || s.step3.type === 'body-reaction') {
       const keys = new Set(Object.keys(s.step3.byFeeling))
+      // Source gaps are explicit; an accidental missing entry still fails validation.
+      const omissions = new Set(s.step3.sourceOmissions ?? [])
+      if (omissions.size !== (s.step3.sourceOmissions?.length ?? 0))
+        err('step3.sourceOmissions', 'duplicate source omission')
+      for (const id of omissions) {
+        if (id === NOT_SURE || !s.feeling.options.includes(id) || keys.has(id))
+          err('step3.sourceOmissions', `invalid source omission "${id}"`)
+      }
       for (const id of s.feeling.options) {
         if (id === NOT_SURE) continue
-        if (!keys.has(id))
+        if (!keys.has(id) && !omissions.has(id))
           err(
             `step3.byFeeling.${id}`,
             `missing explanation for feeling "${id}" (the child can pick it)`,

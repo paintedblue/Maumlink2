@@ -27,7 +27,7 @@ function get(obj: unknown, path: string): { ko?: string; en?: string } | undefin
 const lines: string[] = [
   '# Draft strings awaiting client sign-off',
   '',
-  `Generated ${new Date().toISOString().slice(0, 10)} by \`pnpm draft-strings\`. These sentences were written by the development team to fill gaps in the content design documents (hints, "더 알려줘요" examples, missing reasons, body reactions for added feelings, split story sentences). Each one is marked \`"draft": true\` in its JSON file; remove the flag once approved, or replace the text.`,
+  `Generated ${new Date().toISOString().slice(0, 10)} by \`pnpm draft-strings\`. This inventory lists strings marked \`"draft": true\` in scenario JSON. See [CONTENT_REVIEW.md](./CONTENT_REVIEW.md) for PDF source fidelity and explicit source omissions; zero drafts does not imply that the PDFs contain every explanation.`,
   '',
   '| # | Scenario | Field | Korean (shipped) | English (dev only) |',
   '|---|---|---|---|---|',

@@ -24,7 +24,9 @@
     "icons": "node --import tsx scripts/gen-icons.ts",
     "draft-strings": "node --import tsx scripts/draft-strings.ts",
     "brand": "uv run scripts/build-brand.py && pnpm app-icons",
-    "app-icons": "node --import tsx scripts/build-app-icons.ts"
+    "app-icons": "node --import tsx scripts/build-app-icons.ts",
+    "test:acceptance": "playwright test --config playwright.acceptance.config.ts",
+    "validate:final-content": "node --import tsx scripts/validate-final-content.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",

@@ -146,11 +146,12 @@ export function Lesson() {
           onClick: () => d({ type: 'GOT_IT' }),
           softDisabled: !canProceed(state, scenario),
         },
-        extra: !state.moreShown ? (
-          <SecondaryButton onClick={() => d({ type: 'TELL_MORE' })} data-testid="nav-more">
-            {t('nav.tellMore')}
-          </SecondaryButton>
-        ) : undefined,
+        extra:
+          scenario.step3.more && !state.moreShown ? (
+            <SecondaryButton onClick={() => d({ type: 'TELL_MORE' })} data-testid="nav-more">
+              {t('nav.tellMore')}
+            </SecondaryButton>
+          ) : undefined,
       }
       break
     case 'action':
@@ -212,9 +213,10 @@ export function Lesson() {
         return [
           L(s3.question),
           explanation && L(explanation),
-          choice && L(choice.ack),
-          L(s3.principle),
-          state!.moreShown && L(s3.more),
+          choice && L(choice.text),
+          choice?.ack && L(choice.ack),
+          s3.principle && L(s3.principle),
+          state!.moreShown && s3.more && L(s3.more),
         ]
           .filter(Boolean)
           .join(' ')

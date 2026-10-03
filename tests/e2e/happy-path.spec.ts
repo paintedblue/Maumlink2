@@ -34,7 +34,7 @@ for (const scenario of scenarios) {
       await expect(page.locator(`[data-domain="${scenario.domain}"]`)).toContainText('완료')
     })
 
-    test('every feeling option leads to a step-3 explanation', async ({ page }) => {
+    test('every feeling option reaches source-backed step 3', async ({ page }) => {
       await gotoHome(page)
       await openScenario(page, scenario)
       for (let i = 0; i < scenario.situation.story.length + 1; i++)
@@ -47,8 +47,15 @@ for (const scenario of scenarios) {
           const text =
             scenario.step3.type === 'reason'
               ? scenario.step3.byFeeling[id]!
-              : scenario.step3.byFeeling[id]!.text
-          await expect(page.getByRole('main')).toContainText(text.ko.slice(0, 8))
+              : scenario.step3.byFeeling[id]?.text
+          if (text) await expect(page.getByRole('main')).toContainText(text.ko.slice(0, 8))
+          else {
+            expect(scenario.step3.sourceOmissions).toContain(id)
+            await expect(page.getByRole('heading', { level: 1 })).toHaveText(
+              scenario.step3.question.ko,
+            )
+            await expect(page.getByTestId('nav-primary')).toBeEnabled()
+          }
         }
         await page.getByTestId('nav-back').click()
         await page.locator(`[data-emotion="${id}"]`).click() // deselect
@@ -99,9 +106,9 @@ test.describe('cross-cutting', () => {
     const feeling = scenario.feeling.options[1]!
     await page.locator(`[data-emotion="${feeling}"]`).click()
     await page.getByTestId('nav-primary').click()
-    await expect(page.getByTestId('nav-more')).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(scenario.step3.question.ko)
     await page.reload()
-    await expect(page.getByTestId('nav-more')).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(scenario.step3.question.ko)
     await page.getByTestId('nav-back').click()
     await expect(page.locator(`[data-emotion="${feeling}"]`)).toHaveAttribute(
       'aria-checked',

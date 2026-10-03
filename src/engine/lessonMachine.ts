@@ -195,7 +195,7 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
         case 'SELECT_STEP3_OPTION':
           return scenario.step3.type === 'multiple-choice' ? { ...s, step3OptionId: event.id } : s
         case 'TELL_MORE':
-          return { ...s, moreShown: true }
+          return scenario.step3.more ? { ...s, moreShown: true } : s
         case 'GOT_IT':
         case 'NEXT':
           if (!canProceed(s, scenario)) return { ...s, announce: { kind: 'pickFirst' } }

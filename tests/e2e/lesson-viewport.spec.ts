@@ -20,11 +20,15 @@ for (const viewport of [
         await page.evaluate(() => document.fonts.ready)
 
         for (let sentence = 0; sentence <= scenario.situation.story.length; sentence++) {
-          const back = await page.getByTestId('nav-back').boundingBox()
           const next = await page.getByTestId('nav-primary').boundingBox()
-          expect(back).not.toBeNull()
           expect(next).not.toBeNull()
-          expect(Math.abs(back!.y - next!.y)).toBeLessThanOrEqual(1)
+          if (sentence === 0) {
+            await expect(page.getByTestId('nav-back')).toHaveCount(0)
+          } else {
+            const back = await page.getByTestId('nav-back').boundingBox()
+            expect(back).not.toBeNull()
+            expect(Math.abs(back!.y - next!.y)).toBeLessThanOrEqual(1)
+          }
           expect(next!.height).toBeGreaterThanOrEqual(64)
           expect(next!.y + next!.height).toBeLessThanOrEqual(viewport.height)
           const footer = await page.locator('.lesson-footer').boundingBox()

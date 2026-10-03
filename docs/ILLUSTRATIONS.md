@@ -27,3 +27,9 @@ Use case: illustration-story. Landscape 16:10 picture-book educational illustrat
 ## Review
 
 Inspected all three generated outputs. Pencil is visibly hidden, lunch queue is interrupted, presentation classmates whisper while the presenter appears uneasy. No UI text, tears, or failure markers. Illustration briefs and all lesson strings are unchanged. The original playground scene is preserved as a source asset; the later teal/ivory redesign displays the new matching playground illustration described above.
+
+## 2026-10-03 — 현재 삽화 검토
+
+사용자의 체크리스트 후속 작업 요청에 따라 현재 네 PNG를 다시 확인했다. 연필 장면은 숨긴 연필과 찾는 친구가 보이고, 운동장 장면은 떨어진 관찰자와 함께 노는 세 아이가 보인다. 발표 장면은 발표자와 웃으며 이야기하는 두 친구가 보인다. 급식실 장면은 줄 사이로 들어오는 아이를 보여주지만 새치기라는 의미는 원문 이야기와 함께 전달된다. 포함된 UI 글자나 정오답 표시가 없다.
+
+현재 앱에서 계속 사용할 수 있다는 개발 검토 판단이며 원문 작성자·교육 전문가 승인 또는 아동 대상 이해도 검증은 아니다. 최신 사용 지시에 따라 한국어 학습 문구는 PDF 원문으로 복원했고 기존 삽화는 유지했다. 앞선 “문구 변경 없음”은 당시 변경의 기록이다.

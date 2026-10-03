@@ -27,22 +27,24 @@ export const DOMAINS: readonly Domain[] = ['self', 'social', 'relation', 'mind',
 export const Quality = z.enum(['recommended', 'acceptable', 'reconsider'])
 export type Quality = z.infer<typeof Quality>
 
-const Step3Base = { question: LString, principle: LString, more: LString }
+const Step3Base = { question: LString, principle: LString.optional(), more: LString.optional() }
 
 export const Step3Reason = z.object({
   type: z.literal('reason'),
+  sourceOmissions: z.array(EmotionId).optional(),
   ...Step3Base,
   byFeeling: z.record(EmotionId, LString),
 })
 export const Step3Body = z.object({
   type: z.literal('body-reaction'),
+  sourceOmissions: z.array(EmotionId).optional(),
   ...Step3Base,
   byFeeling: z.record(EmotionId, z.object({ text: LString, parts: z.array(BodyPart).min(1) })),
 })
 export const Step3Choice = z.object({
   type: z.literal('multiple-choice'),
   ...Step3Base,
-  options: z.array(z.object({ id: OptionId, text: LString, ack: LString })).length(4),
+  options: z.array(z.object({ id: OptionId, text: LString, ack: LString.optional() })).length(4),
 })
 export const Step3 = z.discriminatedUnion('type', [Step3Reason, Step3Body, Step3Choice])
 export type Step3 = z.infer<typeof Step3>

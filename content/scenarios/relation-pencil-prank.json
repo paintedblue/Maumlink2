@@ -19,25 +19,20 @@
     },
     "story": [
       {
-        "ko": "쉬는 시간이에요.",
-        "en": "It's break time."
+        "ko": "쉬는 시간이에요."
       },
       {
-        "ko": "나는 친구를 웃겨주려고 친구의 연필을 살짝 숨겼어요.",
-        "en": "I secretly hid my friend's pencil to make them laugh."
+        "ko": "나는 친구를 웃겨주려고 친구의 연필을 살짝 숨겼어요."
       },
       {
-        "ko": "그런데 친구는 연필을 찾으며 웃지 않고 표정이 좋지 않아요.",
-        "en": "But my friend isn't laughing while looking for the pencil, and looks unhappy."
+        "ko": "그런데 친구는 연필을 찾으며 웃지 않고 표정이 좋지 않아요."
       }
     ],
     "keySentence": {
-      "ko": "\"어? 친구가 웃지 않아요.\"",
-      "en": "\"Huh? My friend isn't laughing.\""
+      "ko": "“어? 친구가 웃지 않아요.”"
     },
     "imageBrief": {
-      "ko": "초등학교 교실 / 주인공이 친구 연필을 살짝 숨기는 모습 / 친구는 연필을 찾고 있음 / 표정은 과하게 강조하지 않기",
-      "en": "Elementary classroom; main character secretly hides a friend's pencil; friend is looking for it; don't exaggerate facial expressions"
+      "ko": "초등학교 교실 / 주인공이 친구 연필을 살짝 숨기는 모습 / 친구는 연필을 찾고 있음 / 표정은 과하게 강조하기 않기"
     },
     "image": "/img/generated/relation-pencil-prank.png"
   },
@@ -47,13 +42,11 @@
       "ko": "연필을 찾는 친구는 어떤 기분일까요?",
       "en": "How does the friend looking for the pencil feel?"
     },
-    "options": ["worried", "upset", "angry", "flustered", "amused", "not-sure"],
+    "options": ["worried", "upset", "angry", "flustered", "amused"],
     "multiSelect": false,
     "hint": {
       "text": {
-        "ko": "친구의 얼굴을 봐요. 웃지 않고 연필을 찾고 있어요.",
-        "en": "Look at your friend's face. They aren't smiling and they're looking for the pencil.",
-        "draft": true
+        "ko": "“어? 친구가 웃지 않아요.”"
       },
       "suggest": ["worried", "upset"]
     }
@@ -70,23 +63,12 @@
         "text": {
           "ko": "연필이 없어져서 걱정이 되었어요",
           "en": "Worried because the pencil went missing"
-        },
-        "ack": {
-          "ko": "그럴 수 있어요. 아끼는 물건이 없어지면 걱정돼요.",
-          "en": "That could be. Losing something you care about is worrying.",
-          "draft": true
         }
       },
       {
         "id": "B",
         "text": {
-          "ko": "누가 연필을 가져갔다고 생각했어요.",
-          "en": "Thought someone took the pencil."
-        },
-        "ack": {
-          "ko": "그럴 수 있어요. 누가 가져갔다고 생각하면 마음이 불편해요.",
-          "en": "That could be. Thinking someone took it feels uncomfortable.",
-          "draft": true
+          "ko": "누가 연칠을 가져갔다고 생각했어요."
         }
       },
       {
@@ -94,11 +76,6 @@
         "text": {
           "ko": "연필을 찾지 못해 속상했어요.",
           "en": "Upset at not finding the pencil."
-        },
-        "ack": {
-          "ko": "그럴 수 있어요. 찾아도 없으면 속상해요.",
-          "en": "That could be. It's upsetting when you can't find it.",
-          "draft": true
         }
       },
       {
@@ -106,22 +83,12 @@
         "text": {
           "ko": "친구가 장난친 것이 재미있었어요.",
           "en": "Thought the friend's prank was funny."
-        },
-        "ack": {
-          "ko": "그렇게 느낄 수도 있어요. 그런데 친구의 표정을 다시 한번 볼까요?",
-          "en": "Maybe. But let's look at your friend's face once more.",
-          "draft": true
         }
       }
     ],
     "principle": {
       "ko": "나는 친구를 웃겨주려고 장난을 했어요. 하지만 친구는 속상하거나 걱정할 수 있어요.",
       "en": "I played a prank to make my friend laugh. But my friend may feel upset or worried."
-    },
-    "more": {
-      "ko": "예를 들어, 내가 아끼는 물건이 갑자기 없어지면 나도 걱정되고 속상할 거예요.",
-      "en": "For example, if something I care about suddenly went missing, I'd feel worried and upset too.",
-      "draft": true
     }
   },
   "action": {
@@ -151,29 +118,25 @@
         },
         "quality": "reconsider",
         "feedback": {
-          "ko": "없어진 물건이 있다면 속상하겠죠? 친구 마음을 생각해봐요.",
-          "en": "You'd be upset if something of yours went missing, right? Think about your friend's feelings."
+          "ko": "없어진 물건이 있다면 속상하겠죠? 친구 마음을 생각해봐요"
         },
         "outcomeIcon": "think"
       },
       {
         "id": "C",
         "text": {
-          "ko": "연필을 돌려주고 \"미안해. 나는 네가 웃을 줄 알았어.\"라고 말해요.",
-          "en": "Give the pencil back and say, \"Sorry. I thought you'd laugh.\""
+          "ko": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.” 라고 말해요."
         },
         "quality": "recommended",
         "feedback": {
-          "ko": "용기 있는 선택이네요. 미안한 마음이 들 때 바로 사과하는 멋진 모습입니다.",
-          "en": "That's a brave choice. Apologizing right away when you feel sorry is wonderful."
+          "ko": "용기있는 선택이네요. 미안한 마음이 들 때 바로 바과하는 멋진 모습입니다."
         },
         "outcomeIcon": "handshake"
       },
       {
         "id": "D",
         "text": {
-          "ko": "\"내가 장난으로 숨겼는데 속상했어?\"라고 친구에게 물어봐요.",
-          "en": "Ask the friend, \"I hid it as a joke. Did that upset you?\""
+          "ko": "“내가 장난으로 숨겼는데 속상했어?” 라고 친구에게 물어봐요."
         },
         "quality": "recommended",
         "feedback": {
@@ -185,7 +148,6 @@
     ]
   },
   "closing": {
-    "ko": "나는 재미있어도 친구는 재미없을 수 있어요. 친구의 표정과 마음도 살펴봐요.",
-    "en": "Even if it's fun for me, it may not be fun for my friend. Let's look at my friend's face and feelings too."
+    "ko": "“나는 재미있어도 친구는 재미없을 수 있어요. 친구의 표정과 마음도 살펴봐요.”"
   }
 }

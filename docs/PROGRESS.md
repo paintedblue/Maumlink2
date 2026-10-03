@@ -108,3 +108,16 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ Actual browser playback state replaces optimistic playing signals; ready/error states can be retried. Settings includes a voice check and explanatory playback status.
 - ☑ 85 tests, lint and production build pass. Tests cover delayed inventory, local voice preference, actual start events, fallback, stalled engines, stale callbacks, cancellation, language errors and retry UI.
 - ☐ Actual audible playback on Mac Chrome remains unverified because the browser connection is unavailable. No new image, lesson content or external runtime service was introduced.
+
+## 2026-10-03 — PDF 원문 복원 및 체크리스트 후속 작업
+
+- ☑ 사용자 최신 지시대로 네 영역 한국어 콘텐츠를 원문으로 복원. 조판 공백만 정리하고 원문 오탈자·따옴표 유지. 추가 도입, 이유별 답변, 더 알려줘요 설명 제거.
+- ☑ 전사 기록에 PDF 파일명/SHA-256/실제 페이지와 문구 기록. 자동 대조 검사 추가. 초안 18개는 원문 복원/삭제로 0개가 되었으며, 원문에 없는 세 설명은 별도로 명시.
+- ☑ 본문 없는 선택도 원문 질문을 보고 다음 단계로 진행. 원문 감정 순서 유지; 잘 모르겠어요는 해당 PDF에 있는 마음건강관리에만 표시.
+- ☑ 100 tests / 10 files 통과, 타입 검사·lint·production build 통과. 한국어 원문 검사는 통과. 개발용 영문이 없는 50개 필드는 한국어 fallback 경고이며 배포 한국어 오류가 아님.
+- ☑ 사용자가 배포 사이트 Mac Chrome의 음성 확인 및 자동 읽기 모두 정상이라고 확인. 이전 '실제 음성 미확인' 항목은 이 사용자 확인으로 갱신. 현재 로컬 변경 배포 후 확인과는 별개.
+- ☑ 기존 Back 버튼 E2E 기대값 갱신. 홈 이미지/완료 배지 영역 검사를 추가하고 Chromium/WebKit CI 및 시각 검토 스크린샷 수집 설정 작성.
+- ☐ 브라우저 수용 검사 304개가 발견되지만 실행 완료 아님. 현 환경에서 preview server가 `listen EPERM ::1:4173`으로 시작되지 않아 타깃 E2E 실행 실패. CI 결과·새 스크린샷·axe·오프라인 통과를 주장하지 않음.
+- ☐ iPhone/iPad/Android 실제 기기·회전·큰 글자 검증은 사용자가 진행하기로 함. 현 변경은 아직 커밋/배포하지 않음.
+
+상세 원문 대응 및 누락: [CONTENT_REVIEW.md](./CONTENT_REVIEW.md).

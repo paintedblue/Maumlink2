@@ -1,0 +1,52 @@
+name: Browser acceptance (visual review required)
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: acceptance-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, webkit]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install project dependencies
+        run: |
+          npm install --global pnpm@10.33.0
+          pnpm install --frozen-lockfile
+      - name: Check code and finalized content
+        run: |
+          pnpm lint
+          pnpm validate:final-content
+          pnpm test
+          pnpm build
+      - name: Install browser and system dependencies
+        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
+      - name: Run all functional, responsive, offline and accessibility checks
+        run: pnpm test:acceptance --project=${{ matrix.browser }}
+      - name: Upload results and visual-review candidates
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: acceptance-${{ matrix.browser }}
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 14

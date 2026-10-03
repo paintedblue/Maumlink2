@@ -157,3 +157,22 @@ describe('validator — rules 6–8: warnings and images', () => {
     expect(r.errors.some((e) => e.message.includes('img/nope.png'))).toBe(true)
   })
 })
+
+describe('PDF source omissions', () => {
+  it('accepts emotions without not-sure and an explicitly documented source gap', () => {
+    const s = validScenario()
+    s.feeling.options = ['angry', 'upset']
+    s.step3 = {
+      type: 'reason',
+      question: { ko: '왜?' },
+      byFeeling: { angry: { ko: '원문 이유' } },
+      sourceOmissions: ['upset'],
+    }
+    expect(scenarioErrors(s).errors).toEqual([])
+  })
+  it.each(['angry', 'unknown', 'not-sure'])('rejects invalid source omission %s', (id) => {
+    const s = validScenario()
+    if (s.step3.type !== 'multiple-choice') s.step3.sourceOmissions = [id]
+    expect(scenarioErrors(s).errors.some((e) => e.path === 'step3.sourceOmissions')).toBe(true)
+  })
+})

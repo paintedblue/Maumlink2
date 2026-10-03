@@ -4,8 +4,7 @@
   "domain": "self",
   "order": 1,
   "title": {
-    "ko": "나를 느끼는 여행 – 내 마음을 알아가면 더 잘 할 수 있어!",
-    "en": "A Journey to Feel Myself – Knowing my feelings helps me do better!"
+    "ko": "나를 느끼는 여행 – (내 마음을 알아가면 더 잘 할 수 있어!)"
   },
   "learningGoal": {
     "ko": "내 일상생활 속 내 기분에 반응하는 신체반응과 대처 방법을 탐색할 수 있다.",
@@ -14,23 +13,11 @@
   "estimatedMinutes": 7,
   "situation": {
     "title": {
-      "ko": "친구들이 내 발표 실수를 듣고 놀려요",
-      "en": "Friends tease me about a mistake in my presentation"
+      "ko": "친구들이 내 발표 실수를 듣고 놀린다"
     },
     "story": [
       {
-        "ko": "나는 열심히 준비한 발표를 했어요.",
-        "en": "I gave a presentation I worked hard on.",
-        "draft": true
-      },
-      {
-        "ko": "그런데 친구들이 내 발표 실수를 듣고 놀려요.",
-        "en": "But my friends heard my mistake and teased me.",
-        "draft": true
-      },
-      {
-        "ko": "내가 노력하여 만든 발표를 친구들이 놀리니 속상해요.",
-        "en": "I'm upset that friends teased the presentation I worked hard on."
+        "ko": "내가 노력하여 만든 발표를 친구들이 놀리니 속상해"
       }
     ],
     "keySentence": {
@@ -38,9 +25,7 @@
       "en": "I want to handle my upset feelings on my own"
     },
     "imageBrief": {
-      "ko": "교실에서 발표를 마친 아이가 고개를 숙이고 있고, 친구들이 웃으며 놀리는 장면. 표정은 과하게 강조하지 않기.",
-      "en": "A child who just finished presenting looks down while classmates laugh and tease. Don't exaggerate faces.",
-      "draft": true
+      "ko": "친구들이 내 발표 실수를 듣고 놀린다"
     },
     "image": "/img/generated/self-presentation-teasing-v2.png"
   },
@@ -50,13 +35,11 @@
       "ko": "그때 내 기분은 어떨까요?",
       "en": "How do I feel then?"
     },
-    "options": ["angry", "worried", "upset", "nervous", "shy", "scared", "not-sure"],
+    "options": ["angry", "nervous", "upset", "worried", "shy", "scared"],
     "multiSelect": false,
     "hint": {
       "text": {
-        "ko": "열심히 준비했는데 친구들이 놀렸어요. 내 몸은 지금 어떤가요?",
-        "en": "I prepared hard and my friends teased me. What is my body doing right now?",
-        "draft": true
+        "ko": "속상한 마음을 혼자 해결하고 싶어"
       },
       "suggest": ["upset", "angry"]
     }
@@ -70,58 +53,33 @@
     "byFeeling": {
       "angry": {
         "text": {
-          "ko": "머리에 열이 오르고, 눈이 뜨거워지고, 목소리가 커져요.",
-          "en": "My head gets hot, my eyes burn, and my voice gets louder."
+          "ko": "머리에 열이 오르고 눈이 뜨거워지고, 목소리가 커진다."
         },
         "parts": ["head", "eyes", "mouth"]
       },
       "nervous": {
         "text": {
-          "ko": "가슴이 쿵쿵 뛰고, 입술이 말라요.",
-          "en": "My heart pounds and my lips get dry."
+          "ko": "가슴이 쿵쿵 뛴다, 입술이 마른다."
         },
         "parts": ["chest", "mouth"]
       },
       "upset": {
         "text": {
-          "ko": "눈물이 나오고, 고개가 숙여지고, 몸에 힘이 빠져요.",
-          "en": "Tears come out, my head drops, my body feels weak."
+          "ko": "눈물이 나온다, 소개가 숙여진다, 몸에 힘이 빠진다."
         },
         "parts": ["eyes", "head", "body"]
       },
       "worried": {
         "text": {
-          "ko": "배가 아프고, 머리가 아파요.",
-          "en": "My stomach hurts and my head hurts."
+          "ko": "배가 아프다, 머리가 아프다."
         },
         "parts": ["stomach", "head"]
-      },
-      "shy": {
-        "text": {
-          "ko": "얼굴이 빨개지고, 눈을 마주치기 어려워요.",
-          "en": "My face turns red and it's hard to look at people.",
-          "draft": true
-        },
-        "parts": ["head", "eyes"]
-      },
-      "scared": {
-        "text": {
-          "ko": "몸이 떨리고, 숨이 빨라져요.",
-          "en": "My body shakes and my breathing gets fast.",
-          "draft": true
-        },
-        "parts": ["body", "chest"]
       }
     },
     "principle": {
-      "ko": "내 몸의 반응을 보면 내 감정을 알 수 있어요.",
-      "en": "I can recognize my feelings from my body's reactions."
+      "ko": "내 몸의 반응을 보고 내 감정을 인지할 수 있다."
     },
-    "more": {
-      "ko": "마음이 바뀌면 몸도 바뀌어요. 몸의 신호를 알면 내 마음을 더 잘 알 수 있어요.",
-      "en": "When my feelings change, my body changes too. Knowing my body's signals helps me know my feelings.",
-      "draft": true
-    }
+    "sourceOmissions": ["shy", "scared"]
   },
   "action": {
     "question": {
@@ -163,8 +121,7 @@
         },
         "quality": "recommended",
         "feedback": {
-          "ko": "좋은 방법이에요. 잠시 조용히 앉아 있으면 어떤 마음이 들까요?",
-          "en": "Good idea. How might you feel sitting quietly for a moment?"
+          "ko": "좋은 방법이예요. 우리 나가서 기분전환을 시켜볼까요? 잠시 조용히 앉아 있으면 어떤 마음이 들까요?"
         },
         "outcomeIcon": "quiet"
       },
@@ -176,8 +133,7 @@
         },
         "quality": "recommended",
         "feedback": {
-          "ko": "숨을 크게 내쉬어 봐요. 그래도 기분이 풀리지 않는다면 선생님께도 이야기할 수 있어요.",
-          "en": "Take a deep breath. If you still don't feel better, you can also talk to your teacher."
+          "ko": "그래도 기분이 풀리지 않는다면 선생님께도 이야기할 수 있어요."
         },
         "outcomeIcon": "breathe"
       }

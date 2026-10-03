@@ -31,14 +31,14 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
     step3.type === 'reason' && first ? L(step3.byFeeling[first.id] ?? { ko: '' }) : '',
     step3.type === 'body-reaction' && first ? L(step3.byFeeling[first.id]?.text ?? { ko: '' }) : '',
   ]
-    .concat(L(step3.principle))
+    .concat(step3.principle ? L(step3.principle) : '')
     .filter(Boolean)
     .join(' ')
   useAutoRead(intro, `step3-${state.feelingIds.join(',')}`)
   useAutoRead(
-    state.moreShown ? L(step3.more) : undefined,
+    state.moreShown && step3.more ? L(step3.more) : undefined,
     `more-${state.moreShown}`,
-    step3.more.audio?.[locale],
+    step3.more?.audio?.[locale],
   )
 
   return (
@@ -120,12 +120,12 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
                   text={L(o.text)}
                   selected={selected}
                   onSelect={(id) => {
-                    void speak(`${L(o.text)} ${L(o.ack)}`)
+                    void speak(`${L(o.text)}${o.ack ? ` ${L(o.ack)}` : ''}`)
                     dispatch({ type: 'SELECT_STEP3_OPTION', id })
                   }}
-                  onSpeak={() => void speak(`${L(o.text)} ${L(o.ack)}`)}
+                  onSpeak={() => void speak(`${L(o.text)}${o.ack ? ` ${L(o.ack)}` : ''}`)}
                 >
-                  {selected ? L(o.ack) : undefined}
+                  {selected && o.ack ? L(o.ack) : undefined}
                 </ChoiceCard>
               )
             })}
@@ -133,9 +133,9 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
         </div>
       )}
 
-      <p className="text-body text-ink-soft">{L(step3.principle)}</p>
+      {step3.principle && <p className="text-body text-ink-soft">{L(step3.principle)}</p>}
 
-      {state.moreShown && (
+      {state.moreShown && step3.more && (
         <Card className="motion-safe:animate-[fadeIn_240ms_ease-out]" data-testid="step3-more">
           <p className="text-body text-ink">{L(step3.more)}</p>
         </Card>

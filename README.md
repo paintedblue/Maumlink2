@@ -10,7 +10,7 @@ Current release: **1.0.0** — see [release notes and known limitations](./CHANG
 - Visual redesign: [`docs/REDESIGN.md`](./docs/REDESIGN.md) — storybook experience, illustrated story shelf and concrete learning recap
 - Latest review: [`docs/REVIEW.md`](./docs/REVIEW.md) · generated artwork and prompts: [`docs/ILLUSTRATIONS.md`](./docs/ILLUSTRATIONS.md)
 - Implementation log: [`docs/PROGRESS.md`](./docs/PROGRESS.md) · decisions: [`docs/DECISIONS.md`](./docs/DECISIONS.md)
-- For the content team: [`docs/ADDING_A_SCENARIO.md`](./docs/ADDING_A_SCENARIO.md) (Korean) · draft strings awaiting sign-off: [`docs/DRAFT_STRINGS.md`](./docs/DRAFT_STRINGS.md)
+- For the content team: [`docs/ADDING_A_SCENARIO.md`](./docs/ADDING_A_SCENARIO.md) (Korean) · draft inventory: [`docs/DRAFT_STRINGS.md`](./docs/DRAFT_STRINGS.md)
 - Manual device test: [`docs/TABLET_TEST_CHECKLIST.md`](./docs/TABLET_TEST_CHECKLIST.md)
 
 ## Run
@@ -25,14 +25,18 @@ Requires Node ≥ 20 and pnpm 10. First-visit audio needs one tap on **시작하
 ## Quality gates
 
 ```bash
+pnpm validate:final-content # exact Korean PDF transcription + no drafts
 pnpm validate       # content rules (PRD §10) — also runs inside `pnpm build`
 pnpm lint           # oxlint + prettier
 pnpm typecheck
 pnpm test           # vitest: reducer, validator, components, i18n, speech
+pnpm test:acceptance # all browser checks + screenshots for review, no baseline comparison
 pnpm test:e2e       # playwright: happy paths, 11-viewport responsive matrix, rotation, offline
                     # first time: pnpm test:e2e:install
 pnpm build          # validate + tsc + vite build + service worker → dist/
 ```
+
+The browser acceptance workflow runs Chromium/WebKit checks on Linux and uploads review screenshots. A green acceptance run does not establish visual approval; inspect its attachments. Standard `test:e2e` still compares checked-in visual baselines.
 
 `pnpm test:e2e` builds first and starts its own preview server on port 4173 (it refuses to reuse a stray one).
 
@@ -46,6 +50,8 @@ content/
   ui.json                # UI strings
   scenarios/*.json       # one file per situation — add a file, it appears on Home
 ```
+
+Source wording and omissions: [`docs/CONTENT_REVIEW.md`](./docs/CONTENT_REVIEW.md). The four shipped lessons match the reviewed PDF transcriptions; source typos are preserved and three missing explanations are explicit. Existing generated illustrations remain.
 
 Korean is the shipped language. `en` strings are optional and only used by the dev flag `?lang=en` (D17). Strings marked `"draft": true` are placeholders awaiting client review; `pnpm draft-strings` lists them.
 

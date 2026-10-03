@@ -10,7 +10,8 @@
    예: `social-group-project.json` ↔ `"id": "social-group-project"`
 2. 아래 표를 보며 내용을 바꿉니다. `ko`(한국어)는 필수, `en`(영어)은 선택입니다.
 3. 터미널에서 `pnpm validate`를 실행합니다. 빠진 내용이 있으면 **어느 파일의 어떤 칸이 왜 문제인지** 한국어로 안내합니다.
-4. `pnpm dev`로 앱을 띄워 직접 플레이해 봅니다.
+4. 원문에 맞춘 신규/수정 시나리오는 `content-source/pdf-transcriptions.json`에 출처·페이지·전사 문구도 반영하고 `pnpm validate:final-content`로 대조합니다. 기존 네 원문의 누락/오탈자 정책은 [CONTENT_REVIEW.md](./CONTENT_REVIEW.md)를 따릅니다.
+5. `pnpm dev`로 앱을 띄워 직접 플레이해 봅니다.
 
 ## 2. 파일 구조 한눈에 보기
 
@@ -25,12 +26,12 @@
 | `situation.image` | 삽화 파일 | `content-source/images/<id>.png`에 넣고 `pnpm images` 실행 → `"/img/<id>.png"`. 없으면 지우세요(자동으로 '그림 준비 중' 카드가 나옵니다) |
 | `situation.imageBrief` | 삽화 설명 | 그림이 없을 때 교사에게 보이고, 그림이 있을 때는 대체 텍스트로 쓰입니다 |
 | `feeling.subject` | 누구의 감정인가 | `self`(나) 또는 `other`(친구) |
-| `feeling.options` | 감정 버튼 | `content/emotions.json`의 id. **마지막은 반드시 `not-sure`** |
+| `feeling.options` | 감정 버튼 | `content/emotions.json`의 id. 원문에 `not-sure`가 있으면 마지막에 한 번만 포함 |
 | `feeling.hint` | 도와줘요 힌트 | `text` + 추천 감정 2개(`suggest`, options 안에 있어야 함) |
 | `step3.type` | 3단계 종류 | `reason`(이유) · `body-reaction`(몸의 반응) · `multiple-choice`(A–D 고르기) |
-| `step3.byFeeling` | 감정별 설명 | `reason`/`body-reaction`일 때, **`not-sure`를 뺀 모든 감정**에 한 줄씩 |
-| `step3.options` | A–D 선택지 | `multiple-choice`일 때만, 정확히 4개, 각 선택지에 `ack`(짧은 인정 문장) |
-| `step3.principle`, `step3.more` | 원칙 문장, '더 알려줘요' 내용 | — |
+| `step3.byFeeling` | 감정별 설명 | `reason`/`body-reaction`일 때, `not-sure`를 뺀 감정별 원문 설명. 원문에 없는 설명은 만들지 않고 `step3.sourceOmissions`에 해당 감정 id 기록 |
+| `step3.options` | A–D 선택지 | `multiple-choice`일 때만, 정확히 4개, `ack`(짧은 인정 문장)는 원문에 있을 때만 포함 |
+| `step3.principle`, `step3.more` | 원칙 문장, '더 알려줘요' 내용 | 선택 항목. 원문에 없으면 생략; 버튼도 숨겨짐 |
 | `action.options` | 대처 방법 A–D | 정확히 4개. 각각 `quality`와 `feedback`, `outcomeIcon` |
 | `closing` | 마무리 메시지 | — |
 
@@ -58,6 +59,6 @@
 - [ ] 콘텐츠명·대상·학습목표가 들어 있는가? (`title`, `learningGoal`)
 - [ ] 상황 이야기와 핵심 문장이 최종 확정되었는가?
 - [ ] 삽화가 있거나, 삽화 설명(`imageBrief`)이 쓰여 있는가?
-- [ ] 감정 선택지마다 3단계 설명이 있는가? (`pnpm validate`가 확인)
+- [ ] 감정별 원문 설명이 반영되었고 원문 누락은 명시되어 있는가? (`pnpm validate`가 확인)
 - [ ] 선택지 A–D마다 피드백이 있는가? (`pnpm validate`가 확인)
 - [ ] 피드백이 정답·오답이 아니라 설명형인가?

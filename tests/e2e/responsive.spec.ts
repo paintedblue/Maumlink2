@@ -3,7 +3,7 @@
  * both text sizes, asserting FR-RES-01…04 on every screen; rotation persistence (FR-RES-05);
  * visual-regression snapshots per screen per viewport (Chromium, normal text size).
  */
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 import {
   assertResponsive,
   gotoHome,
@@ -18,6 +18,17 @@ import { VIEWPORTS, byName } from './viewports'
 const scenarios = loadScenarios()
 const TEXT_SIZES = ['normal', 'large'] as const
 
+async function reviewOrCompare(page: Page, name: string) {
+  if (test.info().config.metadata.captureReviewScreenshots) {
+    await test.info().attach(name, {
+      body: await page.screenshot({ animations: 'disabled' }),
+      contentType: 'image/png',
+    })
+  } else {
+    await expect(page).toHaveScreenshot(name, { animations: 'disabled' })
+  }
+}
+
 test.describe.configure({ mode: 'parallel' })
 
 for (const vp of VIEWPORTS) {
@@ -31,9 +42,10 @@ for (const vp of VIEWPORTS) {
           await gotoHome(page)
           await assertResponsive(page, `${vp.name}/home`)
           const snap =
-            browserName === 'chromium' && textSize === 'normal' && scenario === scenarios[0]
-          if (snap)
-            await expect(page).toHaveScreenshot(`${vp.name}-home.png`, { animations: 'disabled' })
+            (browserName === 'chromium' || test.info().config.metadata.captureReviewScreenshots) &&
+            textSize === 'normal' &&
+            scenario === scenarios[0]
+          if (snap) await reviewOrCompare(page, `${vp.name}-home.png`)
           await openScenario(page, scenario)
           await playLesson(page, scenario, {
             tellMore: true,
@@ -45,9 +57,7 @@ for (const vp of VIEWPORTS) {
                   screen,
                 )
               ) {
-                await expect(page).toHaveScreenshot(`${vp.name}-${screen}.png`, {
-                  animations: 'disabled',
-                })
+                await reviewOrCompare(page, `${vp.name}-${screen}.png`)
               }
             },
           })
@@ -93,6 +103,6 @@ test.describe('orientation change keeps state (FR-RES-05)', () => {
     )
     await assertResponsive(page, 'rotated-portrait/feeling')
     await page.getByTestId('nav-primary').click()
-    await expect(page.getByTestId('nav-more')).toBeVisible()
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(scenario.step3.question.ko)
   })
 })

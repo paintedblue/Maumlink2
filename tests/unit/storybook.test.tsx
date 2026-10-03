@@ -48,8 +48,12 @@ it.each(scenarios)(
     await user.click(screen.getByTestId('nav-primary'))
     if (scenario.step3.type === 'multiple-choice')
       await user.click(screen.getAllByRole('radio')[0]!)
-    await user.click(screen.getByTestId('nav-more'))
-    expect(screen.getByTestId('step3-more')).toHaveTextContent(scenario.step3.more.ko)
+    if (scenario.step3.more) {
+      await user.click(screen.getByTestId('nav-more'))
+      expect(screen.getByTestId('step3-more')).toHaveTextContent(scenario.step3.more.ko)
+    } else {
+      expect(screen.queryByTestId('nav-more')).not.toBeInTheDocument()
+    }
     await user.click(screen.getByTestId('nav-primary'))
 
     const action = scenario.action.options[2]!
@@ -68,3 +72,31 @@ it.each(scenarios)(
     ).toHaveTextContent('완료')
   },
 )
+
+for (const scenario of scenarios) {
+  if (scenario.step3.type === 'multiple-choice') continue
+  for (const id of scenario.step3.sourceOmissions ?? []) {
+    it(`${scenario.id}/${id}: source gap keeps the original question and allows continuing`, async () => {
+      const user = userEvent.setup()
+      render(
+        <MemoryRouter initialEntries={[`/lesson/${scenario.id}`]}>
+          <Routes>
+            <Route path="/lesson/:scenarioId" element={<Lesson />} />
+          </Routes>
+        </MemoryRouter>,
+      )
+      for (let i = 0; i <= scenario.situation.story.length; i++)
+        await user.click(screen.getByTestId('nav-primary'))
+      await user.click(screen.getByRole('checkbox', { name: getEmotion(id).word.ko }))
+      await user.click(screen.getByTestId('nav-primary'))
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        scenario.step3.question.ko,
+      )
+      expect(screen.queryByTestId('nav-more')).not.toBeInTheDocument()
+      await user.click(screen.getByTestId('nav-primary'))
+      expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+        scenario.action.question.ko,
+      )
+    })
+  }
+}
