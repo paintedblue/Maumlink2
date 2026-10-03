@@ -222,7 +222,7 @@
 .domain-completed {
   position: absolute;
   top: 12px;
-  left: 12px;
+  right: 12px;
   display: flex;
   gap: 4px;
   align-items: center;
@@ -231,6 +231,10 @@
   font-weight: 700;
   border-radius: var(--radius-btn);
   background: var(--color-surface);
+}
+.domain-card:has(.domain-completed) .domain-card-category {
+  min-height: calc(1.5 * var(--fs-caption) + 16px);
+  padding-right: calc(2 * var(--fs-caption) + 44px);
 }
 .domain-card--reserved {
   display: flex;
