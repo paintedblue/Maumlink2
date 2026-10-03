@@ -79,13 +79,13 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
       )}
 
       {step3.type === 'body-reaction' && (
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-center">
-          <div className="lg:col-span-5">
+        <div className="body-reaction-layout">
+          <div className="body-reaction-art">
             <BodyOutline
               parts={unionParts(feelings.map((f) => step3.byFeeling[f.id]?.parts ?? []))}
             />
           </div>
-          <div className="flex flex-col gap-3 lg:col-span-7">
+          <div className="flex flex-col gap-3">
             {feelings.map((f) => {
               const entry = step3.byFeeling[f.id]
               if (!entry) return null

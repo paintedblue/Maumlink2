@@ -57,3 +57,16 @@ The new playground asset is `public/img/generated/social-playground-v2-{800,1600
 - The supplied Vercel URL could not be fetched through either the web tool or shell networking. A successful Git push must not be reported as proof that Vercel deployed it.
 
 This is a substantial visual redesign, not a claim of enterprise certification or completed real-device validation.
+
+
+## Lesson viewport follow-up — 2026-10-03
+
+The user reported that Previous / Next consumed too much space on the situation screen and requested content visible without vertical scrolling. The visual direction is a calm, viewport-sized reading workspace: compact navigation, scene artwork, then title and current sentence. Existing step transitions and reduced-motion behavior remain; no new motion or teaching copy is introduced.
+
+- Replaced the mobile two-row navigation with one row, retaining 64px minimum touch targets. The situation footer now budgets 81px without device safe-area insets instead of approximately 170px. Primary actions are content-sized rather than full-width.
+- Removed the fixed 96px footer minimum. Artwork shares the remaining height with story text, and switches to a side-by-side composition on tablets and landscape phones. It uses object-contain so the scene is not cropped.
+- Reduced story padding and panel spacing. Compact emotion rows and a side-by-side body diagram recover room on shorter screens without shrinking reading fonts.
+- Kept overflow available for unusually short viewports, enlarged text, and longer expanded lesson explanations. This change does not claim zero scrolling for every combination of content, zoom and screen size.
+- Added `tests/e2e/lesson-viewport.spec.ts` to check every situation sentence and key sentence at 360×640, 390×844, 768×1024 and 1366×768: a single navigation row, visible 64px controls, and no content overflow.
+
+Validation: lint, 65 unit tests and production build passed. The targeted browser suite was attempted but stopped before running tests because the preview server could not bind `::1:4173` (`listen EPERM`). The development server was likewise blocked on `127.0.0.1:5173`. Rendered viewport acceptance and Vercel deployment verification remain pending.

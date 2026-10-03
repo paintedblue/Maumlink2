@@ -10,7 +10,6 @@ import {
   SpeakerMutedIcon,
 } from '@/design/icons'
 import { useT } from '@/i18n/useT'
-import { cn } from '@/design/cn'
 
 export interface BottomBar {
   back?: { label: string; onClick: () => void }
@@ -33,7 +32,7 @@ interface Props {
 
 /**
  * Fixed chrome for every lesson screen (PRD §6.2): top bar (Home · progress · speaker/settings),
- * scrollable content zone, sticky bottom bar within 100dvh + safe-area insets (FR-RES-03/07).
+ * viewport-sized workspace and single-row navigation; overflow remains available for text zoom.
  */
 export function LessonShell({
   progressIndex,
@@ -55,10 +54,7 @@ export function LessonShell({
   }, [screenKey])
   return (
     <div className="lesson-shell flex h-dvh flex-col bg-bg text-ink">
-      <header
-        className="lesson-header flex shrink-0 items-center justify-between gap-4"
-        style={{ minHeight: 'calc(var(--h-topbar) + var(--safe-top))' }}
-      >
+      <header className="lesson-header flex shrink-0 items-center justify-between gap-4">
         <div className="flex items-center">
           <IconButton label={t('nav.home')} onClick={onHome}>
             <HomeIcon />
@@ -94,34 +90,22 @@ export function LessonShell({
         {children}
       </main>
 
-      <footer
-        className="lesson-footer shrink-0 border-t-2 border-line bg-surface"
-        style={{ minHeight: 'calc(var(--h-bottombar) + var(--safe-bottom))' }}
-      >
-        <div
-          className={cn(
-            'mx-auto flex w-full max-w-[1280px] flex-col-reverse gap-4 py-3 md:grid md:grid-cols-[minmax(0,1fr)_minmax(160px,0.7fr)] md:items-center',
+      <footer className="lesson-footer shrink-0 border-t border-line bg-surface">
+        <div className="lesson-navigation">
+          {bottom.back && (
+            <SecondaryButton
+              quiet
+              icon={<ArrowLeftIcon size={26} />}
+              onClick={bottom.back.onClick}
+              data-testid="nav-back"
+            >
+              {bottom.back.label}
+            </SecondaryButton>
           )}
-        >
-          <div className="flex flex-wrap items-center gap-4">
-            {bottom.back && (
-              <SecondaryButton
-                quiet
-                icon={<ArrowLeftIcon size={26} />}
-                onClick={bottom.back.onClick}
-                data-testid="nav-back"
-                className="flex-1 md:flex-none"
-              >
-                {bottom.back.label}
-              </SecondaryButton>
-            )}
-            {bottom.extra}
-          </div>
+          {bottom.extra && <div className="lesson-navigation-extra">{bottom.extra}</div>}
           <PrimaryButton
             quiet
             data-testid="nav-primary"
-            full
-            className="md:ml-auto md:w-full md:min-w-0 md:max-w-[320px]"
             softDisabled={bottom.primary.softDisabled}
             onClick={bottom.primary.onClick}
             icon={bottom.primary.icon}

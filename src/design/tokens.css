@@ -2,6 +2,7 @@
    Learning type sizes and 64px touch targets retain the PRD accessibility contract. */
 @import 'tailwindcss';
 @import './surfaces.css';
+@import './lesson-layout.css';
 
 /* Self-hosted subset built by `pnpm fonts` (scripts/build-fonts.py) — D14/D15 */
 @font-face {

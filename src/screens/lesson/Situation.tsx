@@ -27,17 +27,16 @@ export function Situation({ scenario, state, onAdvance }: Props) {
   useAutoRead(text, `situation-${state.sentenceIndex}`, current.audio?.[locale])
 
   return (
-    <div className="situation-layout grid grid-cols-1 gap-4 lg:grid-cols-12 lg:items-center lg:gap-8 short:grid-cols-[160px_1fr] short:items-start short:gap-4">
-      <div className="lg:col-span-7">
+    <div className="situation-layout">
+      <div className="situation-art">
         <Illustration
           src={imageBase(scenario, locale)}
           alt={L(scenario.situation.imageBrief)}
           brief={L(scenario.situation.imageBrief)}
           domain={scenario.domain}
-          className="mx-auto max-h-[30dvh] md:max-h-[40dvh] lg:max-h-none short:max-h-none"
         />
       </div>
-      <div className="flex flex-col gap-4 lg:col-span-5">
+      <div className="situation-copy">
         <h1 className="story-title text-body font-bold text-ink">
           <span className="text-caption font-bold uppercase tracking-wide text-ink">
             {t('step.situation')}

@@ -45,7 +45,7 @@ export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
         role="group"
         aria-label={L(q)}
         className={cn(
-          'grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-4',
+          'feeling-grid grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-4',
           cols,
           wiggle > 0 && 'motion-safe:animate-[wiggle_300ms_ease-in-out_1]',
         )}
