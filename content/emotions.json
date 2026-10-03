@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "emotions": [
+    {
+      "id": "angry",
+      "word": { "ko": "화가 나요", "en": "Angry" },
+      "icon": "angry.svg",
+      "tint": "#F8D7C4"
+    },
+    {
+      "id": "annoyed",
+      "word": { "ko": "짜증나요", "en": "Annoyed" },
+      "icon": "annoyed.svg",
+      "tint": "#F9E0C7"
+    },
+    {
+      "id": "upset",
+      "word": { "ko": "속상해요", "en": "Upset" },
+      "icon": "upset.svg",
+      "tint": "#D6E6F7"
+    },
+    {
+      "id": "hurt",
+      "word": { "ko": "서운해요", "en": "Hurt" },
+      "icon": "hurt.svg",
+      "tint": "#E4DDF3"
+    },
+    {
+      "id": "frustrated",
+      "word": { "ko": "답답해요", "en": "Frustrated" },
+      "icon": "frustrated.svg",
+      "tint": "#F2E6C9"
+    },
+    {
+      "id": "unfair",
+      "word": { "ko": "억울해요", "en": "Unfair" },
+      "icon": "unfair.svg",
+      "tint": "#EBD9E3"
+    },
+    {
+      "id": "worried",
+      "word": { "ko": "걱정돼요", "en": "Worried" },
+      "icon": "worried.svg",
+      "tint": "#DCE7EC"
+    },
+    {
+      "id": "nervous",
+      "word": { "ko": "긴장돼요", "en": "Nervous" },
+      "icon": "nervous.svg",
+      "tint": "#D9EFE6"
+    },
+    {
+      "id": "embarrassed",
+      "word": { "ko": "창피해요", "en": "Embarrassed" },
+      "icon": "embarrassed.svg",
+      "tint": "#F6DCE4"
+    },
+    {
+      "id": "flustered",
+      "word": { "ko": "당황스러워요", "en": "Flustered" },
+      "icon": "flustered.svg",
+      "tint": "#F7EFD6"
+    },
+    {
+      "id": "shy",
+      "word": { "ko": "부끄러워요", "en": "Shy" },
+      "icon": "shy.svg",
+      "tint": "#F9E3E8"
+    },
+    {
+      "id": "scared",
+      "word": { "ko": "무서워요", "en": "Scared" },
+      "icon": "scared.svg",
+      "tint": "#DEE3EA"
+    },
+    {
+      "id": "sorry",
+      "word": { "ko": "미안해요", "en": "Sorry" },
+      "icon": "sorry.svg",
+      "tint": "#E6E0F2"
+    },
+    {
+      "id": "amused",
+      "word": { "ko": "재미있어요", "en": "Amused" },
+      "icon": "amused.svg",
+      "tint": "#F7F0C8"
+    },
+    {
+      "id": "not-sure",
+      "word": { "ko": "잘 모르겠어요", "en": "Not sure" },
+      "icon": "not-sure.svg",
+      "tint": "#ECEAE6"
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+/* Maum:Link design tokens — PRD §6.3–6.5. Do not add colors/sizes outside this file. */
+@import 'tailwindcss';
+@import '@fontsource/noto-sans-kr/400.css';
+@import '@fontsource/noto-sans-kr/700.css';
+
+@theme {
+  --font-sans:
+    'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, -apple-system, sans-serif;
+
+  /* Breakpoints (PRD §6.2): base = phone portrait, md = ≥640, lg = ≥1024 */
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 40rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+
+  /* Surfaces & text */
+  --color-bg: #fbf8f3;
+  --color-surface: #ffffff;
+  --color-ink: #23313f;
+  --color-ink-soft: #5b6b7b;
+  --color-line: #e6e1d8;
+
+  /* Actions */
+  --color-go: #3e9b6e;
+  --color-go-ink: #ffffff;
+  --color-select: #2f6fb5;
+  --color-link: #e9a6b8;
+  --color-focus: #1d4ed8;
+
+  /* Domain tints */
+  --color-domain-self: #fcf0c2;
+  --color-domain-self-edge: #d9b64e;
+  --color-domain-social: #dcebfa;
+  --color-domain-social-edge: #7faee0;
+  --color-domain-relation: #f9dedc;
+  --color-domain-relation-edge: #e29a93;
+  --color-domain-mind: #ddefe0;
+  --color-domain-mind-edge: #86c494;
+  --color-domain-reserved: #e7e0f5;
+  --color-domain-reserved-edge: #b39ddb;
+
+  /* Shape */
+  --radius-card: 24px;
+  --radius-btn: 20px;
+  --radius-tile: 28px;
+
+  /* Type roles resolve through runtime vars so the text-size setting rescales everything */
+  --text-story: var(--fs-story);
+  --text-story--line-height: 1.5;
+  --text-body: var(--fs-body);
+  --text-body--line-height: 1.6;
+  --text-btn: var(--fs-btn);
+  --text-btn--line-height: 1.2;
+  --text-emotion: var(--fs-emotion);
+  --text-emotion--line-height: 1.2;
+  --text-caption: var(--fs-caption);
+  --text-caption--line-height: 1.5;
+
+  /* Layout */
+  --spacing-topbar: var(--h-topbar);
+  --spacing-bottombar: var(--h-bottombar);
+  --spacing-tap: 64px;
+}
+
+/* Height-constrained phone landscape (PRD §6.2.1) */
+@custom-variant short (@media (max-height: 499px));
+/* Hover styles only where a hover pointer exists */
+@custom-variant hoverable (@media (hover: hover));
+
+:root {
+  /* normal text scale (PRD §6.4) — fluid between min and max, never below "normal" */
+  --fs-story: clamp(28px, 2vw + 20px, 32px);
+  --fs-body: clamp(22px, 1.2vw + 17px, 24px);
+  --fs-btn: 22px;
+  --fs-emotion: 20px;
+  --fs-caption: 16px;
+  --h-topbar: 72px;
+  --h-bottombar: 96px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+}
+
+:root[data-text='large'] {
+  --fs-story: clamp(34px, 2.4vw + 24px, 38px);
+  --fs-body: clamp(27px, 1.4vw + 21px, 29px);
+  --fs-btn: 26px;
+  --fs-emotion: 24px;
+  --fs-caption: 18px;
+}
+
+@media (max-height: 499px) {
+  :root {
+    --h-topbar: 56px;
+    --h-bottombar: 80px;
+  }
+}
+
+@layer base {
+  html {
+    height: 100%;
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100%;
+    margin: 0;
+    overscroll-behavior-y: none;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+  #root {
+    min-height: 100dvh;
+  }
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .pt-safe {
+    padding-top: var(--safe-top);
+  }
+  .pb-safe {
+    padding-bottom: var(--safe-bottom);
+  }
+  .px-safe {
+    padding-left: var(--safe-left);
+    padding-right: var(--safe-right);
+  }
+  .tap {
+    min-width: var(--spacing-tap);
+    min-height: var(--spacing-tap);
+  }
+}
