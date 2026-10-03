@@ -187,11 +187,16 @@
 .domain-card-cover {
   position: relative;
   display: block;
+  align-self: stretch;
   min-height: 156px;
   overflow: hidden;
   border-radius: 25px 0 0 25px;
 }
 .domain-card-cover > img {
+  /* Pin to the stretched grid cell; percentage height alone shrinks in iOS Safari. */
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
