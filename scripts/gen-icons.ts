@@ -97,12 +97,18 @@ const domains: Record<string, string> = {
 
 let n = 0
 const eDir = out('emotions')
-for (const [id, body] of Object.entries(faces))
-  (writeFileSync(join(eDir, `${id}.svg`), wrap(body)), n++)
+for (const [id, body] of Object.entries(faces)) {
+  writeFileSync(join(eDir, `${id}.svg`), wrap(body))
+  n++
+}
 const oDir = out('outcome')
-for (const [id, body] of Object.entries(outcomes))
-  (writeFileSync(join(oDir, `${id}.svg`), wrap(body)), n++)
+for (const [id, body] of Object.entries(outcomes)) {
+  writeFileSync(join(oDir, `${id}.svg`), wrap(body))
+  n++
+}
 const dDir = out('domain')
-for (const [id, body] of Object.entries(domains))
-  (writeFileSync(join(dDir, `${id}.svg`), wrap(body)), n++)
+for (const [id, body] of Object.entries(domains)) {
+  writeFileSync(join(dDir, `${id}.svg`), wrap(body))
+  n++
+}
 console.log(`✔ ${n} icons written to public/icons`)

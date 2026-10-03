@@ -1,7 +1,7 @@
 import type { Domain } from '@/content/schema'
 import { useT } from '@/i18n/useT'
 import { cn } from './cn'
-import { domainSurface } from './Card'
+import { domainSurface } from './domain'
 
 interface Props {
   /** Base path without size suffix/extension, e.g. "/img/social-playground" — or undefined for placeholder. */
