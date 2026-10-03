@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { scenariosByDomain } from '@/content/loader'
 import type { Domain, Scenario } from '@/content/schema'
+import { HeartFriends } from '@/design/HeartFriends'
 import { IconButton } from '@/design/Button'
 import { domainSurface } from '@/design/domain'
 import { Sheet } from '@/design/Sheet'
@@ -80,7 +81,7 @@ function HomeInner() {
 
         <div className="home-intro">
           <h1 className="home-question">{greeting}</h1>
-          <span className="home-intro-line" aria-hidden="true" />
+          <HeartFriends className="home-friends" />
         </div>
       </header>
       <main className="home-library">
@@ -102,7 +103,7 @@ function HomeInner() {
                 type="button"
                 data-domain={d}
                 disabled={reserved}
-                aria-label={`${t(`domain.${d}`)}${reserved ? ` (${t('home.reserved')})` : ''}`}
+                aria-label={`${scene ? `${L(scene.situation.title)} · ` : ''}${t(`domain.${d}`)}${reserved ? ` (${t('home.reserved')})` : ''}`}
                 className={cn('domain-card', reserved && 'domain-card--reserved')}
                 onClick={() => {
                   if (reserved) return
@@ -136,15 +137,13 @@ function HomeInner() {
                   </span>
                 )}
                 <span className="domain-card-content">
-                  <span className="domain-card-name">{t(`domain.${d}`)}</span>
+                  <span className="domain-card-category">{t(`domain.${d}`)}</span>
                   {!reserved && scene && (
-                    <span className="domain-card-summary">{L(scene.situation.keySentence)}</span>
+                    <span className="domain-card-name">{L(scene.situation.title)}</span>
                   )}
                   {!reserved && (
                     <span className="domain-card-meta">
-                      <span className="text-caption text-ink-soft">
-                        {t('home.count', { n: list.length })}
-                      </span>
+                      <span className="text-caption text-ink-soft">{t('home.start')}</span>
                       <span className="domain-card-arrow">
                         <ChevronRightIcon size={24} />
                       </span>

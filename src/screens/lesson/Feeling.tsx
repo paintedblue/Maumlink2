@@ -1,3 +1,4 @@
+import { ScenePrompt } from '@/design/ScenePrompt'
 import { getEmotion } from '@/content/loader'
 import type { Scenario } from '@/content/schema'
 import { EmotionTile } from '@/design/EmotionTile'
@@ -37,9 +38,7 @@ export function Feeling({ scenario, state, dispatch, wiggle }: Props) {
 
   return (
     <div className="lesson-question-screen flex flex-col gap-4">
-      <h1 className="text-story font-bold text-ink" aria-live="polite">
-        {L(q)}
-      </h1>
+      <ScenePrompt scenario={scenario}>{L(q)}</ScenePrompt>
       <div
         key={wiggle}
         role="group"

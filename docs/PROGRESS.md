@@ -70,3 +70,12 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ Lint, 65 tests, validation, TypeScript and production/PWA build.
 - ☐ Browser rendering, viewport matrix, axe, snapshots and physical-device validation remain pending; both browser engines fail to launch here.
 - ☐ Live Vercel state could not be read; Git push alone is not deployment verification.
+
+
+## 2026-10-03 — Storybook redesign (supersedes teal UI)
+
+- ☑ New cream/blueberry identity and linked-heart companions, consistent browser/install icons.
+- ☑ Redesigned Start, story-led Home, scene viewer, contextual questions, expressive choices, conversational feedback and concrete completion recap.
+- ☑ Replaced shared styles; retained reading sizes, 64px targets, keyboard behavior, reduced motion and compact navigation.
+- ☑ Scenario/content diff empty; four new full-lesson interaction tests, 69 tests total. Lint and production build pass.
+- ☐ Browser/axe/responsive and deployment verification: Chrome is unconnected and preview startup returns `listen EPERM`. Existing screenshots are not current acceptance evidence.

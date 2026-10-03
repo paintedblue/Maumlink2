@@ -48,3 +48,13 @@ Format: date · decision · why · PRD reference.
 - **Illustration-led Home.** The four domain choices now display scene covers and their existing key sentences, with no new child-facing strings. The reserved fifth item stays secondary. The generated playground image aligns all four scene styles; client originals remain intact.
 - **Production identity parity.** Browser theme, favicon and installed-app icons match the interface. `vercel.json` adds the documented SPA fallback and HTML/SW revalidation headers. No deployment or cache issue is claimed to have been diagnosed because live access is blocked.
 - **Verification boundary retained.** Unit/build checks pass; browser acceptance and the Vercel deployment state require verification outside the current restricted environment.
+
+
+## 2026-10-03 — Child-centered storybook direction
+
+- The user rejected the enterprise visual direction and explicitly authorized replacing the entire design and content presentation. The earlier teal identity and PRD's original visual token/layout values are superseded by the storybook theme documented in `REDESIGN.md`.
+- Preserve the educational model: all four scenarios, the five-step sequence, exact lesson content, single-sentence storytelling, narration, hints and neutral feedback. No competitive or evaluative game mechanics were added.
+- Concrete story titles take precedence over abstract domain labels on Home. Domain names stay visible and accessible; the domain picker still supports additional scenarios.
+- A contextual scene thumbnail bridges questions across steps; the ending shows the actual chosen emotion and action instead of abstract recap symbols. Audio replay includes this recap.
+- Reuse the existing school illustrations and introduce small local vector companions derived from the linked-heart identity. No new dependency, external service or runtime asset network was introduced.
+- Verification remains unit/integration/build plus asset inspection. Chrome and local preview are blocked in this environment; visual/browser acceptance is explicitly pending.

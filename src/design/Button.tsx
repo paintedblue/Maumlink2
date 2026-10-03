@@ -13,7 +13,7 @@ type Base = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 const common = 'app-button tap'
 
-/** The one green "go" button — always the same color, always the same place (PRD §6.2). */
+/** One consistent "go" color and placement across the storybook (PRD §6.2). */
 export function PrimaryButton({
   icon,
   iconRight,

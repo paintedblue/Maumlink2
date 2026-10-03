@@ -1,3 +1,4 @@
+import { ScenePrompt } from '@/design/ScenePrompt'
 import { getEmotion } from '@/content/loader'
 import type { BodyPart, Scenario } from '@/content/schema'
 import { BodyOutline } from '@/design/BodyOutline'
@@ -42,8 +43,9 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
 
   return (
     <div className="lesson-question-screen flex flex-col gap-4">
+      <ScenePrompt scenario={scenario}>{L(step3.question)}</ScenePrompt>
       {first && (
-        <div className="flex items-center gap-3" aria-live="polite">
+        <div className="chosen-feeling flex items-center gap-3" aria-live="polite">
           <span
             className="flex size-14 items-center justify-center rounded-full"
             style={{ backgroundColor: first.tint }}
@@ -61,8 +63,6 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
           </span>
         </div>
       )}
-
-      <h1 className="text-story font-bold text-ink">{L(step3.question)}</h1>
 
       {step3.type === 'reason' && (
         <div className="flex flex-col gap-3">

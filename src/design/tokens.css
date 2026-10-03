@@ -1,4 +1,4 @@
-/* Maum:Link identity — teal / ivory redesign authorized 2026-10-03.
+/* Maum:Link storybook identity — child-focused redesign authorized 2026-10-03.
    Learning type sizes and 64px touch targets retain the PRD accessibility contract. */
 @import 'tailwindcss';
 @import './surfaces.css';
@@ -31,47 +31,47 @@
   --breakpoint-xl: 80rem;
 
   /* Surfaces & text */
-  --color-bg: #f4f5f0;
+  --color-bg: #fff9ef;
   --color-surface: #ffffff;
-  --color-ink: #203b3a;
-  --color-ink-soft: #536966;
-  --color-line: #d5dfda;
+  --color-ink: #343047;
+  --color-ink-soft: #655d73;
+  --color-line: #e3d9ca;
 
   /* Actions */
-  --color-go: #15594e;
+  --color-go: #5546a3;
   --color-go-ink: #ffffff;
-  --color-select: #315e83;
-  --color-link: #e3bca8;
-  --color-focus: #315e83;
+  --color-select: #5546a3;
+  --color-link: #f3b290;
+  --color-focus: #5546a3;
 
   /* Brand surfaces: never used to imply a correct or incorrect answer. */
-  --color-brand: #123f3a;
-  --color-brand-soft: #bcd8cf;
-  --color-brand-ink: #f8fbf8;
-  --color-surface-soft: #edf1ec;
-  --color-selected: #eaf0f5;
-  --shadow-raised: 0 8px 24px #123f3a0a;
+  --color-brand: #45378b;
+  --color-brand-soft: #c6baf2;
+  --color-brand-ink: #ffffff;
+  --color-surface-soft: #f5eedf;
+  --color-selected: #eee9fb;
+  --shadow-raised: 0 8px 24px #45378b0a;
   --text-brand: clamp(28px, 3vw, 40px);
   --text-brand--line-height: 1.2;
   --text-display: clamp(32px, 4vw, 48px);
   --text-display--line-height: 1.35;
 
   /* Domain tints */
-  --color-domain-self: #f1ead6;
-  --color-domain-self-edge: #c6b78e;
-  --color-domain-social: #e1ebee;
-  --color-domain-social-edge: #a3bcc7;
-  --color-domain-relation: #f0e5de;
-  --color-domain-relation-edge: #c9afa0;
-  --color-domain-mind: #e2ece4;
-  --color-domain-mind-edge: #a5bfae;
-  --color-domain-reserved: #ebe9ef;
-  --color-domain-reserved-edge: #b9b3c8;
+  --color-domain-self: #fff0d1;
+  --color-domain-self-edge: #dfbe79;
+  --color-domain-social: #e8f1fa;
+  --color-domain-social-edge: #9fbdd8;
+  --color-domain-relation: #fce8df;
+  --color-domain-relation-edge: #dba58e;
+  --color-domain-mind: #e9edda;
+  --color-domain-mind-edge: #b4c28c;
+  --color-domain-reserved: #eee9f6;
+  --color-domain-reserved-edge: #b9aacf;
 
   /* Shape */
-  --radius-card: 20px;
-  --radius-btn: 16px;
-  --radius-tile: 20px;
+  --radius-card: 28px;
+  --radius-btn: 22px;
+  --radius-tile: 28px;
 
   /* Type roles resolve through runtime vars so the text-size setting rescales everything */
   --text-story: var(--fs-story);
@@ -104,7 +104,7 @@
   --fs-emotion: 20px;
   --fs-caption: 16px;
   --h-topbar: 72px;
-  --h-bottombar: 96px;
+  --h-bottombar: 80px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -119,7 +119,7 @@
   --fs-caption: 18px;
 }
 
-/* Phone landscape keeps 72/96 px bars: 64 px tap targets (FR-RES-02) take precedence over §6.2.1's 56 px. */
+/* Navigation keeps 64 px tap targets in both orientations. */
 
 @layer base {
   html {

@@ -1,3 +1,4 @@
+import { ScenePrompt } from '@/design/ScenePrompt'
 import type { Scenario } from '@/content/schema'
 import { ChoiceCard } from '@/design/ChoiceCard'
 import { cn } from '@/design/cn'
@@ -20,7 +21,7 @@ export function Action({ scenario, state, dispatch, wiggle }: Props) {
   useAutoRead(L(q), 'action', q.audio?.[locale])
   return (
     <div className="lesson-question-screen flex flex-col gap-4">
-      <h1 className="text-story font-bold text-ink">{L(q)}</h1>
+      <ScenePrompt scenario={scenario}>{L(q)}</ScenePrompt>
       <div
         key={wiggle}
         role="radiogroup"

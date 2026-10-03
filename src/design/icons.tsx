@@ -95,6 +95,20 @@ export const TextSizeIcon = (p: P) => (
   </Base>
 )
 
+export const SceneIcon = (p: P) => (
+  <Base {...p}>
+    <rect x="3" y="4" width="18" height="16" rx="3" />
+    <circle cx="8" cy="9" r="1.5" />
+    <path d="M4 17l5-4 4 3 3-5 5 6" />
+  </Base>
+)
+export const FeelingIcon = (p: P) => (
+  <Base {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M8 9h.1M16 9h.1M8 14q4 5 8 0" />
+  </Base>
+)
+
 /** Two hearts joined by one continuous line: the shared app and install identity. */
 export function LinkMark({ size = 40, ...rest }: P) {
   return (

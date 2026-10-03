@@ -1,6 +1,6 @@
 import type { Scenario } from '@/content/schema'
 import { Illustration } from '@/design/Illustration'
-import { SpeechBubble } from '@/design/SpeechBubble'
+import { HeartFriends } from '@/design/HeartFriends'
 import { cn } from '@/design/cn'
 import { keySentenceVisible, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
@@ -27,7 +27,8 @@ export function Situation({ scenario, state, onAdvance }: Props) {
   useAutoRead(text, `situation-${state.sentenceIndex}`, current.audio?.[locale])
 
   return (
-    <div className="situation-layout">
+    <div className="situation-layout" data-key-sentence={keyVisible}>
+      <h1 className="story-heading">{L(scenario.situation.title)}</h1>
       <div className="situation-art">
         <Illustration
           src={imageBase(scenario, locale)}
@@ -37,28 +38,22 @@ export function Situation({ scenario, state, onAdvance }: Props) {
         />
       </div>
       <div className="situation-copy">
-        <h1 className="story-title text-body font-bold text-ink">
-          <span className="text-caption font-bold uppercase tracking-wide text-ink">
-            {t('step.situation')}
-          </span>
-          <span>{L(scenario.situation.title)}</span>
-        </h1>
+        <HeartFriends className="story-friends" />
         <button
           type="button"
           data-testid="story-card"
-          className="text-left"
+          className="story-dialogue text-left"
           onClick={() => {
             if (!keyVisible) onAdvance()
           }}
           aria-live="polite"
         >
-          {keyVisible ? (
-            <SpeechBubble>{text}</SpeechBubble>
-          ) : (
-            <span className="story-text">
-              <span className="story-sentence text-story font-bold text-ink">{text}</span>
-            </span>
-          )}
+          <span
+            key={state.sentenceIndex}
+            className="story-sentence text-story font-bold text-ink motion-safe:animate-[fadeIn_240ms_ease-out]"
+          >
+            {text}
+          </span>
         </button>
         <div
           role="img"

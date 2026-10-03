@@ -1,4 +1,5 @@
 import type { Scenario } from '@/content/schema'
+import { HeartFriends } from '@/design/HeartFriends'
 import { Card } from '@/design/Card'
 import { chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
@@ -17,7 +18,7 @@ export function Feedback({ scenario, state }: Props) {
   useAutoRead(text, `feedback-${action?.id ?? ''}`, action?.feedback.audio?.[locale])
   if (!action) return null
   return (
-    <div className="mx-auto flex w-full max-w-[880px] flex-col gap-4">
+    <div className="feedback-layout">
       <h1 className="sr-only">{t('step.feedback')}</h1>
       <Card
         label={t('feedback.myChoice')}
@@ -39,9 +40,12 @@ export function Feedback({ scenario, state }: Props) {
           />
         </div>
       </Card>
-      <Card className="min-h-[160px]" data-testid="feedback-card" aria-live="polite">
-        <p className="text-story font-bold text-ink">{text}</p>
-      </Card>
+      <div className="feedback-dialogue">
+        <HeartFriends />
+        <Card data-testid="feedback-card" aria-live="polite">
+          <p className="text-story font-bold text-ink">{text}</p>
+        </Card>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useT } from '@/i18n/useT'
+import { ArrowRightIcon, CheckIcon, FeelingIcon, HelpIcon, LinkMark, SceneIcon } from './icons'
 import { cn } from './cn'
 
 const STEPS = 5
@@ -37,7 +38,21 @@ export function ProgressLink({ index }: { index: number }) {
               'progress-node',
               isCurrent ? 'progress-node--current' : isDone && 'progress-node--done',
             )}
-          />
+          >
+            {isDone ? (
+              <CheckIcon size={16} />
+            ) : i === 0 ? (
+              <SceneIcon size={18} />
+            ) : i === 1 ? (
+              <FeelingIcon size={18} />
+            ) : i === 2 ? (
+              <HelpIcon size={18} />
+            ) : i === 3 ? (
+              <ArrowRightIcon size={18} />
+            ) : (
+              <LinkMark size={22} />
+            )}
+          </span>
         )
       })}
     </div>

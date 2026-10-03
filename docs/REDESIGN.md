@@ -1,3 +1,49 @@
+# Storybook redesign — 2026-10-03
+
+This revision supersedes the earlier teal/ivory direction below. The user explicitly requested a completely different, more interesting experience for the target children, including delivery, layout, colors and positioning.
+
+## Direction and content delivery
+
+Visual thesis: a warm picture book with cream paper, blueberry actions, apricot/lavender heart companions and familiar school scenes. The companions express welcome, never the correctness of a feeling or action.
+
+Content plan: a friendly first hello → choose a concrete illustrated story → scene with one spoken sentence → questions with a persistent scene reminder → face and speech choices → a recap of the child's actual feeling and action.
+
+Interaction thesis: a brief companion greeting on entry; a restrained sentence fade when the story advances; tactile selection/press feedback. No loops, time pressure, scores, stars or new teaching text. Reduced-motion settings suppress the motion.
+
+| Screen | New experience |
+| --- | --- |
+| Start | Two linked-heart characters, the existing welcoming question, one entry button |
+| Home | A two-column story shelf on tablets; concrete story titles lead and domain names become secondary; compact illustrated rows on phones |
+| Situation | Large centered scene with a separate dialogue caption below; the key sentence has a distinct lavender surface; artwork takes only the height left after text and compact navigation |
+| Feeling / Thought / Action | The relevant scene remains beside the question; face choices and speech-shaped actions respond with clear selection states |
+| Feedback | Selected action and outcome first, followed by a companion-led explanation; decoration yields space to reading on phones |
+| Wrap-up | The actual selected feeling and full action text replace the former icon/letter-only recap; replay reads closing and recap |
+| Shared UI | Blueberry buttons, cream canvas, softer geometry, light header, pictorial progress, matching favicon/install icons |
+
+## Palette and accessibility
+
+- Canvas `#FFF9EF`; ink `#343047` (12.08:1).
+- Action `#5546A3`; white action text (7.52:1).
+- Secondary ink `#655D73` on canvas (5.96:1).
+- Selected surface `#EEE9FB`; main ink (10.65:1).
+- Apricot `#F3B290` and lavender `#C6BAF2` are illustration accents.
+
+64px minimum targets, normal/large reading scales, keyboard navigation, narration, focus management, device safe areas and compact one-row lesson navigation remain. Tall text or zoom still has accessible overflow; no content is clipped to manufacture a no-scroll pass. Every scenario JSON, UI translation, answer and existing draft flag is unchanged. First-visit copy now uses the existing Home greeting instead of the diagnostic audience label.
+
+The heart artwork is a local, code-native SVG (`HeartFriends.tsx`), rendered and visually inspected. Existing generated school illustrations are reused; no new external asset or runtime request was added. Theme tokens and shared styles were replaced rather than adding another theme override layer.
+
+## Verification
+
+- `pnpm lint`, `pnpm test` (69 tests) and `pnpm build` pass.
+- Four new interaction tests traverse the redesigned Home and every lesson, asserting exact story sentences, question context, selected feedback and concrete completion recap.
+- Content diff is empty. Four scenarios validate; all 18 prior draft strings remain flagged.
+- Browser viewport suite attempted: preview startup is blocked by `listen EPERM ::1:4173`. Chrome connection also fails with `CUA_REPL_ENABLED_SURFACES is required`. No new rendered viewport, axe or visual snapshot acceptance is claimed; prior screenshot baselines are retained, not overwritten.
+- HTML build marker: `maumlink-design=storybook-v3`. Git push does not establish that Vercel deployed this version.
+
+---
+
+## Previous design history (superseded)
+
 # Teal / ivory visual redesign — 2026-10-03
 
 The user explicitly requested a substantial professional redesign after reviewing the earlier incremental polish at https://maumlink.vercel.app/. This revision changes the visual identity and composition, not only individual control styles. It supersedes the original PRD's specific palette/radius values while retaining its learning scope and accessibility requirements.
