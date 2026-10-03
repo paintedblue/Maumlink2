@@ -27,7 +27,12 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 
 ## M2 — Remaining scenarios + Step-3 variants
 
-_not started_
+- ☑ `mind-lunch-line.json`, `relation-pencil-prank.json`, `self-presentation-teasing.json` authored from PRD §7.4 (18 draft strings flagged across the four files)
+- ☑ Step-3 `multiple-choice` (acks under the selected card) and `body-reaction` (BodyOutline highlights) verified in-browser at tablet and phone widths
+- ☑ Placeholder illustration (FR-S1-03/D9) for the two scenarios without art; `imageByLocale` for the Korean-only teasing card
+- ☑ FR-ENG-01 demonstrated: a copied scenario file appeared on Home ("상황 2개"), in the picker, and played, with zero code changes; then removed
+- ☑ E2E over all four scenarios: 217 passed / 1 skipped (offline test is Chromium-only) — happy path, per-feeling and per-action coverage, 11-viewport × 2-text-size responsive matrix, rotation
+- ☑ Fixed during M2: ChoiceCard badge overflowed `main` by 4 px at phone widths (FR-RES-01); ChoiceCard needed `flex-wrap` for the ack row
 
 ## M3 — PWA, polish, accessibility
 

@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "id": "mind-lunch-line",
+  "domain": "mind",
+  "order": 1,
+  "title": {
+    "ko": "내 마음을 표현하고 도움을 요청해요",
+    "en": "Express My Feelings and Ask for Help"
+  },
+  "learningGoal": {
+    "ko": "자신의 감정을 알고, 이유를 생각하며, 도움을 요청할 수 있다.",
+    "en": "Can recognize own feelings, think about why, and ask for help."
+  },
+  "estimatedMinutes": 7,
+  "situation": {
+    "title": {
+      "ko": "내 차례인데 친구가 새치기를 했어요",
+      "en": "It was my turn, but a friend cut in line"
+    },
+    "story": [
+      {
+        "ko": "급식실에서 내 앞으로 슬그머니 새치기를 하는 친구가 있어요.",
+        "en": "In the lunchroom, a friend sneaks in line in front of me."
+      },
+      { "ko": "이번이 첫 번째가 아니에요.", "en": "It's not the first time." },
+      {
+        "ko": "뭐라고 이야기하고 싶은데, 친구에게 어떻게 말해야 할지 모르겠어요.",
+        "en": "I want to say something, but I don't know how to say it to my friend."
+      }
+    ],
+    "keySentence": { "ko": "새치기 하는 친구가 있어요", "en": "A friend cuts in line" },
+    "imageBrief": {
+      "ko": "학교 급식실에서 줄을 선 아이들 사이에 슬쩍 들어가 서는 아이의 모습. 뒤에 서 있는 아이는 어떻게 해야 할지 난감해하는 표정.",
+      "en": "In the school lunchroom, a child slips into the line. The child behind hesitates, unsure what to do."
+    }
+  },
+  "feeling": {
+    "subject": "self",
+    "question": {
+      "ko": "이 상황에서 나는 어떤 기분이 들까요?",
+      "en": "How would I feel in this situation?"
+    },
+    "options": ["upset", "frustrated", "unfair", "sorry", "not-sure"],
+    "multiSelect": false,
+    "hint": {
+      "text": {
+        "ko": "내 차례였는데 친구가 앞에 섰어요. 뭐라고 말하고 싶은데 말이 잘 안 나와요.",
+        "en": "It was my turn, but my friend stepped in front. I want to say something but the words won't come.",
+        "draft": true
+      },
+      "suggest": ["upset", "frustrated"]
+    }
+  },
+  "step3": {
+    "type": "reason",
+    "question": { "ko": "왜 그런 마음이 들었을까요?", "en": "Why did I feel that way?" },
+    "byFeeling": {
+      "upset": {
+        "ko": "친구가 내 앞으로 자주 새치기를 해서",
+        "en": "My friend often cuts in front of me"
+      },
+      "frustrated": {
+        "ko": "친구에게 뭐라고 이야기하고 싶은데 말이 잘 안 나와서",
+        "en": "I want to say something to my friend but the words won't come"
+      },
+      "unfair": {
+        "ko": "내 차례였는데 친구가 새치기를 하니 내 순서가 뒤로 밀려서",
+        "en": "It was my turn, but my friend cut in and pushed me back"
+      },
+      "sorry": {
+        "ko": "뒤에 서 있는 친구들에게 미안한 마음이 들어서",
+        "en": "I feel bad for the friends standing behind me"
+      }
+    },
+    "principle": {
+      "ko": "같은 상황에서도 사람마다 다른 마음이 들 수 있어요.",
+      "en": "People can feel differently in the same situation."
+    },
+    "more": {
+      "ko": "여러 가지 마음이 한꺼번에 들 수도 있어요. 속상하면서 미안할 수도 있어요.",
+      "en": "You can have several feelings at once. You can feel upset and sorry at the same time.",
+      "draft": true
+    }
+  },
+  "action": {
+    "question": {
+      "ko": "그런 마음이 들 때 어떻게 하면 좋을까요?",
+      "en": "What can I do when I feel that way?"
+    },
+    "options": [
+      {
+        "id": "A",
+        "text": {
+          "ko": "내 마음 말하기 – \"네가 새치기해서 나는 속상했어\"라고 말하기",
+          "en": "Say how I feel – \"I was upset when you cut in front of me\""
+        },
+        "quality": "recommended",
+        "feedback": {
+          "ko": "친구에게 마음을 말했어요. 내 마음을 잘 표현했어요.",
+          "en": "You told your friend how you feel. You expressed yourself well."
+        },
+        "outcomeIcon": "talk"
+      },
+      {
+        "id": "B",
+        "text": {
+          "ko": "바라는 것 말하기 – \"다음에는 순서를 지켜주면 좋겠어\"라고 말해요",
+          "en": "Say what I want – \"Next time, please wait your turn\""
+        },
+        "quality": "recommended",
+        "feedback": {
+          "ko": "친구에게 바라는 것을 말한 '나', 자랑스러워요.",
+          "en": "I'm proud of myself for telling my friend what I want."
+        },
+        "outcomeIcon": "talk"
+      },
+      {
+        "id": "C",
+        "text": {
+          "ko": "함께 해결하기 – 친구들과 함께 \"우리 순서대로 줄을 서자\"라고 이야기해요",
+          "en": "Solve it together – say with friends, \"Let's line up in order\""
+        },
+        "quality": "recommended",
+        "feedback": {
+          "ko": "혼자 해결하기 어려울 땐 힘을 합쳐요.",
+          "en": "When it's hard alone, work together."
+        },
+        "outcomeIcon": "together"
+      },
+      {
+        "id": "D",
+        "text": {
+          "ko": "도움 요청하기 – 선생님에게 \"친구와 해결하기 어려워요. 도와주세요\"라고 말해요",
+          "en": "Ask for help – tell the teacher, \"It's hard to solve this with my friend. Please help me.\""
+        },
+        "quality": "recommended",
+        "feedback": {
+          "ko": "선생님께 도움을 요청했군요. 혼자 참는 것보다 때로는 도움을 요청하는 것이 더 좋아요.",
+          "en": "You asked your teacher for help. Sometimes asking for help is better than holding it in alone."
+        },
+        "outcomeIcon": "teacher"
+      }
+    ]
+  },
+  "closing": {
+    "ko": "내 마음을 말하고 도움을 요청하는 것은 나를 지키는 좋은 방법이에요. 힘들 때는 혼자 참지 말고 믿을 만한 어른에게 이야기해요.",
+    "en": "Saying how I feel and asking for help are good ways to protect myself. When it's hard, don't hold it in—talk to a trusted adult."
+  }
+}

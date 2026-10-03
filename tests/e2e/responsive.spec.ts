@@ -11,6 +11,7 @@ import {
   openScenario,
   playLesson,
   seedSettings,
+  settleViewport,
 } from './helpers'
 import { VIEWPORTS, byName } from './viewports'
 
@@ -74,6 +75,7 @@ test.describe('orientation change keeps state (FR-RES-05)', () => {
     await expect(page.getByRole('dialog')).toBeVisible()
 
     await page.setViewportSize({ width: landscape.width, height: landscape.height })
+    await settleViewport(page)
     await expect(page.getByRole('dialog')).toBeVisible()
     await assertResponsive(page, 'rotated-landscape/hint')
     await page.getByRole('button', { name: '닫기' }).click()
@@ -84,6 +86,7 @@ test.describe('orientation change keeps state (FR-RES-05)', () => {
     await assertResponsive(page, 'rotated-landscape/feeling')
 
     await page.setViewportSize({ width: portrait.width, height: portrait.height })
+    await settleViewport(page)
     await expect(page.locator(`[data-emotion="${feeling}"]`)).toHaveAttribute(
       'aria-checked',
       'true',

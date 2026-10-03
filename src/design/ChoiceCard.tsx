@@ -37,7 +37,7 @@ export function ChoiceCard({
   return (
     <div
       className={cn(
-        'relative flex min-h-[96px] items-stretch rounded-card border-[3px] bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
+        'relative flex min-h-[96px] flex-wrap items-stretch rounded-card border-[3px] bg-surface transition-[border-color,transform] duration-150 motion-reduce:transition-none lg:min-h-[120px]',
         selected ? 'border-select' : 'border-line',
         dimmed && !selected && 'opacity-60',
       )}
@@ -74,7 +74,7 @@ export function ChoiceCard({
       </button>
       {selected && (
         <span
-          className="absolute -right-2 -top-2 flex size-9 items-center justify-center rounded-full bg-select text-white"
+          className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-select text-white"
           aria-hidden="true"
         >
           <CheckIcon size={22} />

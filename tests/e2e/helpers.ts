@@ -126,6 +126,14 @@ export async function playLesson(
   await on('wrapup')
 }
 
+/** After a viewport change, wait until the shell has re-laid out to the new dvh (Chromium updates it asynchronously). */
+export async function settleViewport(page: Page) {
+  await page.waitForFunction(() => {
+    const shell = document.querySelector<HTMLElement>('#root > div')
+    return !shell || Math.round(shell.getBoundingClientRect().height) <= window.innerHeight + 1
+  })
+}
+
 /* ------------------------------------------------------------------ FR-RES checks */
 
 interface Box {
