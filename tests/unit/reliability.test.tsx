@@ -49,6 +49,7 @@ describe('session recovery', () => {
       textSize: 'normal',
       sound: true,
       autoRead: true,
+      voiceEnabled: true,
       started: false,
     })
     expect(StoredProgress.parse({ entries: null })).toEqual({ entries: {} })

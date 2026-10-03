@@ -27,7 +27,7 @@ export function useAutoRead(text: string | undefined, key: string, audioUrl?: st
   const locale = useSettings((s) => s.locale)
   useEffect(() => {
     if (!autoRead || !text) return
-    const request = { text, locale, audioUrl }
+    const request = { text, locale, audioUrl, automatic: true }
     void speech.speak(request)
     return () => speech.cancel(request)
   }, [autoRead, text, key, locale, audioUrl])

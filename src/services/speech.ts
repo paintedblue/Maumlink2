@@ -9,6 +9,7 @@ export interface SpeakRequest {
   text: string
   locale: Locale
   audioUrl?: string
+  automatic?: boolean
 }
 
 type Listener = (speaking: boolean) => void
@@ -17,6 +18,9 @@ const LANG: Record<Locale, string> = { ko: 'ko-KR', en: 'en-US' }
 const RATE = 0.9
 
 class SpeechService {
+  private enabled = true
+  private activationRequired = false
+  private activationListeners = new Set<() => void>()
   private request?: SpeakRequest
   private textListeners = new Set<(text: string) => void>()
   private current?: { cancel: () => void }
@@ -42,6 +46,57 @@ class SpeechService {
       'speechSynthesis' in window &&
       'SpeechSynthesisUtterance' in window
     )
+  }
+
+  /** Mute both browser speech and recorded narration, including the active request. */
+  setEnabled(enabled: boolean): void {
+    this.enabled = enabled
+    if (!enabled) this.cancel()
+  }
+
+  getActivationRequired = (): boolean => this.activationRequired
+
+  onActivationChange = (listener: () => void): (() => void) => {
+    this.activationListeners.add(listener)
+    return () => this.activationListeners.delete(listener)
+  }
+
+  private setActivationRequired(required: boolean): void {
+    if (this.activationRequired === required) return
+    this.activationRequired = required
+    for (const listener of this.activationListeners) listener()
+  }
+
+  /** Chrome may reject automatic speech until this document has a user gesture.
+   * Keep only the current request; navigation, mute and auto-read cleanup can cancel it. */
+  private waitForActivation(req: SpeakRequest): Promise<void> {
+    return new Promise((resolve) => {
+      const cleanup = () => {
+        document.removeEventListener('click', retry)
+        document.removeEventListener('keydown', retry)
+        if (this.current?.cancel === cancel) this.current = undefined
+        this.setActivationRequired(false)
+      }
+      const cancel = () => {
+        cleanup()
+        resolve()
+      }
+      const retry = (event: Event) => {
+        if (
+          event instanceof KeyboardEvent &&
+          ['Tab', 'Escape', 'Shift', 'Control', 'Alt', 'Meta'].includes(event.key)
+        )
+          return
+        if (this.request !== req || !this.enabled) return cancel()
+        cleanup()
+        this.unlocked = true
+        void this.speak(req).then(resolve)
+      }
+      this.current = { cancel }
+      document.addEventListener('click', retry)
+      document.addEventListener('keydown', retry)
+      this.setActivationRequired(true)
+    })
   }
 
   onChange(l: Listener): () => void {
@@ -97,7 +152,13 @@ class SpeechService {
     this.cancel()
     this.request = req
     for (const listener of this.textListeners) listener(req.text)
+    // Preserve screen-reader announcements while suppressing the app's own voice.
+    if (!this.enabled) return Promise.resolve()
     if (!req.text.trim() && !req.audioUrl) return Promise.resolve()
+
+    if (req.automatic && !this.unlocked && navigator.userActivation?.hasBeenActive === false) {
+      return this.waitForActivation(req)
+    }
 
     if (req.audioUrl) return this.playAudio(req.audioUrl)
     if (!this.isSupported()) return Promise.resolve()
@@ -127,7 +188,13 @@ class SpeechService {
         finish()
       }
       u.onend = finish
-      u.onerror = finish
+      u.onerror = (event) => {
+        if (done) return
+        finish()
+        if (event.error === 'not-allowed' && this.request === req && this.enabled) {
+          void this.waitForActivation(req)
+        }
+      }
       this.current = { cancel }
       this.emit(true)
       try {

@@ -28,6 +28,7 @@ it.each(scenarios)(
         </Routes>
       </MemoryRouter>,
     )
+    expect(screen.queryByText('준비 중')).not.toBeInTheDocument()
     // Home exposes the actual story title, so children need not decode the domain name.
     await user.click(screen.getByRole('button', { name: new RegExp(scenario.situation.title.ko) }))
     for (const sentence of scenario.situation.story) {

@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router'
 import { getEmotion, nextScenarioInDomain } from '@/content/loader'
 import type { Scenario } from '@/content/schema'
 import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
+import { VoiceToggle } from '@/design/VoiceToggle'
 import { HeartFriends } from '@/design/HeartFriends'
 import { Card } from '@/design/Card'
-import { ArrowRightIcon, HomeIcon, LinkMark, SettingsIcon, SpeakerIcon } from '@/design/icons'
+import { ArrowRightIcon, HomeIcon, LinkMark, SettingsIcon } from '@/design/icons'
 import { chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
@@ -45,9 +46,8 @@ export function Wrapup({ scenario, state, onExit }: Props) {
           <span className="brand-name">{t('app.name')}</span>
         </div>
         <div className="utility-controls">
-          <IconButton
-            label={t('nav.replay')}
-            onClick={() =>
+          <VoiceToggle
+            onEnable={() =>
               void speak(
                 [
                   closing,
@@ -59,9 +59,7 @@ export function Wrapup({ scenario, state, onExit }: Props) {
                   .join(' '),
               )
             }
-          >
-            <SpeakerIcon />
-          </IconButton>
+          />
           <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
             <SettingsIcon />
           </IconButton>

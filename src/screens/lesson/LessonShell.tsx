@@ -1,14 +1,8 @@
 import { useEffect, useRef, type ReactNode } from 'react'
 import { IconButton, PrimaryButton, SecondaryButton } from '@/design/Button'
+import { VoiceToggle } from '@/design/VoiceToggle'
 import { ProgressLink } from '@/design/ProgressLink'
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  HomeIcon,
-  SettingsIcon,
-  SpeakerIcon,
-  SpeakerMutedIcon,
-} from '@/design/icons'
+import { ArrowLeftIcon, ArrowRightIcon, HomeIcon, SettingsIcon } from '@/design/icons'
 import { useT } from '@/i18n/useT'
 
 export interface BottomBar {
@@ -66,15 +60,7 @@ export function LessonShell({
           <span className="progress-caption">{t(`step.${screenKey}`)}</span>
         </div>
         <div className="flex items-center gap-4">
-          <IconButton
-            label={t('nav.replay')}
-            onClick={onReplay}
-            badge={
-              !ttsSupported ? <span className="block size-3 rounded-full bg-ink-soft" /> : undefined
-            }
-          >
-            {ttsSupported ? <SpeakerIcon /> : <SpeakerMutedIcon />}
-          </IconButton>
+          <VoiceToggle onEnable={onReplay} supported={ttsSupported} />
           <IconButton label={t('nav.settings')} onClick={onSettings}>
             <SettingsIcon />
           </IconButton>

@@ -54,6 +54,14 @@
     transform 180ms ease,
     background-color 180ms ease;
 }
+.icon-button[data-voice='on'] {
+  background: var(--color-selected);
+  border-color: var(--color-go);
+}
+.icon-button[data-voice='off'] {
+  color: var(--color-ink-soft);
+  background: var(--color-surface-soft);
+}
 .utility-controls,
 .brand-lockup {
   display: flex;

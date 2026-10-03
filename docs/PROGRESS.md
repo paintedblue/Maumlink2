@@ -85,3 +85,18 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 
 - ☑ Reduced default reading, control, caption and heading sizes at the user's request; retained large text and touch targets.
 - Validation: lint and production build pass; browser verification remains unavailable in this session.
+
+
+## 2026-10-03 — Voice on/off control
+
+- ☑ Shared voice toggle and synchronized on/off icons on Home, lessons and completion; persisted preference and immediate cancellation.
+- ☑ Speech-service tests cover active TTS and recorded-audio cancellation plus suppression while muted. UI tests cover status, one restart and restoring saved mute.
+- Validation: 73 tests, lint and production build pass. Audible playback and browser visual verification remain pending because this session has no working browser surface.
+
+
+## 2026-10-03 — Automatic speech recovery and Home cleanup
+
+- ☑ Deferred automatic speech until document activation, plus recovery from `not-allowed` errors; pending speech cancelled on navigation/mute and reflected in the voice control.
+- ☑ Removed Home's `준비 중` entry. Full lesson tests confirm it is absent.
+- ☑ 78 tests, lint and production build pass. Added cases for fresh-document activation, blocked retry, navigation replacement, mute cancellation and clicking the blocked voice control.
+- ☐ Actual Mac Chrome audible playback verification remains pending; no browser connection is available in this session.

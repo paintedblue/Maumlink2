@@ -64,3 +64,18 @@ Format: date · decision · why · PRD reference.
 
 - User reported that default text was too large. Default story/question type is now 22–26px (previously 28–32px), body 18–20px (22–24px), buttons 18px (22px), emotion labels 18px (20px), and captions 14px (16px). Brand and introductory headings are reduced proportionally. This explicitly supersedes the original normal-size values in PRD §6.4.
 - The existing large-text setting and 64px minimum touch targets remain unchanged. Only visual sizing changes; lesson content and behavior stay intact.
+
+
+## 2026-10-03 — Header voice toggle
+
+- User requested tapping the voice icon to turn narration off/on and update its status. Home, lesson and completion headers now share one persistent voice toggle instead of a replay-only control. An outlined/muted speaker and `aria-pressed=false` indicate off; the highlighted speaker and `aria-pressed=true` indicate on. Accessible label is stable; tooltip states the available action.
+- Turning off synchronously cancels current browser speech or recorded audio and suppresses subsequent narration until enabled. Turning on unlocks playback and reads the current screen once. The separate auto-read and UI sound preferences retain their meaning; screen-reader announcements remain available.
+- `voiceEnabled` defaults to true for older stored settings and persists with the existing preferences. Three UI labels added for this explicitly requested control; scenario content is unchanged.
+
+
+## 2026-10-03 — Desktop automatic speech and Home cleanup
+
+- User confirmed manual speaker playback works on Mac Chrome; only automatic reading is silent. This narrows the issue to automatic startup rather than proving a missing voice or hardware issue. No live Mac Chrome diagnosis is claimed.
+- Automatic narration now checks document activation, retains the current request until click/keyboard interaction, and recovers from a browser `not-allowed` speech error. Navigation and mute cancel pending narration. The header shows a startable/off state while activation is needed, and clicking it starts playback rather than inadvertently muting the waiting voice.
+- Evidence references: [Chrome's speech synthesis introduction](https://developer.chrome.com/blog/web-apps-that-talk-introduction-to-the-speech-synthesis-api) and [speech error codes](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent/error). Browser permission policy still controls whether speech can start before any interaction.
+- At the user's explicit request, Home no longer renders the fifth reserved `준비 중` item. The four playable domains remain; original content data is retained. This supersedes the original reserved-card presentation requirement.

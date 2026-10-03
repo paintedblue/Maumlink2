@@ -2,19 +2,13 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { scenariosByDomain } from '@/content/loader'
 import type { Domain, Scenario } from '@/content/schema'
+import { VoiceToggle } from '@/design/VoiceToggle'
 import { HeartFriends } from '@/design/HeartFriends'
 import { IconButton } from '@/design/Button'
 import { domainSurface } from '@/design/domain'
 import { Sheet } from '@/design/Sheet'
 import { cn } from '@/design/cn'
-import {
-  CheckIcon,
-  ChevronRightIcon,
-  LinkMark,
-  SettingsIcon,
-  SpeakerIcon,
-  SpeakerMutedIcon,
-} from '@/design/icons'
+import { CheckIcon, ChevronRightIcon, LinkMark, SettingsIcon } from '@/design/icons'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
 import { useProgress } from '@/services/progress'
@@ -24,7 +18,7 @@ import { useAutoRead, useSpeak } from '@/services/useSpeak'
 import { SettingsSheet } from './SettingsSheet'
 import { StartGate } from './StartGate'
 
-const ORDER: Domain[] = ['self', 'social', 'relation', 'mind', 'reserved']
+const ORDER: Domain[] = ['self', 'social', 'relation', 'mind']
 
 export function Home() {
   const started = useSettings((s) => s.started)
@@ -62,17 +56,7 @@ function HomeInner() {
             <span className="brand-name">{t('app.name')}</span>
           </div>
           <div className="utility-controls">
-            <IconButton
-              label={t('a11y.speak')}
-              onClick={() => void speak(greeting)}
-              badge={
-                !supported ? (
-                  <span className="block size-3 rounded-full bg-ink-soft" title={t('tts.muted')} />
-                ) : undefined
-              }
-            >
-              {supported ? <SpeakerIcon /> : <SpeakerMutedIcon />}
-            </IconButton>
+            <VoiceToggle onEnable={() => void speak(greeting)} supported={supported} />
             <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
               <SettingsIcon />
             </IconButton>
