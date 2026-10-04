@@ -91,11 +91,18 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
               <p className="text-story font-bold text-ink">{L(step3.byFeeling[first.id]!)}</p>
             </Card>
           )}
-          <section className="reason-compare-others" aria-labelledby="reason-compare-title">
-            {/* The lesson's own title states the core value: 나와 너의 생각이 다를 수 있어! */}
-            <h2 id="reason-compare-title" className="reason-compare-title">
-              {L(scenario.title)}
-            </h2>
+          <section
+            className="reason-compare-others"
+            {...(step3.compareHeading
+              ? { 'aria-labelledby': 'reason-compare-title' }
+              : { 'aria-label': L(step3.question) })}
+          >
+            {/* Document text only, e.g. 관계 인식's title “나와 너의 생각이 다를 수 있어!”. */}
+            {step3.compareHeading && (
+              <h2 id="reason-compare-title" className="reason-compare-title">
+                {L(step3.compareHeading)}
+              </h2>
+            )}
             <ul className="reason-compare-list" data-testid="reason-compare">
               {explorableFeelings(scenario)
                 .filter((id) => id !== first?.id)

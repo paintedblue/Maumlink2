@@ -12,6 +12,28 @@
     "en": "Can recognize own feelings, think about why, and ask for help."
   },
   "estimatedMinutes": 7,
+  "stepTitles": {
+    "situation": {
+      "ko": "상황 보기",
+      "en": "View the Situation"
+    },
+    "feeling": {
+      "ko": "감정 알아보기",
+      "en": "Explore Feelings"
+    },
+    "step3": {
+      "ko": "왜 그런 기분이 들까요?",
+      "en": "Why Do I Feel This Way?"
+    },
+    "action": {
+      "ko": "어떻게 하면 좋을까요?",
+      "en": "What Should I Do?"
+    },
+    "feedback": {
+      "ko": "선택에 따른 피드백",
+      "en": "Feedback for Each Choice"
+    }
+  },
   "situation": {
     "title": {
       "ko": "내 차례인데 친구가 새치기를 했어요."
@@ -53,6 +75,7 @@
   },
   "step3": {
     "type": "reason",
+    "explore": true,
     "question": {
       "ko": "왜 그런 마음이 들었을까요?",
       "en": "Why did I feel that way?"
@@ -80,11 +103,12 @@
       "ko": "그런 마음이 들 때 어떻게 하면 좋을까요?",
       "en": "What can I do when I feel that way?"
     },
+    "explore": true,
     "options": [
       {
         "id": "A",
         "text": {
-          "ko": "내 마음 말하기 – “네가 새치기해서 나는 속상했어＂라고 말하기"
+          "ko": "내 마음 말하기 – “ 네가 새치기해서 나는 속상했어＂라고 말하기"
         },
         "quality": "recommended",
         "feedback": {
@@ -118,7 +142,7 @@
       {
         "id": "D",
         "text": {
-          "ko": "도움 요청하기 – 선생님에게 “친구와 해결하기 어려워요. 도와주세요＂"
+          "ko": "도움 요청하기 – 선생님에게 “ 친구와 해결하기 어려워요. 도와주세요＂"
         },
         "quality": "recommended",
         "feedback": {

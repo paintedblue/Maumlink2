@@ -112,3 +112,9 @@ Format: date · decision · why · PRD reference.
 - `feeling.multiSelect` turned on as the document permits; the engine, persistence and recap already supported it.
 - New optional `step3.principleAfterChoice` (multiple-choice only): the principle is the document's “핵심 피드백”, so it appears and is read only after a reason is chosen. Other lessons keep the always-visible principle.
 - Action semantics unchanged (A/B reconsider → try another; C/D end), matching the document's design intent of checking with the friend. The cover's leftover template subtitle is not used.
+
+## 2026-10-04 — 마음건강관리 design document
+
+- Reason comparison enabled (same developer principle as 관계 인식). The comparison heading became optional document data (`step3.compareHeading`): 관계 인식 uses its title; 마음건강관리 shows none because no document sentence fits, rather than inventing one.
+- `action.explore` enabled: all four options are recommended ways to express feelings or ask for help, so the child may try each and the ending lists them.
+- With this, all four domains follow their md transcriptions exactly; each lesson's Korean text is checked against its md and recorded in the PDF ledger.

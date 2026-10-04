@@ -74,6 +74,10 @@
   "step3": {
     "type": "reason",
     "explore": true,
+    "compareHeading": {
+      "ko": "나와 너의 생각이 다를 수 있어!",
+      "en": "You and I Can Think Differently!"
+    },
     "question": {
       "ko": "왜 그런 기분이 들었을까요?",
       "en": "Why did I feel that way?"

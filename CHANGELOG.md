@@ -20,6 +20,12 @@
 - Several feelings can be chosen for the friend, as the document permits.
 - STEP 3 key feedback appears after the child chooses a reason.
 
+### 마음건강관리
+
+- Document step titles and exact quote spacing from the md transcription.
+- STEP 3 reason comparison (no heading, as the document provides none that fits).
+- STEP 4/5: try every way to express feelings or ask for help; the ending lists them.
+
 ## 1.0.0 — 2026-10-03
 
 First versioned release of 마음잇다 (Maum:Link), a Korean social-emotional learning app.

@@ -35,6 +35,8 @@ export const Step3Reason = z.object({
   /** After the child's own reason, the other documented feelings and reasons can be opened to
    *  compare (관계 인식: “같은 상황에서도 사람마다 다른 생각과 감정”). */
   explore: z.boolean().optional(),
+  /** Optional heading over the comparison (document text only; omitted when none fits). */
+  compareHeading: LString.optional(),
   ...Step3Base,
   byFeeling: z.record(EmotionId, LString),
 })
