@@ -106,3 +106,9 @@ Format: date · decision · why · PRD reference.
 - `action.explore` enabled for comparison. In explore recaps, `reconsider` options are listed only when they were the final choice, so the ending never presents the angry option as a kept strategy.
 - The document's own inserted illustration replaces the generated v2 playground image, per the instruction to use the provided content. It is text-free, so no regeneration was needed.
 - Quote spacing follows the md transcription (verified against the source PPTX), replacing earlier PDF-extraction spacing.
+
+## 2026-10-04 — 관계 관리 design document
+
+- `feeling.multiSelect` turned on as the document permits; the engine, persistence and recap already supported it.
+- New optional `step3.principleAfterChoice` (multiple-choice only): the principle is the document's “핵심 피드백”, so it appears and is read only after a reason is chosen. Other lessons keep the always-visible principle.
+- Action semantics unchanged (A/B reconsider → try another; C/D end), matching the document's design intent of checking with the friend. The cover's leftover template subtitle is not used.

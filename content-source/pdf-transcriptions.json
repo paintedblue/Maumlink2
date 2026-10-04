@@ -91,7 +91,7 @@
         },
         "action.options.2.text": {
           "page": 6,
-          "ko": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.” 라고 말해요."
+          "ko": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.”라고 말해요."
         },
         "action.options.2.feedback": {
           "page": 7,
@@ -99,7 +99,7 @@
         },
         "action.options.3.text": {
           "page": 6,
-          "ko": "“내가 장난으로 숨겼는데 속상했어?” 라고 친구에게 물어봐요."
+          "ko": "“내가 장난으로 숨겼는데 속상했어?”라고 친구에게 물어봐요."
         },
         "action.options.3.feedback": {
           "page": 7,
@@ -108,6 +108,26 @@
         "closing": {
           "page": 7,
           "ko": "“나는 재미있어도 친구는 재미없을 수 있어요. 친구의 표정과 마음도 살펴봐요.”"
+        },
+        "stepTitles.situation": {
+          "page": 3,
+          "ko": "상황 보기"
+        },
+        "stepTitles.feeling": {
+          "page": 4,
+          "ko": "감정 알아보기"
+        },
+        "stepTitles.step3": {
+          "page": 5,
+          "ko": "왜 그런 기분이 들까요?"
+        },
+        "stepTitles.action": {
+          "page": 6,
+          "ko": "어떻게 하면 좋을까요?"
+        },
+        "stepTitles.feedback": {
+          "page": 7,
+          "ko": "선택에 따른 피드백"
         }
       },
       "feelingOptions": [

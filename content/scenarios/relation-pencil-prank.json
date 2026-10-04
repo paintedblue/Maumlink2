@@ -12,6 +12,28 @@
     "en": "Can know words and actions that help make friends, and use them to fit the situation."
   },
   "estimatedMinutes": 7,
+  "stepTitles": {
+    "situation": {
+      "ko": "상황 보기",
+      "en": "View the Situation"
+    },
+    "feeling": {
+      "ko": "감정 알아보기",
+      "en": "Explore Feelings"
+    },
+    "step3": {
+      "ko": "왜 그런 기분이 들까요?",
+      "en": "Why Do I Feel This Way?"
+    },
+    "action": {
+      "ko": "어떻게 하면 좋을까요?",
+      "en": "What Should I Do?"
+    },
+    "feedback": {
+      "ko": "선택에 따른 피드백",
+      "en": "Feedback for Each Choice"
+    }
+  },
   "situation": {
     "title": {
       "ko": "나는 장난이었는데, 친구는 속상해요",
@@ -43,7 +65,7 @@
       "en": "How does the friend looking for the pencil feel?"
     },
     "options": ["worried", "upset", "angry", "flustered", "amused"],
-    "multiSelect": false,
+    "multiSelect": true,
     "hint": {
       "text": {
         "ko": "“어? 친구가 웃지 않아요.”"
@@ -53,6 +75,7 @@
   },
   "step3": {
     "type": "multiple-choice",
+    "principleAfterChoice": true,
     "question": {
       "ko": "친구는 왜 그런 기분이 들었을까요?",
       "en": "Why did my friend feel that way?"
@@ -125,7 +148,7 @@
       {
         "id": "C",
         "text": {
-          "ko": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.” 라고 말해요."
+          "ko": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.”라고 말해요."
         },
         "quality": "recommended",
         "feedback": {
@@ -136,7 +159,7 @@
       {
         "id": "D",
         "text": {
-          "ko": "“내가 장난으로 숨겼는데 속상했어?” 라고 친구에게 물어봐요."
+          "ko": "“내가 장난으로 숨겼는데 속상했어?”라고 친구에게 물어봐요."
         },
         "quality": "recommended",
         "feedback": {

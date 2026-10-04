@@ -14,6 +14,12 @@
 - STEP 3 reason comparison: my reason first, then other feelings' reasons under "나와 너의 생각이 다를 수 있어!".
 - STEP 4/5 action comparison; the ending keeps only the ways worth repeating.
 
+### 관계 관리
+
+- Document step titles and exact quote spacing from the md transcription.
+- Several feelings can be chosen for the friend, as the document permits.
+- STEP 3 key feedback appears after the child chooses a reason.
+
 ## 1.0.0 — 2026-10-03
 
 First versioned release of 마음잇다 (Maum:Link), a Korean social-emotional learning app.

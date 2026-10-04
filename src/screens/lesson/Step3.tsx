@@ -3,6 +3,7 @@ import { ScenePrompt } from '@/design/ScenePrompt'
 import { getEmotion } from '@/content/loader'
 import type { BodyPart, Scenario } from '@/content/schema'
 import { BodyOutline } from '@/design/BodyOutline'
+import { HeartFriends } from '@/design/HeartFriends'
 import { Card } from '@/design/Card'
 import { ChoiceCard } from '@/design/ChoiceCard'
 import { cn } from '@/design/cn'
@@ -28,6 +29,10 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
   const first = feelings[0]
   const exploring = step3.type === 'body-reaction' && step3.explore === true
   const comparing = step3.type === 'reason' && step3.explore === true
+  // 관계 관리: the principle is the key feedback, revealed once a reason has been chosen.
+  const principleAsFeedback =
+    step3.type === 'multiple-choice' && step3.principleAfterChoice === true
+  const principleShown = !principleAsFeedback || state.step3OptionId !== undefined
   const explored = state.exploredFeelingId ? getEmotion(state.exploredFeelingId) : undefined
 
   // Auto-read: the header + question + (for per-feeling variants) the first explanation.
@@ -43,7 +48,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
       : '',
     exploring && !explored ? t('step3.explore') : '',
   ]
-    .concat(step3.principle ? L(step3.principle) : '')
+    .concat(step3.principle && !principleAsFeedback ? L(step3.principle) : '')
     .filter(Boolean)
     .join(' ')
   // In explore mode only the opening is read automatically (frozen at mount); each press speaks
@@ -255,7 +260,15 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
                   text={L(o.text)}
                   selected={selected}
                   onSelect={(id) => {
-                    void speak(`${L(o.text)}${o.ack ? ` ${L(o.ack)}` : ''}`)
+                    void speak(
+                      [
+                        L(o.text),
+                        o.ack && L(o.ack),
+                        principleAsFeedback && step3.principle && L(step3.principle),
+                      ]
+                        .filter(Boolean)
+                        .join(' '),
+                    )
                     dispatch({ type: 'SELECT_STEP3_OPTION', id })
                   }}
                   onSpeak={() => void speak(`${L(o.text)}${o.ack ? ` ${L(o.ack)}` : ''}`)}
@@ -268,7 +281,17 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
         </div>
       )}
 
-      {step3.principle && <p className="text-body text-ink-soft">{L(step3.principle)}</p>}
+      {step3.principle && principleAsFeedback && principleShown && (
+        <div className="feedback-dialogue motion-safe:animate-[fadeIn_240ms_ease-out]">
+          <HeartFriends />
+          <Card aria-live="polite" data-testid="step3-key-feedback">
+            <p className="text-story font-bold text-ink">{L(step3.principle)}</p>
+          </Card>
+        </div>
+      )}
+      {step3.principle && !principleAsFeedback && (
+        <p className="text-body text-ink-soft">{L(step3.principle)}</p>
+      )}
 
       {state.moreShown && step3.more && (
         <Card className="motion-safe:animate-[fadeIn_240ms_ease-out]" data-testid="step3-more">

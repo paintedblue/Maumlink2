@@ -48,6 +48,8 @@ export const Step3Body = z.object({
 })
 export const Step3Choice = z.object({
   type: z.literal('multiple-choice'),
+  /** Show `principle` as the key feedback only after a reason is chosen (관계 관리 “핵심 피드백”). */
+  principleAfterChoice: z.boolean().optional(),
   ...Step3Base,
   options: z.array(z.object({ id: OptionId, text: LString, ack: LString.optional() })).length(4),
 })
