@@ -11,6 +11,28 @@
     "en": "Can explore how my body reacts to my feelings in daily life, and ways to cope."
   },
   "estimatedMinutes": 7,
+  "stepTitles": {
+    "situation": {
+      "ko": "상황 보기",
+      "en": "View the Situation"
+    },
+    "feeling": {
+      "ko": "감정 알아보기",
+      "en": "Explore Feelings"
+    },
+    "step3": {
+      "ko": "그 때 나의 몸의 반응은?",
+      "en": "How Does My Body React?"
+    },
+    "action": {
+      "ko": "나를 도와주는 방법",
+      "en": "Ways to Help Myself"
+    },
+    "feedback": {
+      "ko": "선택에 따른 피드백",
+      "en": "Feedback for Each Choice"
+    }
+  },
   "situation": {
     "title": {
       "ko": "친구들이 내 발표 실수를 듣고 놀린다"
@@ -25,9 +47,37 @@
       "en": "I want to handle my upset feelings on my own"
     },
     "imageBrief": {
-      "ko": "친구들이 내 발표 실수를 듣고 놀린다"
+      "ko": "친구들이 내 발표를 듣고 놀려요."
     },
-    "image": "/img/generated/self-presentation-teasing-v2.png"
+    "image": "/img/generated/self-presentation-teasing-v2.png",
+    "emphasis": [
+      {
+        "ko": "속상해"
+      }
+    ],
+    "bubbles": [
+      {
+        "text": {
+          "ko": "ㅋㅋㅋ"
+        },
+        "x": 63,
+        "y": 22
+      },
+      {
+        "text": {
+          "ko": "발표 진짜 못하나~"
+        },
+        "x": 76,
+        "y": 9
+      },
+      {
+        "text": {
+          "ko": "그건 뭐야~?"
+        },
+        "x": 89,
+        "y": 24
+      }
+    ]
   },
   "feeling": {
     "subject": "self",
@@ -46,6 +96,7 @@
   },
   "step3": {
     "type": "body-reaction",
+    "explore": true,
     "question": {
       "ko": "그때 내 몸의 반응은 어떤가요?",
       "en": "How does my body react then?"
@@ -86,6 +137,7 @@
       "ko": "이런 마음과 몸의 반응이 나타날 때 나에게 필요한 것은?",
       "en": "What do I need when I have these feelings and body reactions?"
     },
+    "explore": true,
     "options": [
       {
         "id": "A",

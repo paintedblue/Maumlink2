@@ -8,7 +8,7 @@ import { BrandLogo } from '@/design/BrandLogo'
 import { HeartFriends } from '@/design/HeartFriends'
 import { Card } from '@/design/Card'
 import { ArrowRightIcon, HomeIcon, SettingsIcon } from '@/design/icons'
-import { chosenAction, type LessonState } from '@/engine/lessonMachine'
+import { triedActions, chosenAction, type LessonState } from '@/engine/lessonMachine'
 import { useT } from '@/i18n/useT'
 import { useLesson } from '@/engine/store'
 import { SettingsSheet } from '../SettingsSheet'
@@ -36,6 +36,8 @@ export function Wrapup({ scenario, state, onExit }: Props) {
   }, [scenario.id])
 
   const action = chosenAction(state, scenario)
+  // Explore mode recaps every coping idea the child tried; otherwise the final choice.
+  const actions = scenario.action.explore ? triedActions(state, scenario) : action ? [action] : []
   const next = nextScenarioInDomain(scenario)
   const feelings = state.feelingIds.map(getEmotion)
 
@@ -53,7 +55,9 @@ export function Wrapup({ scenario, state, onExit }: Props) {
                   closing,
                   t('wrapup.path'),
                   ...feelings.map((f) => L(f.word)),
-                  action ? `${t('feedback.myChoice')}. ${L(action.text)}` : '',
+                  actions.length
+                    ? `${t('feedback.myChoice')}. ${actions.map((a) => L(a.text)).join('. ')}`
+                    : '',
                 ]
                   .filter(Boolean)
                   .join(' '),
@@ -82,10 +86,26 @@ export function Wrapup({ scenario, state, onExit }: Props) {
               </span>
             ))}
           </div>
-          {action && (
-            <div className="journey-action">
+          {actions.length > 0 && (
+            <div className="journey-action" data-testid="journey-actions">
               <span className="text-caption font-bold text-ink-soft">{t('feedback.myChoice')}</span>
-              <p className="text-body font-bold">{L(action.text)}</p>
+              {actions.length === 1 ? (
+                <p className="text-body font-bold">{L(actions[0]!.text)}</p>
+              ) : (
+                <ul className="journey-action-list">
+                  {actions.map((a) => (
+                    <li key={a.id} className="text-body font-bold">
+                      <img
+                        src={`/icons/outcome/${a.outcomeIcon}.svg`}
+                        alt=""
+                        width={32}
+                        height={32}
+                      />
+                      {L(a.text)}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           )}
         </section>

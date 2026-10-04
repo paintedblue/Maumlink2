@@ -40,6 +40,16 @@
 - `acceptable` — 괜찮음. 위와 같습니다.
 - `reconsider` — 다시 생각해 볼 만함. 피드백 후 **다른 방법 해보기** 버튼이 함께 보입니다. (아이에게 '틀렸다'고 하지 않습니다.)
 
+### 영역 설계서 기능 (선택 항목)
+
+설계서가 요청할 때만 켭니다. 모든 문구는 설계서 원문이어야 하며 `content-source/pdf-transcriptions.json`에 페이지와 함께 기록합니다.
+
+- `stepTitles` — 설계서의 STEP 제목(예: `"step3": {"ko": "그 때 나의 몸의 반응은?"}`)을 진행 표시 아래에 보여 줍니다. 없으면 기본 단계 이름을 씁니다.
+- `situation.bubbles` — 상황 카드 그림 속 말풍선. `x`, `y`는 그림 안 위치(%)이며 최대 4개입니다.
+- `situation.emphasis` — 설계서가 색으로 강조한 낱말(예: `속상해`). 이야기 문장 안에 있어야 합니다.
+- `step3.explore` (`body-reaction`일 때) — 감정 버튼을 하나씩 눌러 몸의 반응을 살펴보는 화면. 원문에 반응이 있는 감정만 버튼으로 나옵니다.
+- `action.explore` — 모든 대처 방법을 차례로 해 볼 수 있고, 마무리 화면에 해 본 방법이 모두 나옵니다.
+
 ### `outcomeIcon` (피드백 화면의 작은 그림)
 `think` · `wait` · `talk` · `together` · `teacher` · `handshake` · `walk` · `draw` · `quiet` · `breathe`
 

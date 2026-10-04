@@ -23,6 +23,9 @@ export interface LessonState {
   hintAutoShown: boolean
   notSureCount: number
   step3OptionId?: OptionId
+  /** Body-reaction explore mode: the feeling whose reaction is shown, and every one pressed. */
+  exploredFeelingId?: string
+  exploredFeelingIds: string[]
   moreShown: boolean
   /** Selected on S4; becomes the chosen action on S5. */
   actionId?: OptionId
@@ -40,6 +43,7 @@ export type LessonEvent =
   | { type: 'SELECT_HINT_FEELING'; id: string }
   | { type: 'IDLE_TICK' }
   | { type: 'SELECT_STEP3_OPTION'; id: OptionId }
+  | { type: 'EXPLORE_FEELING'; id: string }
   | { type: 'TELL_MORE' }
   | { type: 'GOT_IT' }
   | { type: 'SELECT_ACTION'; id: OptionId }
@@ -58,6 +62,7 @@ export function initialLessonState(scenarioId: string): LessonState {
     hintOpen: false,
     hintAutoShown: false,
     notSureCount: 0,
+    exploredFeelingIds: [],
     moreShown: false,
     triedActionIds: [],
     completed: false,
@@ -89,8 +94,28 @@ export function chosenAction(state: LessonState, scenario: Scenario) {
   return scenario.action.options.find((o) => o.id === state.actionId)
 }
 
+/** Feelings with a documented body reaction, in the order the feeling screen lists them. */
+export function explorableFeelings(scenario: Scenario): string[] {
+  const s3 = scenario.step3
+  if (s3.type !== 'body-reaction' || !s3.explore) return []
+  return scenario.feeling.options.filter((id) => id in s3.byFeeling)
+}
+
+/** Actions the child has tried in explore mode (in order), ending with the current one. */
+export function triedActions(state: LessonState, scenario: Scenario) {
+  const ids = [...state.triedActionIds, ...(state.actionId ? [state.actionId] : [])]
+  return [...new Set(ids)]
+    .map((id) => scenario.action.options.find((o) => o.id === id))
+    .filter((o) => o !== undefined)
+}
+
 export function canTryAnother(state: LessonState, scenario: Scenario): boolean {
-  return state.step === 'feedback' && chosenAction(state, scenario)?.quality === 'reconsider'
+  if (state.step !== 'feedback') return false
+  const action = chosenAction(state, scenario)
+  if (!action) return false
+  if (scenario.action.explore)
+    return triedActions(state, scenario).length < scenario.action.options.length
+  return action.quality === 'reconsider'
 }
 
 /** Index 0..4 for the five progress dots (wrapup counts as all complete). */
@@ -171,12 +196,18 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
           return { ...s, hintOpen: true, hintAutoShown: true }
         case 'NEXT':
           if (s.feelingIds.length === 0) return { ...s, announce: { kind: 'pickFirst' } }
-          return {
-            ...s,
-            step: 'step3',
-            hintOpen: false,
-            moreShown: false,
-            step3OptionId: undefined,
+          {
+            // Explore mode opens on the child's own feeling when the source documents it.
+            const own = s.feelingIds.find((id) => explorableFeelings(scenario).includes(id))
+            return {
+              ...s,
+              step: 'step3',
+              hintOpen: false,
+              moreShown: false,
+              step3OptionId: undefined,
+              exploredFeelingId: own,
+              exploredFeelingIds: own ? [own] : [],
+            }
           }
         case 'BACK':
           return {
@@ -194,6 +225,15 @@ export function reduce(state: LessonState, event: LessonEvent, scenario: Scenari
       switch (event.type) {
         case 'SELECT_STEP3_OPTION':
           return scenario.step3.type === 'multiple-choice' ? { ...s, step3OptionId: event.id } : s
+        case 'EXPLORE_FEELING':
+          if (!explorableFeelings(scenario).includes(event.id)) return s
+          return {
+            ...s,
+            exploredFeelingId: event.id,
+            exploredFeelingIds: s.exploredFeelingIds.includes(event.id)
+              ? s.exploredFeelingIds
+              : [...s.exploredFeelingIds, event.id],
+          }
         case 'TELL_MORE':
           return scenario.step3.more ? { ...s, moreShown: true } : s
         case 'GOT_IT':

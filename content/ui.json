@@ -63,6 +63,10 @@
   "step.step3": { "ko": "왜 그럴까", "en": "Thought" },
   "step.action": { "ko": "어떻게 할까", "en": "Action" },
   "step.feedback": { "ko": "피드백", "en": "Feedback" },
+  "step3.explore": {
+    "ko": "감정 버튼을 누르고 몸의 반응을 살펴봐요.",
+    "en": "Press a feeling button to see how the body reacts."
+  },
   "progress.label": { "ko": "{n}단계 중 {i}단계", "en": "Step {i} of {n}" },
   "feeling.chose": { "ko": "'{emotion}'를 골랐어요.", "en": "You chose '{emotion}'." },
   "feeling.pickFirst": { "ko": "먼저 하나를 골라요.", "en": "Choose one first." },

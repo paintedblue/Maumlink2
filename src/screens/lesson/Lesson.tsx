@@ -4,7 +4,13 @@ import { getEmotion, getScenario } from '@/content/loader'
 import { PrimaryButton, SecondaryButton } from '@/design/Button'
 import { Sheet } from '@/design/Sheet'
 import { HelpIcon, ReplayIcon } from '@/design/icons'
-import { canProceed, canTryAnother, progressIndex, type LessonEvent } from '@/engine/lessonMachine'
+import {
+  canProceed,
+  canTryAnother,
+  progressIndex,
+  type LessonEvent,
+  type Step,
+} from '@/engine/lessonMachine'
 import { useLesson } from '@/engine/store'
 import { useT } from '@/i18n/useT'
 import { useSettings } from '@/services/settings'
@@ -183,6 +189,11 @@ export function Lesson() {
       break
   }
 
+  function stepTitle(step: Step): string {
+    const own = step === 'wrapup' ? undefined : scenario!.stepTitles?.[step]
+    return own ? L(own) : t(`step.${step}`)
+  }
+
   // Replay reads the most relevant text for the current screen.
   const replay = () => {
     const text = currentText()
@@ -198,8 +209,11 @@ export function Lesson() {
       case 'feeling':
         return L(scenario!.feeling.question)
       case 'step3': {
-        const f = state!.feelingIds[0]
         const s3 = scenario!.step3
+        const f =
+          s3.type === 'body-reaction' && s3.explore
+            ? state!.exploredFeelingId
+            : state!.feelingIds[0]
         const explanation =
           s3.type === 'reason' && f
             ? s3.byFeeling[f]
@@ -212,6 +226,7 @@ export function Lesson() {
             : undefined
         return [
           L(s3.question),
+          s3.type === 'body-reaction' && s3.explore && f ? L(getEmotion(f).word) : '',
           explanation && L(explanation),
           choice && L(choice.text),
           choice?.ack && L(choice.ack),
@@ -236,6 +251,7 @@ export function Lesson() {
     <>
       <LessonShell
         screenKey={state.step}
+        stepTitle={stepTitle(state.step)}
         progressIndex={progressIndex(state.step)}
         onHome={() => setConfirmHome(true)}
         onSettings={() => setSettingsOpen(true)}

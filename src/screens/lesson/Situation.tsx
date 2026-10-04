@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Scenario } from '@/content/schema'
 import { Illustration } from '@/design/Illustration'
 import { HeartFriends } from '@/design/HeartFriends'
@@ -35,7 +36,21 @@ export function Situation({ scenario, state, onAdvance }: Props) {
           alt={L(scenario.situation.imageBrief)}
           brief={L(scenario.situation.imageBrief)}
           domain={scenario.domain}
-        />
+        >
+          {scenario.situation.bubbles && (
+            <ul className="scene-bubbles" aria-label={L(scenario.situation.imageBrief)}>
+              {scenario.situation.bubbles.map((b, i) => (
+                <li
+                  key={i}
+                  className="scene-bubble motion-safe:animate-[bubblePop_320ms_ease-out_both]"
+                  style={{ left: `${b.x}%`, top: `${b.y}%`, animationDelay: `${200 + i * 350}ms` }}
+                >
+                  {L(b.text)}
+                </li>
+              ))}
+            </ul>
+          )}
+        </Illustration>
       </div>
       <div className="situation-copy">
         <HeartFriends className="story-friends" />
@@ -52,7 +67,7 @@ export function Situation({ scenario, state, onAdvance }: Props) {
             key={state.sentenceIndex}
             className="story-sentence text-story font-bold text-ink motion-safe:animate-[fadeIn_240ms_ease-out]"
           >
-            {text}
+            {emphasize(text, (scenario.situation.emphasis ?? []).map(L))}
           </span>
         </button>
         <div
@@ -76,5 +91,23 @@ export function Situation({ scenario, state, onAdvance }: Props) {
         </div>
       </div>
     </div>
+  )
+}
+
+/** Wrap each emphasised word (the source document prints them in colour) in a <strong>. */
+function emphasize(text: string, words: string[]): ReactNode {
+  const list = words.filter(Boolean)
+  if (!list.length) return text
+  const pattern = new RegExp(
+    `(${list.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`,
+  )
+  return text.split(pattern).map((part, i) =>
+    list.includes(part) ? (
+      <strong key={i} className="story-emphasis">
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
   )
 }

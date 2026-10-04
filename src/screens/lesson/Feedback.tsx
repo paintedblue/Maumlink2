@@ -19,7 +19,9 @@ export function Feedback({ scenario, state }: Props) {
   if (!action) return null
   return (
     <div className="feedback-layout">
-      <h1 className="sr-only">{t('step.feedback')}</h1>
+      <h1 className="sr-only">
+        {scenario.stepTitles?.feedback ? L(scenario.stepTitles.feedback) : t('step.feedback')}
+      </h1>
       <Card
         label={t('feedback.myChoice')}
         tone="domain"

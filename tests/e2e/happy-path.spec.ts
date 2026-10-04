@@ -62,7 +62,7 @@ for (const scenario of scenarios) {
       }
     })
 
-    test('every action shows its own feedback; reconsider offers "try another way" (FR-S5-02)', async ({
+    test('every action shows its own feedback; reconsider (or explore mode) offers "try another way" (FR-S5-02)', async ({
       page,
     }) => {
       await gotoHome(page)
@@ -78,7 +78,9 @@ for (const scenario of scenarios) {
         await page.getByTestId('nav-primary').click()
         await expect(page.getByTestId('feedback-card')).toContainText(o.feedback.ko.slice(0, 10))
         const tryAnother = page.getByTestId('nav-try-another')
-        if (o.quality === 'reconsider') {
+        // Explore lessons (자기 인식) invite trying every coping idea until all four are tried.
+        const lastToExplore = o.id === scenario.action.options.at(-1)!.id
+        if (o.quality === 'reconsider' || (scenario.action.explore && !lastToExplore)) {
           await expect(tryAnother).toBeVisible()
           await tryAnother.click()
           await expect(page.locator(`[data-option="${o.id}"]`)).toBeVisible()

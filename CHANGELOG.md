@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — 자기 인식 design-document features
+
+- STEP titles from the design document appear under the progress track (e.g. "그 때 나의 몸의 반응은?").
+- The situation picture shows the document's scene-card speech bubbles; "속상해" is emphasised as in the source; the picture description is the card caption.
+- STEP 3 body-reaction explorer: press each documented feeling to see its body reaction highlighted on the body outline.
+- STEP 4/5 coping exploration: the child can try every coping method; the ending lists all methods tried.
+- New optional content fields and validator rules; 11 new unit/screen tests; happy-path e2e updated for explore mode.
+
 ## 1.0.0 — 2026-10-03
 
 First versioned release of 마음잇다 (Maum:Link), a Korean social-emotional learning app.

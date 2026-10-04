@@ -90,3 +90,12 @@ Format: date · decision · why · PRD reference.
 - Settings includes `음성 확인`, current status, and the chosen voice name when known. This provides a direct playback check without rewriting auto-read or sound preferences.
 - Primary references: [voice inventory changes](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesis/voiceschanged_event), [local vs remote voices](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisVoice/localService), and [speech errors](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisErrorEvent/error).
 - Native `say -v '?'` lists Yuna/ko_KR on this machine. That is not a browser inventory or audible test. Chrome tool connection still fails with `CUA_REPL_ENABLED_SURFACES is required`; do not claim the user's Mac is fixed until actual playback is confirmed.
+
+
+## 2026-10-04 — Domain design documents drive per-lesson features (자기 인식 first)
+
+- User directed shipping each domain's requested features from its design document, starting with 자기 인식. Features are optional, data-driven scenario fields (`stepTitles`, `situation.bubbles`, `situation.emphasis`, `step3.explore`, `action.explore`) so other domains opt in from their own documents without code forks. Lessons without them behave exactly as before.
+- Every new child-facing string is a PDF transcription recorded with its page in `pdf-transcriptions.json`; `validate:final-content` enforces it. Only one UI instruction string was added (`step3.explore`).
+- Explore-mode narration: the STEP 3 opening is read once at mount; each feeling press speaks only that feeling and reaction, so automatic reading never talks over the child's own exploration.
+- Explore-mode retry is offered until every option has been tried; "reconsider" retry semantics are unchanged for other lessons.
+- Visual-regression baselines in `tests/e2e/responsive.spec.ts-snapshots` predate this change (and the storybook redesign); they were not regenerated.

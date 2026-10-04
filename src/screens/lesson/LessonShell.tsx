@@ -22,6 +22,8 @@ interface Props {
   children: ReactNode
   /** Key that changes per screen to replay the slide-in transition. */
   screenKey: string
+  /** Step caption under the progress track; defaults to the generic label for the step. */
+  stepTitle?: string
 }
 
 /**
@@ -37,6 +39,7 @@ export function LessonShell({
   bottom,
   children,
   screenKey,
+  stepTitle,
 }: Props) {
   const { t } = useT()
   const content = useRef<HTMLElement>(null)
@@ -57,7 +60,7 @@ export function LessonShell({
         </div>
         <div className="lesson-progress">
           <ProgressLink index={progressIndex} />
-          <span className="progress-caption">{t(`step.${screenKey}`)}</span>
+          <span className="progress-caption">{stepTitle ?? t(`step.${screenKey}`)}</span>
         </div>
         <div className="flex items-center gap-4">
           <VoiceToggle onEnable={onReplay} supported={ttsSupported} />

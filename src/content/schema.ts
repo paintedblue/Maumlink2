@@ -38,6 +38,8 @@ export const Step3Reason = z.object({
 export const Step3Body = z.object({
   type: z.literal('body-reaction'),
   sourceOmissions: z.array(EmotionId).optional(),
+  /** Feeling buttons let the child press each feeling and see its body reaction (자기 인식 STEP 3). */
+  explore: z.boolean().optional(),
   ...Step3Base,
   byFeeling: z.record(EmotionId, z.object({ text: LString, parts: z.array(BodyPart).min(1) })),
 })
@@ -58,6 +60,24 @@ export const ActionOption = z.object({
 })
 export type ActionOption = z.infer<typeof ActionOption>
 
+/** A speech bubble drawn over the situation illustration; x/y are % of the frame (bubble centre). */
+export const SceneBubble = z.object({
+  text: LString,
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+})
+export type SceneBubble = z.infer<typeof SceneBubble>
+
+/** Per-lesson step titles from the design document; the UI falls back to the generic labels. */
+export const StepTitles = z.object({
+  situation: LString.optional(),
+  feeling: LString.optional(),
+  step3: LString.optional(),
+  action: LString.optional(),
+  feedback: LString.optional(),
+})
+export type StepTitles = z.infer<typeof StepTitles>
+
 export const Scenario = z.object({
   schemaVersion: z.literal(1),
   id: z.string().regex(SCENARIO_ID_PATTERN),
@@ -66,6 +86,7 @@ export const Scenario = z.object({
   title: LString,
   learningGoal: LString,
   estimatedMinutes: z.number().int().positive(),
+  stepTitles: StepTitles.optional(),
   situation: z.object({
     title: LString,
     story: z.array(LString).min(1),
@@ -73,6 +94,9 @@ export const Scenario = z.object({
     image: z.string().optional(),
     imageByLocale: z.object({ ko: z.string().optional(), en: z.string().optional() }).optional(),
     imageBrief: LString,
+    /** Words in the story the source document emphasises (e.g. printed in red). */
+    emphasis: z.array(LString).optional(),
+    bubbles: z.array(SceneBubble).max(4).optional(),
   }),
   feeling: z.object({
     subject: z.enum(['self', 'other']),
@@ -84,6 +108,8 @@ export const Scenario = z.object({
   step3: Step3,
   action: z.object({
     question: LString,
+    /** Every option is a coping idea to explore: the child may try each in turn (FR-S5-02 generalised). */
+    explore: z.boolean().optional(),
     options: z.array(ActionOption).length(4),
   }),
   closing: LString,

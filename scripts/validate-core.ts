@@ -218,6 +218,21 @@ export function validateAll(root: string): Report {
         err('situation.image', `public/${p} does not exist (run "pnpm images")`)
     }
 
+    // 9. emphasised words must occur in the story or key sentence they decorate
+    const storyKo = [...s.situation.story, s.situation.keySentence].map((x) => x.ko)
+    s.situation.emphasis?.forEach((word, i) => {
+      if (!storyKo.some((line) => line.includes(word.ko)))
+        err(`situation.emphasis.${i}`, `"${word.ko}" does not occur in the story`)
+    })
+
+    // 10. explore mode for body reactions needs at least two documented reactions to compare
+    if (
+      s.step3.type === 'body-reaction' &&
+      s.step3.explore &&
+      Object.keys(s.step3.byFeeling).length < 2
+    )
+      err('step3.explore', 'explore needs at least two documented body reactions')
+
     scenarios.push(s)
   }
 

@@ -734,3 +734,159 @@
   width: clamp(232px, 32vw, 310px);
   margin-inline: auto;
 }
+
+/* ---- Situation card overlays: speech bubbles from the design document's scene card. */
+/* The frame may letterbox the 16:10 picture; the overlay matches the picture's own box. */
+.story-illustration:has(.scene-bubbles) {
+  container-type: size;
+}
+.scene-bubbles {
+  position: absolute;
+  inset: 0;
+  width: min(100cqw, 160cqh);
+  height: min(100cqh, 62.5cqw);
+  margin: auto;
+  padding: 0;
+  list-style: none;
+  pointer-events: none;
+}
+.scene-bubble {
+  position: absolute;
+  translate: -50% -50%;
+  max-width: 34%;
+  padding: 0.45em 0.8em;
+  border: 2px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: clamp(11px, min(2.6cqw, 4.16cqh), 22px);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 3px 0 #3430471f;
+}
+.scene-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -0.55em;
+  width: 0.9em;
+  height: 0.9em;
+  translate: -50% 0;
+  rotate: 45deg;
+  border-right: 2px solid var(--color-ink);
+  border-bottom: 2px solid var(--color-ink);
+  background: var(--color-surface);
+}
+@keyframes bubblePop {
+  0% {
+    opacity: 0;
+    scale: 0.6;
+  }
+  70% {
+    opacity: 1;
+    scale: 1.06;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+/* Words the source document prints in colour (e.g. 속상해). */
+.story-emphasis {
+  color: #b83a26;
+}
+
+/* ---- STEP 3 body explorer: press a feeling, see the body react. */
+.body-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.body-explorer-feelings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 10px;
+}
+.body-explorer-feeling {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 64px;
+  padding: 8px 14px 8px 8px;
+  border: 2px solid var(--color-line);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: var(--fs-emotion);
+  font-weight: 700;
+  box-shadow: 0 3px 0 var(--color-line);
+  transition:
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+.body-explorer-feeling[aria-pressed='true'] {
+  border-color: var(--color-select);
+  background: var(--color-selected);
+  box-shadow: 0 3px 0 var(--color-select);
+}
+.body-explorer-face {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--tile-tint);
+}
+.body-explorer-seen {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-go);
+  color: var(--color-go-ink);
+}
+.body-part {
+  fill: #ee8a5f;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .body-part:not([opacity='0']) {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: bodyPulse 1.6s ease-in-out infinite;
+  }
+}
+@keyframes bodyPulse {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.12;
+  }
+}
+
+/* Explore-mode recap: every coping idea the child tried. */
+.journey-action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.journey-action-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

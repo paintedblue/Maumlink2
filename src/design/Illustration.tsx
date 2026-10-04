@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import type { Domain } from '@/content/schema'
 import { useT } from '@/i18n/useT'
 import { cn } from './cn'
@@ -10,13 +11,15 @@ interface Props {
   brief?: string
   domain: Domain
   className?: string
+  /** Overlays positioned in the same 16:10 frame as the picture (e.g. speech bubbles). */
+  children?: ReactNode
 }
 
 /**
  * Situation illustration with srcset (FR-RES-06) in a fixed 16:10 frame so layout never
  * shifts; falls back to a domain-tinted placeholder carrying the written brief (FR-S1-03, D9).
  */
-export function Illustration({ src, alt, brief, domain, className }: Props) {
+export function Illustration({ src, alt, brief, domain, className, children }: Props) {
   const { t } = useT()
   return (
     <div
@@ -54,6 +57,7 @@ export function Illustration({ src, alt, brief, domain, className }: Props) {
           {brief && <span className="max-w-[48ch] text-caption text-ink">{brief}</span>}
         </div>
       )}
+      {children}
     </div>
   )
 }

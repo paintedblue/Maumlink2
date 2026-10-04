@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ScenePrompt } from '@/design/ScenePrompt'
 import { getEmotion } from '@/content/loader'
 import type { BodyPart, Scenario } from '@/content/schema'
@@ -5,7 +6,9 @@ import { BodyOutline } from '@/design/BodyOutline'
 import { Card } from '@/design/Card'
 import { ChoiceCard } from '@/design/ChoiceCard'
 import { cn } from '@/design/cn'
-import type { LessonEvent, LessonState } from '@/engine/lessonMachine'
+import { explorableFeelings, type LessonEvent, type LessonState } from '@/engine/lessonMachine'
+import { CheckIcon } from '@/design/icons'
+import { sound } from '@/services/sound'
 import { useT } from '@/i18n/useT'
 import { useAutoRead, useSpeak } from '@/services/useSpeak'
 
@@ -23,18 +26,29 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
   const step3 = scenario.step3
   const feelings = state.feelingIds.map(getEmotion)
   const first = feelings[0]
+  const exploring = step3.type === 'body-reaction' && step3.explore === true
+  const explored = state.exploredFeelingId ? getEmotion(state.exploredFeelingId) : undefined
 
   // Auto-read: the header + question + (for per-feeling variants) the first explanation.
   const intro = [
     first ? t('feeling.chose', { emotion: L(first.word) }) : '',
     L(step3.question),
     step3.type === 'reason' && first ? L(step3.byFeeling[first.id] ?? { ko: '' }) : '',
-    step3.type === 'body-reaction' && first ? L(step3.byFeeling[first.id]?.text ?? { ko: '' }) : '',
+    step3.type === 'body-reaction' && !exploring && first
+      ? L(step3.byFeeling[first.id]?.text ?? { ko: '' })
+      : '',
+    step3.type === 'body-reaction' && exploring && explored
+      ? L(step3.byFeeling[explored.id]?.text ?? { ko: '' })
+      : '',
+    exploring && !explored ? t('step3.explore') : '',
   ]
     .concat(step3.principle ? L(step3.principle) : '')
     .filter(Boolean)
     .join(' ')
-  useAutoRead(intro, `step3-${state.feelingIds.join(',')}`)
+  // In explore mode only the opening is read automatically (frozen at mount); each press speaks
+  // its own reaction instead of re-reading the whole screen over it.
+  const [openingIntro] = useState(intro)
+  useAutoRead(exploring ? openingIntro : intro, `step3-${state.feelingIds.join(',')}`)
   useAutoRead(
     state.moreShown && step3.more ? L(step3.more) : undefined,
     `more-${state.moreShown}`,
@@ -78,7 +92,74 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
         </div>
       )}
 
-      {step3.type === 'body-reaction' && (
+      {step3.type === 'body-reaction' && exploring && (
+        <div className="body-explorer">
+          <div
+            role="group"
+            aria-label={t('step3.explore')}
+            className="body-explorer-feelings"
+            data-testid="body-explorer"
+          >
+            {explorableFeelings(scenario).map((id) => {
+              const e = getEmotion(id)
+              const active = state.exploredFeelingId === id
+              const seen = state.exploredFeelingIds.includes(id)
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  aria-pressed={active}
+                  data-emotion={id}
+                  className="body-explorer-feeling tap"
+                  style={{ ['--tile-tint' as string]: e.tint }}
+                  onClick={() => {
+                    sound.play('tick')
+                    const text = step3.byFeeling[id]?.text
+                    void speak(`${L(e.word)}. ${text ? L(text) : ''}`)
+                    dispatch({ type: 'EXPLORE_FEELING', id })
+                  }}
+                >
+                  <span className="body-explorer-face" aria-hidden="true">
+                    <img src={`/icons/emotions/${e.icon}`} alt="" width={40} height={40} />
+                  </span>
+                  <span>{L(e.word)}</span>
+                  {seen && !active && (
+                    <span className="body-explorer-seen" aria-hidden="true">
+                      <CheckIcon size={14} />
+                    </span>
+                  )}
+                </button>
+              )
+            })}
+          </div>
+          <div className="body-reaction-layout">
+            <div className="body-reaction-art" data-feeling={explored?.id ?? ''}>
+              <BodyOutline
+                key={explored?.id ?? 'none'}
+                parts={explored ? (step3.byFeeling[explored.id]?.parts ?? []) : []}
+                animate
+              />
+            </div>
+            <Card
+              key={explored?.id ?? 'none'}
+              tone={explored ? 'domain' : undefined}
+              domain={scenario.domain}
+              label={explored ? L(explored.word) : undefined}
+              className="motion-safe:animate-[fadeIn_240ms_ease-out]"
+              data-testid="body-reaction-card"
+              aria-live="polite"
+            >
+              <p className="text-story font-bold text-ink">
+                {explored
+                  ? L(step3.byFeeling[explored.id]?.text ?? { ko: '' })
+                  : t('step3.explore')}
+              </p>
+            </Card>
+          </div>
+        </div>
+      )}
+
+      {step3.type === 'body-reaction' && !exploring && (
         <div className="body-reaction-layout">
           <div className="body-reaction-art">
             <BodyOutline

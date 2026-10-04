@@ -371,7 +371,7 @@
         },
         "situation.imageBrief": {
           "page": 3,
-          "ko": "친구들이 내 발표 실수를 듣고 놀린다"
+          "ko": "친구들이 내 발표를 듣고 놀려요."
         },
         "feeling.question": {
           "page": 4,
@@ -444,6 +444,42 @@
         "closing": {
           "page": 7,
           "ko": "앞으로 혼자 속상한 일이 있거나 같은 상황이 있을 때 오늘과 같이 해보는 거예요. 우리 모두는 소중하니까요."
+        },
+        "stepTitles.situation": {
+          "page": 3,
+          "ko": "상황 보기"
+        },
+        "stepTitles.feeling": {
+          "page": 4,
+          "ko": "감정 알아보기"
+        },
+        "stepTitles.step3": {
+          "page": 5,
+          "ko": "그 때 나의 몸의 반응은?"
+        },
+        "stepTitles.action": {
+          "page": 6,
+          "ko": "나를 도와주는 방법"
+        },
+        "stepTitles.feedback": {
+          "page": 7,
+          "ko": "선택에 따른 피드백"
+        },
+        "situation.emphasis.0": {
+          "page": 3,
+          "ko": "속상해"
+        },
+        "situation.bubbles.0.text": {
+          "page": 3,
+          "ko": "ㅋㅋㅋ"
+        },
+        "situation.bubbles.1.text": {
+          "page": 3,
+          "ko": "발표 진짜 못하나~"
+        },
+        "situation.bubbles.2.text": {
+          "page": 3,
+          "ko": "그건 뭐야~?"
         }
       },
       "feelingOptions": [

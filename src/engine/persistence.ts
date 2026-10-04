@@ -14,6 +14,8 @@ const sessionSchema = z.object({
   hintAutoShown: z.boolean(),
   notSureCount: z.number().int().nonnegative(),
   step3OptionId: option.optional(),
+  exploredFeelingId: z.string().optional(),
+  exploredFeelingIds: z.array(z.string()).default([]),
   moreShown: z.boolean(),
   actionId: option.optional(),
   triedActionIds: z.array(option),
@@ -41,10 +43,15 @@ export function loadSession(scenario: Scenario): LessonState | undefined {
     const feelingsValid = s.feelingIds.every(
       (id) => id !== 'not-sure' && scenario.feeling.options.includes(id),
     )
+    const explorable = scenario.step3.type === 'body-reaction' ? scenario.step3.byFeeling : {}
+    const exploredValid = [...s.exploredFeelingIds, s.exploredFeelingId ?? []]
+      .flat()
+      .every((id) => id in explorable)
     const needsFeeling = ['step3', 'action', 'feedback', 'wrapup'].includes(s.step)
     const needsAction = ['feedback', 'wrapup'].includes(s.step)
     if (
       !feelingsValid ||
+      !exploredValid ||
       s.sentenceIndex > scenario.situation.story.length ||
       (!scenario.feeling.multiSelect && s.feelingIds.length > 1) ||
       (needsFeeling && !s.feelingIds.length) ||

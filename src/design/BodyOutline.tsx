@@ -5,9 +5,19 @@ import { cn } from './cn'
  * Front-facing, gender-neutral child silhouette with soft highlight blobs on the
  * body parts a feeling affects (PRD §6.6, Step-3 body-reaction variant).
  */
-export function BodyOutline({ parts, className }: { parts: BodyPart[]; className?: string }) {
+export function BodyOutline({
+  parts,
+  className,
+  animate = false,
+}: {
+  parts: BodyPart[]
+  className?: string
+  /** Gently pulse the highlighted parts (explore mode); always still under reduced motion. */
+  animate?: boolean
+}) {
   const on = (p: BodyPart) => parts.includes(p)
-  const blob = 'fill-link transition-opacity duration-300 motion-reduce:transition-none'
+  const base = 'fill-link transition-opacity duration-300 motion-reduce:transition-none'
+  const blob = animate ? `${base} body-part` : base
   return (
     <svg
       viewBox="0 0 160 300"
