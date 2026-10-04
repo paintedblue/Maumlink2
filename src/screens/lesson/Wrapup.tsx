@@ -36,8 +36,13 @@ export function Wrapup({ scenario, state, onExit }: Props) {
   }, [scenario.id])
 
   const action = chosenAction(state, scenario)
-  // Explore mode recaps every coping idea the child tried; otherwise the final choice.
-  const actions = scenario.action.explore ? triedActions(state, scenario) : action ? [action] : []
+  // Explore mode recaps the coping ideas worth keeping that the child tried (a "reconsider"
+  // option only if it was the final choice); otherwise the final choice.
+  const actions = scenario.action.explore
+    ? triedActions(state, scenario).filter((a) => a.quality !== 'reconsider' || a.id === action?.id)
+    : action
+      ? [action]
+      : []
   const next = nextScenarioInDomain(scenario)
   const feelings = state.feelingIds.map(getEmotion)
 

@@ -94,10 +94,10 @@ export function chosenAction(state: LessonState, scenario: Scenario) {
   return scenario.action.options.find((o) => o.id === state.actionId)
 }
 
-/** Feelings with a documented body reaction, in the order the feeling screen lists them. */
+/** Feelings with a documented reaction/reason in explore mode, in feeling-screen order. */
 export function explorableFeelings(scenario: Scenario): string[] {
   const s3 = scenario.step3
-  if (s3.type !== 'body-reaction' || !s3.explore) return []
+  if (s3.type === 'multiple-choice' || !s3.explore) return []
   return scenario.feeling.options.filter((id) => id in s3.byFeeling)
 }
 

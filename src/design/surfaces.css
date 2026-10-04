@@ -890,3 +890,61 @@
   align-items: center;
   gap: 10px;
 }
+
+/* ---- STEP 3 reason comparison: same situation, different feelings and thoughts. */
+.reason-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.reason-compare-others {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.reason-compare-title {
+  color: var(--color-brand);
+  font-size: var(--fs-body);
+  font-weight: 700;
+}
+.reason-compare-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.reason-compare-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 16px 10px 10px;
+  border: 2px solid var(--color-line);
+  border-radius: 24px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  text-align: left;
+  box-shadow: 0 3px 0 var(--color-line);
+}
+.reason-compare-item[aria-expanded='true'] {
+  border-color: var(--color-select);
+  background: var(--color-selected);
+}
+.reason-compare-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reason-compare-word {
+  font-size: var(--fs-emotion);
+  font-weight: 700;
+}
+.reason-compare-reason {
+  font-size: var(--fs-body);
+  font-weight: 700;
+  line-height: 1.45;
+}

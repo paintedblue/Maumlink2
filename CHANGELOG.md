@@ -8,6 +8,12 @@
 - STEP 4/5 coping exploration: the child can try every coping method; the ending lists all methods tried.
 - New optional content fields and validator rules; 11 new unit/screen tests; happy-path e2e updated for explore mode.
 
+### 관계 인식
+
+- Document step titles, the document's own playground illustration, and exact quote spacing from the md transcription.
+- STEP 3 reason comparison: my reason first, then other feelings' reasons under "나와 너의 생각이 다를 수 있어!".
+- STEP 4/5 action comparison; the ending keeps only the ways worth repeating.
+
 ## 1.0.0 — 2026-10-03
 
 First versioned release of 마음잇다 (Maum:Link), a Korean social-emotional learning app.

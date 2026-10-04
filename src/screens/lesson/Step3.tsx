@@ -27,6 +27,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
   const feelings = state.feelingIds.map(getEmotion)
   const first = feelings[0]
   const exploring = step3.type === 'body-reaction' && step3.explore === true
+  const comparing = step3.type === 'reason' && step3.explore === true
   const explored = state.exploredFeelingId ? getEmotion(state.exploredFeelingId) : undefined
 
   // Auto-read: the header + question + (for per-feeling variants) the first explanation.
@@ -48,7 +49,7 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
   // In explore mode only the opening is read automatically (frozen at mount); each press speaks
   // its own reaction instead of re-reading the whole screen over it.
   const [openingIntro] = useState(intro)
-  useAutoRead(exploring ? openingIntro : intro, `step3-${state.feelingIds.join(',')}`)
+  useAutoRead(exploring || comparing ? openingIntro : intro, `step3-${state.feelingIds.join(',')}`)
   useAutoRead(
     state.moreShown && step3.more ? L(step3.more) : undefined,
     `more-${state.moreShown}`,
@@ -78,7 +79,60 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
         </div>
       )}
 
-      {step3.type === 'reason' && (
+      {step3.type === 'reason' && comparing && (
+        <div className="reason-compare">
+          {first && step3.byFeeling[first.id] && (
+            <Card tone="domain" domain={scenario.domain} data-testid="own-reason">
+              <p className="text-story font-bold text-ink">{L(step3.byFeeling[first.id]!)}</p>
+            </Card>
+          )}
+          <section className="reason-compare-others" aria-labelledby="reason-compare-title">
+            {/* The lesson's own title states the core value: 나와 너의 생각이 다를 수 있어! */}
+            <h2 id="reason-compare-title" className="reason-compare-title">
+              {L(scenario.title)}
+            </h2>
+            <ul className="reason-compare-list" data-testid="reason-compare">
+              {explorableFeelings(scenario)
+                .filter((id) => id !== first?.id)
+                .map((id) => {
+                  const e = getEmotion(id)
+                  const open = state.exploredFeelingIds.includes(id)
+                  const reason = step3.byFeeling[id]!
+                  return (
+                    <li key={id}>
+                      <button
+                        type="button"
+                        aria-expanded={open}
+                        data-emotion={id}
+                        className="reason-compare-item tap"
+                        style={{ ['--tile-tint' as string]: e.tint }}
+                        onClick={() => {
+                          sound.play('tick')
+                          void speak(`${L(e.word)}. ${L(reason)}`)
+                          dispatch({ type: 'EXPLORE_FEELING', id })
+                        }}
+                      >
+                        <span className="body-explorer-face" aria-hidden="true">
+                          <img src={`/icons/emotions/${e.icon}`} alt="" width={40} height={40} />
+                        </span>
+                        <span className="reason-compare-text">
+                          <span className="reason-compare-word">{L(e.word)}</span>
+                          {open && (
+                            <span className="reason-compare-reason motion-safe:animate-[fadeIn_240ms_ease-out]">
+                              {L(reason)}
+                            </span>
+                          )}
+                        </span>
+                      </button>
+                    </li>
+                  )
+                })}
+            </ul>
+          </section>
+        </div>
+      )}
+
+      {step3.type === 'reason' && !comparing && (
         <div className="flex flex-col gap-3">
           {feelings.map((f) => {
             const text = step3.byFeeling[f.id]

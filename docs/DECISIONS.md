@@ -99,3 +99,10 @@ Format: date · decision · why · PRD reference.
 - Explore-mode narration: the STEP 3 opening is read once at mount; each feeling press speaks only that feeling and reaction, so automatic reading never talks over the child's own exploration.
 - Explore-mode retry is offered until every option has been tried; "reconsider" retry semantics are unchanged for other lessons.
 - Visual-regression baselines in `tests/e2e/responsive.spec.ts-snapshots` predate this change (and the storybook redesign); they were not regenerated.
+
+## 2026-10-04 — 관계 인식 design document
+
+- `step3.explore` now also applies to `reason` lessons: the child's own documented reason is acknowledged first, then the other documented feelings open one by one under the lesson title (the core value). This implements the document's developer-facing feedback principle as behavior rather than new child-facing text.
+- `action.explore` enabled for comparison. In explore recaps, `reconsider` options are listed only when they were the final choice, so the ending never presents the angry option as a kept strategy.
+- The document's own inserted illustration replaces the generated v2 playground image, per the instruction to use the provided content. It is text-free, so no regeneration was needed.
+- Quote spacing follows the md transcription (verified against the source PPTX), replacing earlier PDF-extraction spacing.

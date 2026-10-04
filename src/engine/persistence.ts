@@ -43,7 +43,7 @@ export function loadSession(scenario: Scenario): LessonState | undefined {
     const feelingsValid = s.feelingIds.every(
       (id) => id !== 'not-sure' && scenario.feeling.options.includes(id),
     )
-    const explorable = scenario.step3.type === 'body-reaction' ? scenario.step3.byFeeling : {}
+    const explorable = scenario.step3.type === 'multiple-choice' ? {} : scenario.step3.byFeeling
     const exploredValid = [...s.exploredFeelingIds, s.exploredFeelingId ?? []]
       .flat()
       .every((id) => id in explorable)

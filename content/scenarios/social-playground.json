@@ -12,6 +12,28 @@
     "en": "In peer situations, can notice own feelings, consider the other's view, and explore suitable ways to respond."
   },
   "estimatedMinutes": 7,
+  "stepTitles": {
+    "situation": {
+      "ko": "상황 보기",
+      "en": "View the Situation"
+    },
+    "feeling": {
+      "ko": "감정 알아보기",
+      "en": "Explore Feelings"
+    },
+    "step3": {
+      "ko": "왜 그런 기분이 들까요?",
+      "en": "Why Do I Feel This Way?"
+    },
+    "action": {
+      "ko": "어떻게 하면 좋을까요?",
+      "en": "What Should I Do?"
+    },
+    "feedback": {
+      "ko": "선택에 따른 피드백",
+      "en": "Feedback for Each Choice"
+    }
+  },
   "situation": {
     "title": {
       "ko": "친구들과 함께 놀고 싶어요",
@@ -28,7 +50,7 @@
     "keySentence": {
       "ko": "“나도 같이 놀고 싶어!”"
     },
-    "image": "/img/generated/social-playground-v2.png",
+    "image": "/img/social-playground.png",
     "imageBrief": {
       "ko": "학교 운동장 / 친구 2~3명이 함께 놀이 중 / 주인공이 조금 떨어진 곳에서 바라보는 장면",
       "en": "School playground; 2–3 friends playing together; main character watching from a little way off"
@@ -51,6 +73,7 @@
   },
   "step3": {
     "type": "reason",
+    "explore": true,
     "question": {
       "ko": "왜 그런 기분이 들었을까요?",
       "en": "Why did I feel that way?"
@@ -80,15 +103,16 @@
       "ko": "친구들과 함께 놀고 싶다면 어떻게 해볼 수 있을까요?",
       "en": "What can I do if I want to play with my friends?"
     },
+    "explore": true,
     "options": [
       {
         "id": "A",
         "text": {
-          "ko": "친구들에게 화를 내며 “왜 나만 빼도 놀아! ＂라고 말해요."
+          "ko": "친구들에게 화를 내며 “왜 나만 빼도 놀아!＂라고 말해요."
         },
         "quality": "reconsider",
         "feedback": {
-          "ko": "화가 날 수 있어요. 하지만 화를 내며 말하면 친구들이 놀라거나 속상할 수 있어요. “나도 같이 놀고 싶어.” 라고 말해보면 어떨까요?"
+          "ko": "화가 날 수 있어요. 하지만 화를 내며 말하면 친구들이 놀라거나 속상할 수 있어요. “나도 같이 놀고 싶어.”라고 말해보면 어떨까요?"
         },
         "outcomeIcon": "think"
       },
@@ -106,11 +130,11 @@
       {
         "id": "C",
         "text": {
-          "ko": "친구들에게 “나도 같이 놀아도 돼?” 라고 물어봐요."
+          "ko": "친구들에게 “나도 같이 놀아도 돼?”라고 물어봐요."
         },
         "quality": "recommended",
         "feedback": {
-          "ko": "좋은 방법이에요. ＂나도 같이 놀아도 돼?“ 함께하고 싶은 마음을 말로 표현하면 친구가 내 마음을 알 수 있어요."
+          "ko": "좋은 방법이에요. ＂나도 같이 놀아도 돼?“함께하고 싶은 마음을 말로 표현하면 친구가 내 마음을 알 수 있어요."
         },
         "outcomeIcon": "talk"
       },
