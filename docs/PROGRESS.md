@@ -121,3 +121,11 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☐ iPhone/iPad/Android 실제 기기·회전·큰 글자 검증은 사용자가 진행하기로 함. 현 변경은 아직 커밋/배포하지 않음.
 
 상세 원문 대응 및 누락: [CONTENT_REVIEW.md](./CONTENT_REVIEW.md).
+
+
+## 2026-10-06 — Recorded Korean narration (ElevenLabs, offline clips)
+
+- ☑ All 128 Korean phrases the screens speak (UI prompts, 15 emotion words with their 선택/힌트 sentences, and every sentence of the four scenarios) were generated once in the ElevenLabs web app with the voice `Kyung - Warm, Calm & Clear` (voice ID `JQaWvPoEUkcuOTfxFYpJ`, Eleven v4), downloaded as MP3 44.1 kHz 128 kbps and re-encoded with ffmpeg to 64 kbps mono (about 5 MB for 128 clips) in `public/audio/ko/`. The app never calls ElevenLabs at runtime; the clips are precached by the PWA like other assets.
+- ☑ `src/services/recordedNarration.ts` assembles composed narration (e.g. "'속상해요'를 골랐어요. 그때 내 몸의 반응은 어떤가요? …") from whole recorded phrases; the browser voice remains only as the fallback for text without a clip (English dev locale, unexpected strings).
+- ☑ Tooling: `pnpm narration:inventory` exports the exact phrase list; `pnpm narration:import <dir>` registers downloaded `<id>.mp3` files. Tests assert every inventory phrase resolves to clips and every registered MP3 exists.
+- ☐ Audible review of the 128 clips (pronunciation, pace: the voice's default speed 1.06 is faster than the previous browser rate 0.9) is pending. The ElevenLabs free plan is for personal, non-commercial use; a paid plan is needed for commercial distribution of these clips.

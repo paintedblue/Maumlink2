@@ -22,6 +22,26 @@ pnpm dev            # http://localhost:5173
 
 Requires Node ≥ 20 and pnpm 10. First-visit audio needs one tap on **시작하기** (browser autoplay policy).
 
+### Recorded Korean narration
+
+`src/services/recorded-narration.json` maps exact text to bundled MP3s in
+`public/audio/ko/`. Recorded phrases take priority over browser synthesis, including
+composed messages when every phrase has a recording. Missing phrases retain browser
+narration. Navigation and mute cancel the entire recording sequence; MP3s are included
+in the service worker precache. The app never calls ElevenLabs at runtime.
+
+Voice: ElevenLabs **Kyung - Warm, Calm & Clear**, ID `JQaWvPoEUkcuOTfxFYpJ`, Eleven v4.
+All **128 of 128 phrases** are recorded (2026-10-06), re-encoded to 64 kbps mono
+(about 4 MB in total). A listening review of the clips is still pending.
+
+To add or change phrases: run `pnpm narration:inventory` to refresh
+`content-source/narration/inventory.json`, generate each missing phrase verbatim in the
+ElevenLabs web app with the voice above, save the download as `<clip id>.mp3`, then run
+`pnpm narration:import <directory>` (re-encodes with ffmpeg when available and updates the
+manifest). Do not put ElevenLabs credentials in the app. The free plan is licensed for
+personal, non-commercial use; confirm commercial usage rights before distributing the
+recordings to the client.
+
 ## Quality gates
 
 ```bash

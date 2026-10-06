@@ -1,5 +1,6 @@
 /** One cancellable narration queue shared by automatic and manual reading. */
 import type { Locale } from './settings'
+import { resolveRecordedNarration } from './recordedNarration'
 
 export interface SpeakRequest {
   text: string
@@ -33,6 +34,9 @@ class SpeechService {
   unlocked = false
 
   isSupported(): boolean {
+    return typeof Audio !== 'undefined' || this.isSynthesisSupported()
+  }
+  private isSynthesisSupported(): boolean {
     return (
       typeof window !== 'undefined' &&
       'speechSynthesis' in window &&
@@ -122,7 +126,7 @@ class SpeechService {
   unlock(): void {
     this.unlocked = true
     try {
-      if (this.isSupported()) window.speechSynthesis.resume()
+      if (this.isSynthesisSupported()) window.speechSynthesis.resume()
     } catch {
       /* The following real request reports an engine failure. */
     }
@@ -140,8 +144,11 @@ class SpeechService {
     if (!this.enabled || (!req.text.trim() && !req.audioUrl)) return Promise.resolve()
     if (req.automatic && !this.unlocked && navigator.userActivation?.hasBeenActive === false)
       return this.waitForActivation(req)
-    if (req.audioUrl) return this.playAudio(req)
-    if (!this.isSupported()) {
+    const recordings = req.audioUrl
+      ? [req.audioUrl]
+      : resolveRecordedNarration(req.text, req.locale)
+    if (recordings && typeof Audio !== 'undefined') return this.playAudio(req, recordings)
+    if (!this.isSynthesisSupported()) {
       this.setStatus({ phase: 'error', error: 'synthesis-unavailable' })
       return Promise.resolve()
     }
@@ -246,10 +253,11 @@ class SpeechService {
       }
     })
   }
-  private playAudio(req: SpeakRequest): Promise<void> {
+  private playAudio(req: SpeakRequest, urls: string[]): Promise<void> {
     return new Promise((resolve) => {
       const el = this.audio ?? (this.audio = new Audio())
       let done = false
+      let index = 0
       const finish = (error?: string) => {
         if (done) return
         done = true
@@ -265,18 +273,27 @@ class SpeechService {
       el.onplaying = () => {
         if (!done) this.setStatus({ phase: 'speaking' })
       }
-      el.onended = () => finish()
-      el.onerror = () => finish('audio-unavailable')
-      el.src = req.audioUrl!
-      this.current = { cancel }
-      this.setStatus({ phase: 'loading' })
-      void el.play().catch((error: unknown) => {
+      el.onended = () => {
         if (done) return
-        if (error instanceof Error && error.name === 'NotAllowedError') {
-          finish()
-          if (this.request === req && this.enabled) void this.waitForActivation(req)
-        } else finish('audio-unavailable')
-      })
+        index += 1
+        if (index < urls.length) startClip()
+        else finish()
+      }
+      el.onerror = () => finish('audio-unavailable')
+      const startClip = () => {
+        if (done || this.request !== req || !this.enabled) return
+        el.src = urls[index]!
+        this.current = { cancel }
+        this.setStatus({ phase: 'loading' })
+        void el.play().catch((error: unknown) => {
+          if (done) return
+          if (error instanceof Error && error.name === 'NotAllowedError') {
+            finish()
+            if (this.request === req && this.enabled) void this.waitForActivation(req)
+          } else finish('audio-unavailable')
+        })
+      }
+      startClip()
     })
   }
 }

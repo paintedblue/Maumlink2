@@ -2,6 +2,23 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { installSynth } from '../fixtures/speech'
 
+function installAudio() {
+  const audio = {
+    src: '',
+    onended: undefined as (() => void) | undefined,
+    onplaying: undefined as (() => void) | undefined,
+    play: vi.fn().mockResolvedValue(undefined),
+    pause: vi.fn(),
+  }
+  vi.stubGlobal(
+    'Audio',
+    vi.fn(function () {
+      return audio
+    }),
+  )
+  return audio
+}
+
 describe('speech service', () => {
   beforeEach(() => vi.resetModules())
   afterEach(async () => {
@@ -206,7 +223,7 @@ describe('speech service', () => {
     const { speech } = await import('../../src/services/speech')
     const oldRequest = { text: '힌트', locale: 'ko' as const }
     void speech.speak(oldRequest)
-    void speech.speak({ text: '속상해요', locale: 'ko' })
+    void speech.speak({ text: '녹음되지 않은 문장', locale: 'ko' })
     const calls = synth.cancel.mock.calls.length
     speech.cancel(oldRequest)
     expect(synth.cancel).toHaveBeenCalledTimes(calls)
@@ -238,8 +255,58 @@ describe('speech service', () => {
   })
 
   it('resolves immediately when TTS is unsupported (FR-AUD-03)', async () => {
+    vi.stubGlobal('Audio', undefined)
     const { speech } = await import('../../src/services/speech')
     expect(speech.isSupported()).toBe(false)
     await expect(speech.speak({ text: 'x', locale: 'ko' })).resolves.toBeUndefined()
+  })
+
+  it('uses the downloaded Korean greeting without calling browser synthesis', async () => {
+    const { synth } = installSynth()
+    const audio = installAudio()
+    const { speech } = await import('../../src/services/speech')
+    const pending = speech.speak({ text: '오늘은 어떤 마음을 배워볼까요?', locale: 'ko' })
+    expect(audio?.src).toBe('/audio/ko/1015b8bb0ecc.mp3')
+    expect(synth.speak).not.toHaveBeenCalled()
+    expect(speech.getStatus().phase).toBe('loading')
+    audio?.onplaying?.()
+    expect(speech.getStatus().phase).toBe('speaking')
+    audio?.onended?.()
+    await pending
+    expect(speech.getStatus().phase).toBe('idle')
+  })
+
+  it('cancels a recorded sequence so an old end event cannot start its next clip', async () => {
+    const audio = installAudio()
+    const { play, pause } = audio
+    const { speech } = await import('../../src/services/speech')
+    const text = '오늘은 어떤 마음을 배워볼까요? 오늘은 어떤 마음을 배워볼까요?'
+    const pending = speech.speak({ text, locale: 'ko' })
+    const lateEnd = audio!.onended!
+    speech.setEnabled(false)
+    lateEnd()
+    await pending
+    expect(play).toHaveBeenCalledOnce()
+    expect(pause).toHaveBeenCalledOnce()
+  })
+
+  it('plays composed narration sequentially and settles only after the final clip', async () => {
+    const audio = installAudio()
+    const { play } = audio
+    const { speech } = await import('../../src/services/speech')
+    const settled = vi.fn()
+    const pending = speech
+      .speak({
+        text: '오늘은 어떤 마음을 배워볼까요? 오늘은 어떤 마음을 배워볼까요?',
+        locale: 'ko',
+      })
+      .then(settled)
+    audio!.onended!()
+    await Promise.resolve()
+    expect(play).toHaveBeenCalledTimes(2)
+    expect(settled).not.toHaveBeenCalled()
+    audio!.onended!()
+    await pending
+    expect(settled).toHaveBeenCalledOnce()
   })
 })

@@ -2,6 +2,8 @@
 
 ## Unreleased — 자기 인식 design-document features
 
+- Natural Korean narration: 128 recorded clips (ElevenLabs voice "Kyung", generated once and shipped offline in `public/audio/ko/`) replace the browser voice; browser synthesis remains only as a fallback.
+
 - STEP titles from the design document appear under the progress track (e.g. "그 때 나의 몸의 반응은?").
 - The situation picture shows the document's scene-card speech bubbles; "속상해" is emphasised as in the source; the picture description is the card caption.
 - STEP 3 body-reaction explorer: press each documented feeling to see its body reaction highlighted on the body outline.

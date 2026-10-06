@@ -118,3 +118,11 @@ Format: date · decision · why · PRD reference.
 - Reason comparison enabled (same developer principle as 관계 인식). The comparison heading became optional document data (`step3.compareHeading`): 관계 인식 uses its title; 마음건강관리 shows none because no document sentence fits, rather than inventing one.
 - `action.explore` enabled: all four options are recommended ways to express feelings or ask for help, so the child may try each and the ending lists them.
 - With this, all four domains follow their md transcriptions exactly; each lesson's Korean text is checked against its md and recorded in the PDF ledger.
+
+
+## 2026-10-06 — Recorded narration instead of browser speech synthesis
+
+- User requested natural voices generated with ElevenLabs, downloaded once and shipped, replacing the browser voice. The free plan rejects library voices through the API (`paid_plan_required`), so the 128 clips were generated through the ElevenLabs web Text to Speech page (voice `Kyung - Warm, Calm & Clear`, `JQaWvPoEUkcuOTfxFYpJ`, Eleven v4) and downloaded. No runtime API call, key or network dependency was added; the local-first/offline architecture is unchanged.
+- Clips are whole phrases, keyed by punctuation-insensitive text (`narrationKey`). Screens that concatenate phrases (STEP 3 opening, ending recap, replay) are resolved into a clip sequence played back to back. If any part has no clip the whole request falls back to browser synthesis, so recorded and synthetic voices never mix in one utterance.
+- `feeling.chose` / `feeling.notSureTwice` are recorded per emotion (15 each) rather than spliced from the emotion word, keeping natural Korean prosody. Downloads are re-encoded to 64 kbps mono MP3 by `pnpm narration:import` when ffmpeg is available, halving the offline precache; speech stays clear at that rate. Full-width quotation marks (`＂`) were normalised to `"` only in the text sent to the synthesiser; the reviewed content JSON is unchanged.
+- The ElevenLabs API key created for this work (`maumlink-narration`, Text to Speech / Voices read / Models) lives only in the gitignored `.env.local`; it is not used by the app or the build.
