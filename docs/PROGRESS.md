@@ -129,3 +129,10 @@ Milestone status against PRD-v1 §13. FR status: ☐ not started · ◐ in progr
 - ☑ `src/services/recordedNarration.ts` assembles composed narration (e.g. "'속상해요'를 골랐어요. 그때 내 몸의 반응은 어떤가요? …") from whole recorded phrases; the browser voice remains only as the fallback for text without a clip (English dev locale, unexpected strings).
 - ☑ Tooling: `pnpm narration:inventory` exports the exact phrase list; `pnpm narration:import <dir>` registers downloaded `<id>.mp3` files. Tests assert every inventory phrase resolves to clips and every registered MP3 exists.
 - ☐ Audible review of the 128 clips (pronunciation, pace: the voice's default speed 1.06 is faster than the previous browser rate 0.9) is pending. The ElevenLabs free plan is for personal, non-commercial use; a paid plan is needed for commercial distribution of these clips.
+
+
+## 2026-10-06 — Feedback outcome panel on phones
+
+- ☑ User reported the outcome icon squeezing the chosen-method text on mobile (`/lesson/social-playground?step=feedback`). Below 640px the icon (44px) now sits top-right beside the card label, the "A" badge shrinks to 40px, and the text spans the remaining width. Tablet/desktop keep the badge · text · icon row.
+- ☑ Verified on the production build at 375×740 (normal and large text) and 1024×768 with Playwright screenshots; 132 unit tests, lint and build pass.
+

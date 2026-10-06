@@ -26,19 +26,19 @@ export function Feedback({ scenario, state }: Props) {
         label={t('feedback.myChoice')}
         tone="domain"
         domain={scenario.domain}
+        className="outcome-panel"
         data-testid="outcome-panel"
       >
-        <div className="flex items-center gap-4">
-          <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-surface text-btn font-bold text-ink">
-            {action.id}
-          </span>
-          <p className="flex-1 text-body font-bold text-ink">{L(action.text)}</p>
+        {/* Phones move the outcome icon up beside the label so the chosen text keeps the width. */}
+        <div className="outcome-row">
+          <span className="outcome-badge">{action.id}</span>
+          <p className="outcome-text text-body font-bold text-ink">{L(action.text)}</p>
           <img
             src={`/icons/outcome/${action.outcomeIcon}.svg`}
             alt=""
             width={64}
             height={64}
-            className="size-14 shrink-0 md:size-16"
+            className="outcome-icon"
           />
         </div>
       </Card>

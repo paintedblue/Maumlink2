@@ -2,6 +2,7 @@
 
 ## Unreleased — 자기 인식 design-document features
 
+- Feedback step on phones: the outcome icon moves up beside the "내가 고른 방법" label, so the chosen method text keeps the card width (259px instead of 175px at 375px) and no longer breaks into cramped lines.
 - Natural Korean narration: 128 recorded clips (ElevenLabs voice "Kyung", generated once and shipped offline in `public/audio/ko/`) replace the browser voice; browser synthesis remains only as a fallback.
 
 - STEP titles from the design document appear under the progress track (e.g. "그 때 나의 몸의 반응은?").

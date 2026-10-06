@@ -431,6 +431,36 @@
   align-self: center;
   width: min(100%, 760px);
 }
+.outcome-panel {
+  position: relative;
+}
+.outcome-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.outcome-badge {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-surface);
+  font-size: var(--fs-btn);
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.outcome-text {
+  flex: 1;
+  min-width: 0;
+}
+.outcome-icon {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
 .feedback-dialogue {
   display: flex;
   align-items: center;
@@ -635,6 +665,30 @@
   .scene-prompt-image {
     width: 76px;
     height: 76px;
+  }
+  /* Phone: the icon sits in the label row (top-right); badge + text share the full width. */
+  .outcome-panel {
+    padding: 16px;
+  }
+  .outcome-panel > :first-child {
+    padding-right: 56px;
+  }
+  .outcome-row {
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .outcome-badge {
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
+    font-size: var(--fs-body);
+  }
+  .outcome-icon {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
   }
   .feedback-dialogue {
     display: block;
