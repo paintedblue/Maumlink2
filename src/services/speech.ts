@@ -285,7 +285,14 @@ class SpeechService {
         el.src = urls[index]!
         this.current = { cancel }
         this.setStatus({ phase: 'loading' })
-        void el.play().catch((error: unknown) => {
+        // play() may return undefined (jsdom) or throw synchronously; treat both as rejections.
+        let started: Promise<void> | undefined
+        try {
+          started = el.play()
+        } catch (error) {
+          started = Promise.reject(error)
+        }
+        void Promise.resolve(started).catch((error: unknown) => {
           if (done) return
           if (error instanceof Error && error.name === 'NotAllowedError') {
             finish()
