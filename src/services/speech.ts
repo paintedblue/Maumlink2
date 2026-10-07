@@ -1,5 +1,6 @@
 /** One cancellable narration queue shared by automatic and manual reading. */
 import type { Locale } from './settings'
+import { activeNarrationVoice } from './narration/voices'
 import { resolveRecordedNarration } from './recordedNarration'
 
 export interface SpeakRequest {
@@ -17,8 +18,8 @@ type Listener = (speaking: boolean) => void
 const LANG: Record<Locale, string> = { ko: 'ko-KR', en: 'en-US' }
 // Slow, clearly separated sentences for slow learners (client review 2026-10-07).
 const RATE = 0.8
-// Recorded clips were generated at ElevenLabs speed 1.06; stretch them without changing pitch.
-const AUDIO_RATE = 0.85
+// Each recorded voice set declares its own playback speed (Kyung was generated fast, 1.06).
+const AUDIO_RATE = activeNarrationVoice.playbackRate
 const VOICE_WAIT_MS = 1500
 const START_WAIT_MS = 4000
 

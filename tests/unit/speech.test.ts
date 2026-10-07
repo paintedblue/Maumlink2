@@ -269,7 +269,7 @@ describe('speech service', () => {
     const audio = installAudio()
     const { speech } = await import('../../src/services/speech')
     const pending = speech.speak({ text: '오늘은 어떤 마음을 배워볼까요?', locale: 'ko' })
-    expect(audio?.src).toBe('/audio/ko/1015b8bb0ecc.mp3')
+    expect(audio?.src).toBe('/audio/ko-lulu/1015b8bb0ecc.mp3')
     // Recorded clips are slowed for slow learners without changing the voice's pitch.
     expect(audio.playbackRate).toBe(0.85)
     expect(audio.defaultPlaybackRate).toBe(0.85)

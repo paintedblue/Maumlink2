@@ -2,7 +2,7 @@
 import { createHash } from 'node:crypto'
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
 import { EmotionsFile, Scenario, UiFile } from '../src/content/schema'
-import recording from '../src/services/recorded-narration.json'
+import { NARRATION_VOICES } from '../src/services/narration/voices'
 import { narrationKey } from '../src/services/recordedNarration'
 
 const readJson = (path: string): unknown => JSON.parse(readFileSync(path, 'utf8'))
@@ -65,13 +65,22 @@ for (const file of readdirSync('content/scenarios').filter((name) => name.endsWi
   put(scenario.closing.ko, 'closing')
 }
 
+// One phrase list for every voice set: the same clip id names `<audioDir>/<id>.mp3` per voice.
 const clips = [...entries.values()].map((entry) => ({
   ...entry,
-  url: recording.clips.find((clip) => narrationKey(clip.text) === narrationKey(entry.text))?.url,
+  recorded: Object.fromEntries(
+    Object.values(NARRATION_VOICES).map((voice) => [
+      voice.id,
+      voice.clips.some((clip) => narrationKey(clip.text) === narrationKey(entry.text)),
+    ]),
+  ),
 }))
 mkdirSync('content-source/narration', { recursive: true })
 writeFileSync(
   'content-source/narration/inventory.json',
-  `${JSON.stringify({ voiceId: recording.voiceId, clips }, null, 2)}\n`,
+  `${JSON.stringify({ voices: Object.keys(NARRATION_VOICES), clips }, null, 2)}\n`,
 )
-console.log(`${clips.length} phrases; ${clips.filter((clip) => clip.url).length} recorded`)
+for (const voice of Object.values(NARRATION_VOICES))
+  console.log(
+    `${voice.id}: ${clips.filter((clip) => clip.recorded[voice.id]).length}/${clips.length} phrases recorded`,
+  )

@@ -1,5 +1,10 @@
 {
-  "voiceId": "JQaWvPoEUkcuOTfxFYpJ",
+  "voices": [
+    "kyung",
+    "sophie-lane",
+    "clova-ndain",
+    "lulu-lolipop"
+  ],
   "clips": [
     {
       "id": "1015b8bb0ecc",
@@ -7,7 +12,12 @@
       "sources": [
         "ui.home.greeting"
       ],
-      "url": "/audio/ko/1015b8bb0ecc.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": true,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "bf9f06c918c4",
@@ -15,7 +25,12 @@
       "sources": [
         "ui.step3.explore"
       ],
-      "url": "/audio/ko/bf9f06c918c4.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "0ea9230d4106",
@@ -23,7 +38,12 @@
       "sources": [
         "ui.feeling.pickFirst"
       ],
-      "url": "/audio/ko/0ea9230d4106.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "48cab691aae7",
@@ -31,7 +51,12 @@
       "sources": [
         "ui.feedback.myChoice"
       ],
-      "url": "/audio/ko/48cab691aae7.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d0a504b66a03",
@@ -39,7 +64,12 @@
       "sources": [
         "ui.wrapup.path"
       ],
-      "url": "/audio/ko/d0a504b66a03.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "9420142c51f3",
@@ -47,7 +77,12 @@
       "sources": [
         "emotions.angry"
       ],
-      "url": "/audio/ko/9420142c51f3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "e1c6b1cf3536",
@@ -55,7 +90,12 @@
       "sources": [
         "ui.feeling.chose.angry"
       ],
-      "url": "/audio/ko/e1c6b1cf3536.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d550548bec76",
@@ -63,7 +103,12 @@
       "sources": [
         "ui.feeling.notSureTwice.angry"
       ],
-      "url": "/audio/ko/d550548bec76.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "691ebb7f3743",
@@ -71,7 +116,12 @@
       "sources": [
         "emotions.annoyed"
       ],
-      "url": "/audio/ko/691ebb7f3743.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "be1cda7b26f0",
@@ -79,7 +129,12 @@
       "sources": [
         "ui.feeling.chose.annoyed"
       ],
-      "url": "/audio/ko/be1cda7b26f0.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b23ddfdae9b9",
@@ -87,7 +142,12 @@
       "sources": [
         "ui.feeling.notSureTwice.annoyed"
       ],
-      "url": "/audio/ko/b23ddfdae9b9.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "292c367ea4f9",
@@ -95,7 +155,12 @@
       "sources": [
         "emotions.upset"
       ],
-      "url": "/audio/ko/292c367ea4f9.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "4f803c237112",
@@ -103,7 +168,12 @@
       "sources": [
         "ui.feeling.chose.upset"
       ],
-      "url": "/audio/ko/4f803c237112.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "470f81ca16b0",
@@ -111,7 +181,12 @@
       "sources": [
         "ui.feeling.notSureTwice.upset"
       ],
-      "url": "/audio/ko/470f81ca16b0.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "63c30b9b83c3",
@@ -119,7 +194,12 @@
       "sources": [
         "emotions.hurt"
       ],
-      "url": "/audio/ko/63c30b9b83c3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d6903d3677c6",
@@ -127,7 +207,12 @@
       "sources": [
         "ui.feeling.chose.hurt"
       ],
-      "url": "/audio/ko/d6903d3677c6.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "35452cf07e4a",
@@ -135,7 +220,12 @@
       "sources": [
         "ui.feeling.notSureTwice.hurt"
       ],
-      "url": "/audio/ko/35452cf07e4a.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7628854fc961",
@@ -143,7 +233,12 @@
       "sources": [
         "emotions.frustrated"
       ],
-      "url": "/audio/ko/7628854fc961.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "0aebb83673eb",
@@ -151,7 +246,12 @@
       "sources": [
         "ui.feeling.chose.frustrated"
       ],
-      "url": "/audio/ko/0aebb83673eb.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "9e4fb1a4dc75",
@@ -159,7 +259,12 @@
       "sources": [
         "ui.feeling.notSureTwice.frustrated"
       ],
-      "url": "/audio/ko/9e4fb1a4dc75.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "4dee8e2a95de",
@@ -167,7 +272,12 @@
       "sources": [
         "emotions.unfair"
       ],
-      "url": "/audio/ko/4dee8e2a95de.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7c323115b21f",
@@ -175,7 +285,12 @@
       "sources": [
         "ui.feeling.chose.unfair"
       ],
-      "url": "/audio/ko/7c323115b21f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "37b2e7db7e6b",
@@ -183,7 +298,12 @@
       "sources": [
         "ui.feeling.notSureTwice.unfair"
       ],
-      "url": "/audio/ko/37b2e7db7e6b.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "9f697170b61a",
@@ -191,7 +311,12 @@
       "sources": [
         "emotions.worried"
       ],
-      "url": "/audio/ko/9f697170b61a.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "9e26cc9ba70d",
@@ -199,7 +324,12 @@
       "sources": [
         "ui.feeling.chose.worried"
       ],
-      "url": "/audio/ko/9e26cc9ba70d.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c81499fa0312",
@@ -207,7 +337,12 @@
       "sources": [
         "ui.feeling.notSureTwice.worried"
       ],
-      "url": "/audio/ko/c81499fa0312.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "a40ec40d34b2",
@@ -215,7 +350,12 @@
       "sources": [
         "emotions.nervous"
       ],
-      "url": "/audio/ko/a40ec40d34b2.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "306d2d039ece",
@@ -223,7 +363,12 @@
       "sources": [
         "ui.feeling.chose.nervous"
       ],
-      "url": "/audio/ko/306d2d039ece.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "66b477d988a8",
@@ -231,7 +376,12 @@
       "sources": [
         "ui.feeling.notSureTwice.nervous"
       ],
-      "url": "/audio/ko/66b477d988a8.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d2294d1fc5ce",
@@ -239,7 +389,12 @@
       "sources": [
         "emotions.embarrassed"
       ],
-      "url": "/audio/ko/d2294d1fc5ce.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b3e5318e0982",
@@ -247,7 +402,12 @@
       "sources": [
         "ui.feeling.chose.embarrassed"
       ],
-      "url": "/audio/ko/b3e5318e0982.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f21175a19901",
@@ -255,7 +415,12 @@
       "sources": [
         "ui.feeling.notSureTwice.embarrassed"
       ],
-      "url": "/audio/ko/f21175a19901.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "96007e95146f",
@@ -263,7 +428,12 @@
       "sources": [
         "emotions.flustered"
       ],
-      "url": "/audio/ko/96007e95146f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "df093f491209",
@@ -271,7 +441,12 @@
       "sources": [
         "ui.feeling.chose.flustered"
       ],
-      "url": "/audio/ko/df093f491209.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c385089a7c27",
@@ -279,7 +454,12 @@
       "sources": [
         "ui.feeling.notSureTwice.flustered"
       ],
-      "url": "/audio/ko/c385089a7c27.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "5870ea5c8d80",
@@ -287,7 +467,12 @@
       "sources": [
         "emotions.shy"
       ],
-      "url": "/audio/ko/5870ea5c8d80.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c0e6b27f07dd",
@@ -295,7 +480,12 @@
       "sources": [
         "ui.feeling.chose.shy"
       ],
-      "url": "/audio/ko/c0e6b27f07dd.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c8b8f8d76175",
@@ -303,7 +493,12 @@
       "sources": [
         "ui.feeling.notSureTwice.shy"
       ],
-      "url": "/audio/ko/c8b8f8d76175.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b0374fe525da",
@@ -311,7 +506,12 @@
       "sources": [
         "emotions.scared"
       ],
-      "url": "/audio/ko/b0374fe525da.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "04b395ec7852",
@@ -319,7 +519,12 @@
       "sources": [
         "ui.feeling.chose.scared"
       ],
-      "url": "/audio/ko/04b395ec7852.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "72c0525954fe",
@@ -327,7 +532,12 @@
       "sources": [
         "ui.feeling.notSureTwice.scared"
       ],
-      "url": "/audio/ko/72c0525954fe.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "2ab2f0150a11",
@@ -335,7 +545,12 @@
       "sources": [
         "emotions.sorry"
       ],
-      "url": "/audio/ko/2ab2f0150a11.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "554f5c3d6304",
@@ -343,7 +558,12 @@
       "sources": [
         "ui.feeling.chose.sorry"
       ],
-      "url": "/audio/ko/554f5c3d6304.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "02df76f6802f",
@@ -351,7 +571,12 @@
       "sources": [
         "ui.feeling.notSureTwice.sorry"
       ],
-      "url": "/audio/ko/02df76f6802f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "bea4ab6812b0",
@@ -359,7 +584,12 @@
       "sources": [
         "emotions.amused"
       ],
-      "url": "/audio/ko/bea4ab6812b0.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "e93bec235696",
@@ -367,7 +597,12 @@
       "sources": [
         "ui.feeling.chose.amused"
       ],
-      "url": "/audio/ko/e93bec235696.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "68ee62916621",
@@ -375,7 +610,12 @@
       "sources": [
         "ui.feeling.notSureTwice.amused"
       ],
-      "url": "/audio/ko/68ee62916621.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f97645b5ca47",
@@ -383,7 +623,12 @@
       "sources": [
         "emotions.not-sure"
       ],
-      "url": "/audio/ko/f97645b5ca47.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f347efe3b5e4",
@@ -391,7 +636,12 @@
       "sources": [
         "ui.feeling.chose.not-sure"
       ],
-      "url": "/audio/ko/f347efe3b5e4.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c752cd008a66",
@@ -399,7 +649,12 @@
       "sources": [
         "ui.feeling.notSureTwice.not-sure"
       ],
-      "url": "/audio/ko/c752cd008a66.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "a51b90123ad0",
@@ -407,7 +662,12 @@
       "sources": [
         "mind-lunch-line.situation.story.0"
       ],
-      "url": "/audio/ko/a51b90123ad0.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f7aafde74a1b",
@@ -415,7 +675,12 @@
       "sources": [
         "mind-lunch-line.situation.story.1"
       ],
-      "url": "/audio/ko/f7aafde74a1b.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "41fdbd6f5d02",
@@ -423,7 +688,12 @@
       "sources": [
         "mind-lunch-line.situation.story.2"
       ],
-      "url": "/audio/ko/41fdbd6f5d02.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b7a93f819d12",
@@ -432,7 +702,12 @@
         "mind-lunch-line.situation.keySentence",
         "mind-lunch-line.feeling.hint"
       ],
-      "url": "/audio/ko/b7a93f819d12.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "0bf403c63e5f",
@@ -441,7 +716,12 @@
         "mind-lunch-line.feeling.question",
         "social-playground.feeling.question"
       ],
-      "url": "/audio/ko/0bf403c63e5f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b0c0d3955987",
@@ -449,7 +729,12 @@
       "sources": [
         "mind-lunch-line.step3.question"
       ],
-      "url": "/audio/ko/b0c0d3955987.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7accaaba8ee0",
@@ -457,7 +742,12 @@
       "sources": [
         "mind-lunch-line.step3.byFeeling.upset"
       ],
-      "url": "/audio/ko/7accaaba8ee0.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "855cbd4dfcc3",
@@ -465,7 +755,12 @@
       "sources": [
         "mind-lunch-line.step3.byFeeling.frustrated"
       ],
-      "url": "/audio/ko/855cbd4dfcc3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "46761c7a7e69",
@@ -473,7 +768,12 @@
       "sources": [
         "mind-lunch-line.step3.byFeeling.unfair"
       ],
-      "url": "/audio/ko/46761c7a7e69.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f73370f5f6c3",
@@ -481,7 +781,12 @@
       "sources": [
         "mind-lunch-line.step3.byFeeling.sorry"
       ],
-      "url": "/audio/ko/f73370f5f6c3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c675158b33dd",
@@ -489,7 +794,12 @@
       "sources": [
         "mind-lunch-line.action.question"
       ],
-      "url": "/audio/ko/c675158b33dd.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "feaab1c8cfdb",
@@ -497,7 +807,12 @@
       "sources": [
         "mind-lunch-line.action.options.A"
       ],
-      "url": "/audio/ko/feaab1c8cfdb.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "494c42b1cddb",
@@ -505,7 +820,12 @@
       "sources": [
         "mind-lunch-line.action.options.A.feedback"
       ],
-      "url": "/audio/ko/494c42b1cddb.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "73c9d5287dd9",
@@ -513,7 +833,12 @@
       "sources": [
         "mind-lunch-line.action.options.B"
       ],
-      "url": "/audio/ko/73c9d5287dd9.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "4ea031fece9e",
@@ -521,7 +846,12 @@
       "sources": [
         "mind-lunch-line.action.options.B.feedback"
       ],
-      "url": "/audio/ko/4ea031fece9e.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "a2f75b5384c6",
@@ -529,7 +859,12 @@
       "sources": [
         "mind-lunch-line.action.options.C"
       ],
-      "url": "/audio/ko/a2f75b5384c6.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "132d744302d1",
@@ -537,7 +872,12 @@
       "sources": [
         "mind-lunch-line.action.options.C.feedback"
       ],
-      "url": "/audio/ko/132d744302d1.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "2556ef5258e5",
@@ -545,7 +885,12 @@
       "sources": [
         "mind-lunch-line.action.options.D"
       ],
-      "url": "/audio/ko/2556ef5258e5.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "30c78bf502ea",
@@ -553,7 +898,12 @@
       "sources": [
         "mind-lunch-line.action.options.D.feedback"
       ],
-      "url": "/audio/ko/30c78bf502ea.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d70afa25f2a7",
@@ -561,7 +911,12 @@
       "sources": [
         "mind-lunch-line.closing"
       ],
-      "url": "/audio/ko/d70afa25f2a7.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "6f688046898f",
@@ -569,7 +924,12 @@
       "sources": [
         "relation-pencil-prank.situation.story.0"
       ],
-      "url": "/audio/ko/6f688046898f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7f6ec4afcd54",
@@ -577,7 +937,12 @@
       "sources": [
         "relation-pencil-prank.situation.story.1"
       ],
-      "url": "/audio/ko/7f6ec4afcd54.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "cbcaef234518",
@@ -585,7 +950,12 @@
       "sources": [
         "relation-pencil-prank.situation.story.2"
       ],
-      "url": "/audio/ko/cbcaef234518.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "450a48541d08",
@@ -594,7 +964,12 @@
         "relation-pencil-prank.situation.keySentence",
         "relation-pencil-prank.feeling.hint"
       ],
-      "url": "/audio/ko/450a48541d08.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7e11ace07e10",
@@ -602,7 +977,12 @@
       "sources": [
         "relation-pencil-prank.feeling.question"
       ],
-      "url": "/audio/ko/7e11ace07e10.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "247873c1b9ec",
@@ -610,7 +990,12 @@
       "sources": [
         "relation-pencil-prank.step3.question"
       ],
-      "url": "/audio/ko/247873c1b9ec.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "1d5237310363",
@@ -618,7 +1003,12 @@
       "sources": [
         "relation-pencil-prank.step3.principle"
       ],
-      "url": "/audio/ko/1d5237310363.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c16039610760",
@@ -626,7 +1016,12 @@
       "sources": [
         "relation-pencil-prank.step3.options.A"
       ],
-      "url": "/audio/ko/c16039610760.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "982b1898cc9d",
@@ -634,7 +1029,12 @@
       "sources": [
         "relation-pencil-prank.step3.options.B"
       ],
-      "url": "/audio/ko/982b1898cc9d.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "70200112b4f3",
@@ -642,7 +1042,12 @@
       "sources": [
         "relation-pencil-prank.step3.options.C"
       ],
-      "url": "/audio/ko/70200112b4f3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "55d58b6176cb",
@@ -650,7 +1055,12 @@
       "sources": [
         "relation-pencil-prank.step3.options.D"
       ],
-      "url": "/audio/ko/55d58b6176cb.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c7a9bc45a370",
@@ -658,7 +1068,12 @@
       "sources": [
         "relation-pencil-prank.action.question"
       ],
-      "url": "/audio/ko/c7a9bc45a370.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d470bb04f947",
@@ -666,7 +1081,12 @@
       "sources": [
         "relation-pencil-prank.action.options.A"
       ],
-      "url": "/audio/ko/d470bb04f947.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "2c7ba3eb96af",
@@ -674,7 +1094,12 @@
       "sources": [
         "relation-pencil-prank.action.options.A.feedback"
       ],
-      "url": "/audio/ko/2c7ba3eb96af.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "325fd01bd2a2",
@@ -682,7 +1107,12 @@
       "sources": [
         "relation-pencil-prank.action.options.B"
       ],
-      "url": "/audio/ko/325fd01bd2a2.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "3bbedbc61e0a",
@@ -690,7 +1120,12 @@
       "sources": [
         "relation-pencil-prank.action.options.B.feedback"
       ],
-      "url": "/audio/ko/3bbedbc61e0a.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "04f4b9196b0d",
@@ -698,7 +1133,12 @@
       "sources": [
         "relation-pencil-prank.action.options.C"
       ],
-      "url": "/audio/ko/04f4b9196b0d.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f68f9256224d",
@@ -706,7 +1146,12 @@
       "sources": [
         "relation-pencil-prank.action.options.C.feedback"
       ],
-      "url": "/audio/ko/f68f9256224d.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "81e5676c27a1",
@@ -714,7 +1159,12 @@
       "sources": [
         "relation-pencil-prank.action.options.D"
       ],
-      "url": "/audio/ko/81e5676c27a1.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "31fc27abef6e",
@@ -722,7 +1172,12 @@
       "sources": [
         "relation-pencil-prank.action.options.D.feedback"
       ],
-      "url": "/audio/ko/31fc27abef6e.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "0a4fc2f3a18e",
@@ -730,7 +1185,12 @@
       "sources": [
         "relation-pencil-prank.closing"
       ],
-      "url": "/audio/ko/0a4fc2f3a18e.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "7567df202e58",
@@ -738,7 +1198,12 @@
       "sources": [
         "self-presentation-teasing.situation.story.0"
       ],
-      "url": "/audio/ko/7567df202e58.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "1a016fd04cfd",
@@ -747,7 +1212,12 @@
         "self-presentation-teasing.situation.keySentence",
         "self-presentation-teasing.feeling.hint"
       ],
-      "url": "/audio/ko/1a016fd04cfd.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "122de0d5b8f2",
@@ -755,7 +1225,12 @@
       "sources": [
         "self-presentation-teasing.feeling.question"
       ],
-      "url": "/audio/ko/122de0d5b8f2.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d5a0f48fcc1a",
@@ -763,7 +1238,12 @@
       "sources": [
         "self-presentation-teasing.step3.question"
       ],
-      "url": "/audio/ko/d5a0f48fcc1a.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "41a74799b366",
@@ -771,7 +1251,12 @@
       "sources": [
         "self-presentation-teasing.step3.byFeeling.angry"
       ],
-      "url": "/audio/ko/41a74799b366.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "ffd97db02ffd",
@@ -779,14 +1264,25 @@
       "sources": [
         "self-presentation-teasing.step3.byFeeling.nervous"
       ],
-      "url": "/audio/ko/ffd97db02ffd.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "1848daaf3b37",
       "text": "눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다.",
       "sources": [
         "self-presentation-teasing.step3.byFeeling.upset"
-      ]
+      ],
+      "recorded": {
+        "kyung": false,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "ac2a586c8f29",
@@ -794,7 +1290,12 @@
       "sources": [
         "self-presentation-teasing.step3.byFeeling.worried"
       ],
-      "url": "/audio/ko/ac2a586c8f29.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "48d65e90b9d5",
@@ -802,7 +1303,12 @@
       "sources": [
         "self-presentation-teasing.action.question"
       ],
-      "url": "/audio/ko/48d65e90b9d5.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "72c5cecc4b95",
@@ -810,7 +1316,12 @@
       "sources": [
         "self-presentation-teasing.action.options.A"
       ],
-      "url": "/audio/ko/72c5cecc4b95.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d1a5870d5f70",
@@ -818,7 +1329,12 @@
       "sources": [
         "self-presentation-teasing.action.options.A.feedback"
       ],
-      "url": "/audio/ko/d1a5870d5f70.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "96aeb4c6a2b6",
@@ -826,7 +1342,12 @@
       "sources": [
         "self-presentation-teasing.action.options.B"
       ],
-      "url": "/audio/ko/96aeb4c6a2b6.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d4d41a5bea57",
@@ -834,7 +1355,12 @@
       "sources": [
         "self-presentation-teasing.action.options.B.feedback"
       ],
-      "url": "/audio/ko/d4d41a5bea57.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "fbe8340cf2cb",
@@ -842,7 +1368,12 @@
       "sources": [
         "self-presentation-teasing.action.options.C"
       ],
-      "url": "/audio/ko/fbe8340cf2cb.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "e44ba6972df2",
@@ -850,7 +1381,12 @@
       "sources": [
         "self-presentation-teasing.action.options.C.feedback"
       ],
-      "url": "/audio/ko/e44ba6972df2.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "fc64aa66581f",
@@ -858,7 +1394,12 @@
       "sources": [
         "self-presentation-teasing.action.options.D"
       ],
-      "url": "/audio/ko/fc64aa66581f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "52d20ddbd762",
@@ -866,7 +1407,12 @@
       "sources": [
         "self-presentation-teasing.action.options.D.feedback"
       ],
-      "url": "/audio/ko/52d20ddbd762.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "370bd5c1fd3c",
@@ -874,7 +1420,12 @@
       "sources": [
         "self-presentation-teasing.closing"
       ],
-      "url": "/audio/ko/370bd5c1fd3c.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "d19422f164ea",
@@ -882,7 +1433,12 @@
       "sources": [
         "social-playground.situation.story.0"
       ],
-      "url": "/audio/ko/d19422f164ea.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "c0178685f0cf",
@@ -890,7 +1446,12 @@
       "sources": [
         "social-playground.situation.story.1"
       ],
-      "url": "/audio/ko/c0178685f0cf.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "beca2890068e",
@@ -899,7 +1460,12 @@
         "social-playground.situation.keySentence",
         "social-playground.feeling.hint"
       ],
-      "url": "/audio/ko/beca2890068e.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "bd77f288e374",
@@ -907,7 +1473,12 @@
       "sources": [
         "social-playground.step3.question"
       ],
-      "url": "/audio/ko/bd77f288e374.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "8238aa009d46",
@@ -915,7 +1486,12 @@
       "sources": [
         "social-playground.step3.byFeeling.annoyed"
       ],
-      "url": "/audio/ko/8238aa009d46.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "677818bf099f",
@@ -923,7 +1499,12 @@
       "sources": [
         "social-playground.step3.byFeeling.angry"
       ],
-      "url": "/audio/ko/677818bf099f.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "5100330ebeb3",
@@ -931,7 +1512,12 @@
       "sources": [
         "social-playground.step3.byFeeling.embarrassed"
       ],
-      "url": "/audio/ko/5100330ebeb3.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "fe642cd27fb7",
@@ -939,7 +1525,12 @@
       "sources": [
         "social-playground.step3.byFeeling.worried"
       ],
-      "url": "/audio/ko/fe642cd27fb7.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "b4e914dc9d93",
@@ -947,7 +1538,12 @@
       "sources": [
         "social-playground.action.question"
       ],
-      "url": "/audio/ko/b4e914dc9d93.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "335ab25d25e4",
@@ -955,7 +1551,12 @@
       "sources": [
         "social-playground.action.options.A"
       ],
-      "url": "/audio/ko/335ab25d25e4.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "9256b3c6baa9",
@@ -963,7 +1564,12 @@
       "sources": [
         "social-playground.action.options.A.feedback"
       ],
-      "url": "/audio/ko/9256b3c6baa9.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f3f2394b9959",
@@ -971,7 +1577,12 @@
       "sources": [
         "social-playground.action.options.B"
       ],
-      "url": "/audio/ko/f3f2394b9959.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "f8cb19bc9c22",
@@ -979,7 +1590,12 @@
       "sources": [
         "social-playground.action.options.B.feedback"
       ],
-      "url": "/audio/ko/f8cb19bc9c22.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "62ddc4756317",
@@ -987,7 +1603,12 @@
       "sources": [
         "social-playground.action.options.C"
       ],
-      "url": "/audio/ko/62ddc4756317.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "49e1e4333e17",
@@ -995,7 +1616,12 @@
       "sources": [
         "social-playground.action.options.C.feedback"
       ],
-      "url": "/audio/ko/49e1e4333e17.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "12a042ec98ba",
@@ -1003,7 +1629,12 @@
       "sources": [
         "social-playground.action.options.D"
       ],
-      "url": "/audio/ko/12a042ec98ba.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "4783192aeb37",
@@ -1011,7 +1642,12 @@
       "sources": [
         "social-playground.action.options.D.feedback"
       ],
-      "url": "/audio/ko/4783192aeb37.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     },
     {
       "id": "47b9be1c1f9b",
@@ -1019,7 +1655,12 @@
       "sources": [
         "social-playground.closing"
       ],
-      "url": "/audio/ko/47b9be1c1f9b.mp3"
+      "recorded": {
+        "kyung": true,
+        "sophie-lane": false,
+        "clova-ndain": false,
+        "lulu-lolipop": true
+      }
     }
   ]
 }

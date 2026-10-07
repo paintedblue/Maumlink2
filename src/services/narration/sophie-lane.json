@@ -1,0 +1,17 @@
+{
+  "id": "sophie-lane",
+  "label": "어린이 (Sophie Lane)",
+  "provider": "KidVoice (kid-voices-ai.com)",
+  "voiceId": "sophie-lane",
+  "voiceName": "Sophie Lane",
+  "model": "KidVoice",
+  "locale": "ko",
+  "audioDir": "/audio/ko-kid",
+  "playbackRate": 0.9,
+  "clips": [
+    {
+      "text": "오늘은 어떤 마음을 배워볼까요?",
+      "url": "/audio/ko-kid/1015b8bb0ecc.mp3"
+    }
+  ]
+}

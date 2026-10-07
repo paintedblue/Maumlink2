@@ -29,3 +29,6 @@ playwright-report
 test-results
 tests/e2e/**/*-snapshots/*-linux.png
 .tmp
+
+# one-time TTS downloads before `pnpm narration:import`
+.narration-downloads

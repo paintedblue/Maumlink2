@@ -4,8 +4,14 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { defineConfig, type Plugin } from 'vite'
 import { formatReport, validateAll } from './scripts/validate-core.ts'
+import { NARRATION_VOICES, resolveNarrationVoice } from './src/services/narration/voices.ts'
 
 const root = fileURLToPath(new URL('.', import.meta.url))
+const narrationVoice = resolveNarrationVoice(process.env.VITE_NARRATION_VOICE)
+/** Inactive voice sets stay in public/ but are not precached (FR-PWA-02 covers only the shipped voice). */
+const inactiveNarrationGlobs = Object.values(NARRATION_VOICES)
+  .filter((voice) => voice.id !== narrationVoice.id)
+  .map((voice) => `${voice.audioDir.replace(/^\//, '')}/**`)
 
 /** FR-ENG-02: invalid content fails the build with a plain-language message. */
 function contentValidation(): Plugin {
@@ -52,6 +58,7 @@ export default defineConfig({
       workbox: {
         // FR-PWA-02: everything the app needs offline is precached.
         globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,woff2,mp3,json,webmanifest}'],
+        globIgnores: ['**/node_modules/**', 'sw.js', 'workbox-*.js', ...inactiveNarrationGlobs],
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024,
         navigateFallback: 'index.html',
       },

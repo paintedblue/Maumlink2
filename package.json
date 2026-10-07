@@ -28,7 +28,8 @@
     "app-icons": "node --import tsx scripts/build-app-icons.ts",
     "test:acceptance": "playwright test --config playwright.acceptance.config.ts",
     "validate:final-content": "node --import tsx scripts/validate-final-content.ts",
-    "narration:import": "node --import tsx scripts/narration-import.ts"
+    "narration:import": "node --import tsx scripts/narration-import.ts",
+    "narration:generate:clova": "node --import tsx scripts/narration-generate-clova.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "4.3.3",

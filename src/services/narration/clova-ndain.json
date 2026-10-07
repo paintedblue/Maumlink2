@@ -1,0 +1,17 @@
+{
+  "id": "clova-ndain",
+  "label": "어린이 (CLOVA 다인)",
+  "provider": "NAVER Cloud CLOVA Voice",
+  "voiceId": "ndain",
+  "voiceName": "다인 (여자 아동)",
+  "model": "TTS Premium",
+  "locale": "ko",
+  "audioDir": "/audio/ko-clova-ndain",
+  "playbackRate": 1,
+  "generation": {
+    "speed": 2,
+    "pitch": 0,
+    "volume": 0
+  },
+  "clips": []
+}

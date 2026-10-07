@@ -1,0 +1,771 @@
+{
+  "voiceId": "ocZQ262SsZb9RIxcQBOj",
+  "model": "eleven_v4",
+  "generatedAt": "2026-10-08",
+  "speed": "default (slowed in app, playbackRate 0.85)",
+  "note": "Audio tags in square brackets were prefixed to the text for Eleven v4 emotion only; they are not spoken.",
+  "phrases": [
+    {
+      "id": "1015b8bb0ecc",
+      "tag": "[cheerfully]",
+      "text": "오늘은 어떤 마음을 배워볼까요?",
+      "source": "ui.home.greeting"
+    },
+    {
+      "id": "bf9f06c918c4",
+      "tag": "[curious]",
+      "text": "감정 버튼을 누르고 몸의 반응을 살펴봐요.",
+      "source": "ui.step3.explore"
+    },
+    {
+      "id": "0ea9230d4106",
+      "tag": "[curious]",
+      "text": "먼저 하나를 골라요.",
+      "source": "ui.feeling.pickFirst"
+    },
+    {
+      "id": "48cab691aae7",
+      "tag": "",
+      "text": "내가 고른 방법",
+      "source": "ui.feedback.myChoice"
+    },
+    {
+      "id": "d0a504b66a03",
+      "tag": "[cheerfully]",
+      "text": "오늘의 길",
+      "source": "ui.wrapup.path"
+    },
+    {
+      "id": "9420142c51f3",
+      "tag": "",
+      "text": "화가 나요",
+      "source": "emotions.angry"
+    },
+    {
+      "id": "e1c6b1cf3536",
+      "tag": "",
+      "text": "'화가 나요'를 골랐어요.",
+      "source": "ui.feeling.chose.angry"
+    },
+    {
+      "id": "d550548bec76",
+      "tag": "",
+      "text": "괜찮아요. 함께 화가 나요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.angry"
+    },
+    {
+      "id": "691ebb7f3743",
+      "tag": "",
+      "text": "짜증나요",
+      "source": "emotions.annoyed"
+    },
+    {
+      "id": "be1cda7b26f0",
+      "tag": "",
+      "text": "'짜증나요'를 골랐어요.",
+      "source": "ui.feeling.chose.annoyed"
+    },
+    {
+      "id": "b23ddfdae9b9",
+      "tag": "",
+      "text": "괜찮아요. 함께 짜증나요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.annoyed"
+    },
+    {
+      "id": "292c367ea4f9",
+      "tag": "",
+      "text": "속상해요",
+      "source": "emotions.upset"
+    },
+    {
+      "id": "4f803c237112",
+      "tag": "",
+      "text": "'속상해요'를 골랐어요.",
+      "source": "ui.feeling.chose.upset"
+    },
+    {
+      "id": "470f81ca16b0",
+      "tag": "",
+      "text": "괜찮아요. 함께 속상해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.upset"
+    },
+    {
+      "id": "63c30b9b83c3",
+      "tag": "",
+      "text": "서운해요",
+      "source": "emotions.hurt"
+    },
+    {
+      "id": "d6903d3677c6",
+      "tag": "",
+      "text": "'서운해요'를 골랐어요.",
+      "source": "ui.feeling.chose.hurt"
+    },
+    {
+      "id": "35452cf07e4a",
+      "tag": "",
+      "text": "괜찮아요. 함께 서운해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.hurt"
+    },
+    {
+      "id": "7628854fc961",
+      "tag": "",
+      "text": "답답해요",
+      "source": "emotions.frustrated"
+    },
+    {
+      "id": "0aebb83673eb",
+      "tag": "",
+      "text": "'답답해요'를 골랐어요.",
+      "source": "ui.feeling.chose.frustrated"
+    },
+    {
+      "id": "9e4fb1a4dc75",
+      "tag": "",
+      "text": "괜찮아요. 함께 답답해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.frustrated"
+    },
+    {
+      "id": "4dee8e2a95de",
+      "tag": "",
+      "text": "억울해요",
+      "source": "emotions.unfair"
+    },
+    {
+      "id": "7c323115b21f",
+      "tag": "",
+      "text": "'억울해요'를 골랐어요.",
+      "source": "ui.feeling.chose.unfair"
+    },
+    {
+      "id": "37b2e7db7e6b",
+      "tag": "",
+      "text": "괜찮아요. 함께 억울해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.unfair"
+    },
+    {
+      "id": "9f697170b61a",
+      "tag": "",
+      "text": "걱정돼요",
+      "source": "emotions.worried"
+    },
+    {
+      "id": "9e26cc9ba70d",
+      "tag": "",
+      "text": "'걱정돼요'를 골랐어요.",
+      "source": "ui.feeling.chose.worried"
+    },
+    {
+      "id": "c81499fa0312",
+      "tag": "",
+      "text": "괜찮아요. 함께 걱정돼요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.worried"
+    },
+    {
+      "id": "a40ec40d34b2",
+      "tag": "",
+      "text": "긴장돼요",
+      "source": "emotions.nervous"
+    },
+    {
+      "id": "306d2d039ece",
+      "tag": "",
+      "text": "'긴장돼요'를 골랐어요.",
+      "source": "ui.feeling.chose.nervous"
+    },
+    {
+      "id": "66b477d988a8",
+      "tag": "",
+      "text": "괜찮아요. 함께 긴장돼요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.nervous"
+    },
+    {
+      "id": "d2294d1fc5ce",
+      "tag": "",
+      "text": "창피해요",
+      "source": "emotions.embarrassed"
+    },
+    {
+      "id": "b3e5318e0982",
+      "tag": "",
+      "text": "'창피해요'를 골랐어요.",
+      "source": "ui.feeling.chose.embarrassed"
+    },
+    {
+      "id": "f21175a19901",
+      "tag": "",
+      "text": "괜찮아요. 함께 창피해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.embarrassed"
+    },
+    {
+      "id": "96007e95146f",
+      "tag": "",
+      "text": "당황스러워요",
+      "source": "emotions.flustered"
+    },
+    {
+      "id": "df093f491209",
+      "tag": "",
+      "text": "'당황스러워요'를 골랐어요.",
+      "source": "ui.feeling.chose.flustered"
+    },
+    {
+      "id": "c385089a7c27",
+      "tag": "",
+      "text": "괜찮아요. 함께 당황스러워요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.flustered"
+    },
+    {
+      "id": "5870ea5c8d80",
+      "tag": "",
+      "text": "부끄러워요",
+      "source": "emotions.shy"
+    },
+    {
+      "id": "c0e6b27f07dd",
+      "tag": "",
+      "text": "'부끄러워요'를 골랐어요.",
+      "source": "ui.feeling.chose.shy"
+    },
+    {
+      "id": "c8b8f8d76175",
+      "tag": "",
+      "text": "괜찮아요. 함께 부끄러워요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.shy"
+    },
+    {
+      "id": "b0374fe525da",
+      "tag": "",
+      "text": "무서워요",
+      "source": "emotions.scared"
+    },
+    {
+      "id": "04b395ec7852",
+      "tag": "",
+      "text": "'무서워요'를 골랐어요.",
+      "source": "ui.feeling.chose.scared"
+    },
+    {
+      "id": "72c0525954fe",
+      "tag": "",
+      "text": "괜찮아요. 함께 무서워요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.scared"
+    },
+    {
+      "id": "2ab2f0150a11",
+      "tag": "",
+      "text": "미안해요",
+      "source": "emotions.sorry"
+    },
+    {
+      "id": "554f5c3d6304",
+      "tag": "",
+      "text": "'미안해요'를 골랐어요.",
+      "source": "ui.feeling.chose.sorry"
+    },
+    {
+      "id": "02df76f6802f",
+      "tag": "",
+      "text": "괜찮아요. 함께 미안해요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.sorry"
+    },
+    {
+      "id": "bea4ab6812b0",
+      "tag": "",
+      "text": "재미있어요",
+      "source": "emotions.amused"
+    },
+    {
+      "id": "e93bec235696",
+      "tag": "",
+      "text": "'재미있어요'를 골랐어요.",
+      "source": "ui.feeling.chose.amused"
+    },
+    {
+      "id": "68ee62916621",
+      "tag": "",
+      "text": "괜찮아요. 함께 재미있어요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.amused"
+    },
+    {
+      "id": "f97645b5ca47",
+      "tag": "",
+      "text": "잘 모르겠어요",
+      "source": "emotions.not-sure"
+    },
+    {
+      "id": "f347efe3b5e4",
+      "tag": "",
+      "text": "'잘 모르겠어요'를 골랐어요.",
+      "source": "ui.feeling.chose.not-sure"
+    },
+    {
+      "id": "c752cd008a66",
+      "tag": "",
+      "text": "괜찮아요. 함께 잘 모르겠어요 부터 살펴봐요.",
+      "source": "ui.feeling.notSureTwice.not-sure"
+    },
+    {
+      "id": "a51b90123ad0",
+      "tag": "[softly]",
+      "text": "급식실에서 내 앞으로 슬그머니 새치기를 하는 친구가 있네요.",
+      "source": "mind-lunch-line.situation.story.0"
+    },
+    {
+      "id": "f7aafde74a1b",
+      "tag": "[softly]",
+      "text": "이번에 첫번째가 아니예요.",
+      "source": "mind-lunch-line.situation.story.1"
+    },
+    {
+      "id": "41fdbd6f5d02",
+      "tag": "[softly]",
+      "text": "자꾸 새채기를 하니 뭐라고 이야기하고 싶은데 친구에게 어떻게 이야기해야할지 모르겠어요.",
+      "source": "mind-lunch-line.situation.story.2"
+    },
+    {
+      "id": "b7a93f819d12",
+      "tag": "[softly]",
+      "text": "새치기 하는 친구가 있어요",
+      "source": "mind-lunch-line.situation.keySentence"
+    },
+    {
+      "id": "0bf403c63e5f",
+      "tag": "[curious]",
+      "text": "이 상황에서 나는 어떤 기분이 들까요?",
+      "source": "mind-lunch-line.feeling.question"
+    },
+    {
+      "id": "b0c0d3955987",
+      "tag": "[curious]",
+      "text": "왜 그런 마음이 들었을까요?",
+      "source": "mind-lunch-line.step3.question"
+    },
+    {
+      "id": "7accaaba8ee0",
+      "tag": "[sad]",
+      "text": "친구가 내 앞으로 자주 새치기를 해서",
+      "source": "mind-lunch-line.step3.byFeeling.upset"
+    },
+    {
+      "id": "855cbd4dfcc3",
+      "tag": "[softly]",
+      "text": "친구에게 뭐라고 이야기하고 싶은데 말이 잘 안나와서",
+      "source": "mind-lunch-line.step3.byFeeling.frustrated"
+    },
+    {
+      "id": "46761c7a7e69",
+      "tag": "[softly]",
+      "text": "내 차례였는데 친구가 새치기를 하니 내 순서가 뒤로 밀려서",
+      "source": "mind-lunch-line.step3.byFeeling.unfair"
+    },
+    {
+      "id": "f73370f5f6c3",
+      "tag": "[softly]",
+      "text": "뒤에 서 있는 친구들에게 미안한 마음이 들어서",
+      "source": "mind-lunch-line.step3.byFeeling.sorry"
+    },
+    {
+      "id": "c675158b33dd",
+      "tag": "[curious]",
+      "text": "그런 마음이 들 때 어떻게 하면 좋을까요?",
+      "source": "mind-lunch-line.action.question"
+    },
+    {
+      "id": "feaab1c8cfdb",
+      "tag": "",
+      "text": "내 마음 말하기 – “ 네가 새치기해서 나는 속상했어＂라고 말하기",
+      "source": "mind-lunch-line.action.options.A"
+    },
+    {
+      "id": "494c42b1cddb",
+      "tag": "[warmly]",
+      "text": "친구에게 마음을 말했어요. 내 마음을 잘 표현했어요.",
+      "source": "mind-lunch-line.action.options.A.feedback"
+    },
+    {
+      "id": "73c9d5287dd9",
+      "tag": "",
+      "text": "바라는 것 말하기 – 다음에는 순서를 지켜주면 좋겠어＂라고 말해요",
+      "source": "mind-lunch-line.action.options.B"
+    },
+    {
+      "id": "4ea031fece9e",
+      "tag": "[warmly]",
+      "text": "친구에게 바라는 것을 말한 ‘나’ 자랑스러워요.",
+      "source": "mind-lunch-line.action.options.B.feedback"
+    },
+    {
+      "id": "a2f75b5384c6",
+      "tag": "",
+      "text": "함께 해결하기 –친구들과 함께 ”우리 순서대로 줄을 서자＂라고 이야기해요",
+      "source": "mind-lunch-line.action.options.C"
+    },
+    {
+      "id": "132d744302d1",
+      "tag": "[warmly]",
+      "text": "혼자 해결하기 어려울 땐 힘을 합쳐요",
+      "source": "mind-lunch-line.action.options.C.feedback"
+    },
+    {
+      "id": "2556ef5258e5",
+      "tag": "",
+      "text": "도움 요청하기 – 선생님에게 “ 친구와 해결하기 어려워요. 도와주세요＂",
+      "source": "mind-lunch-line.action.options.D"
+    },
+    {
+      "id": "30c78bf502ea",
+      "tag": "[warmly]",
+      "text": "선생님께 도움을 요청했군요. 혼자 참는 것보다 때로는 도움을 요청하는 것이 더 좋아요",
+      "source": "mind-lunch-line.action.options.D.feedback"
+    },
+    {
+      "id": "d70afa25f2a7",
+      "tag": "[cheerfully]",
+      "text": "내 마음을 말하고 도움을 요청하는 것은 나를 지키는 좋은 방법이에요. 힘들 때는 혼자 참지 말고 믿을 만한 어른에게 이야기해요.",
+      "source": "mind-lunch-line.closing"
+    },
+    {
+      "id": "6f688046898f",
+      "tag": "[softly]",
+      "text": "쉬는 시간이에요.",
+      "source": "relation-pencil-prank.situation.story.0"
+    },
+    {
+      "id": "7f6ec4afcd54",
+      "tag": "[softly]",
+      "text": "나는 친구를 웃겨주려고 친구의 연필을 살짝 숨겼어요.",
+      "source": "relation-pencil-prank.situation.story.1"
+    },
+    {
+      "id": "cbcaef234518",
+      "tag": "[softly]",
+      "text": "그런데 친구는 연필을 찾으며 웃지 않고 표정이 좋지 않아요.",
+      "source": "relation-pencil-prank.situation.story.2"
+    },
+    {
+      "id": "450a48541d08",
+      "tag": "[softly]",
+      "text": "“어? 친구가 웃지 않아요.”",
+      "source": "relation-pencil-prank.situation.keySentence"
+    },
+    {
+      "id": "7e11ace07e10",
+      "tag": "[curious]",
+      "text": "연필을 찾는 친구는 어떤 기분일까요?",
+      "source": "relation-pencil-prank.feeling.question"
+    },
+    {
+      "id": "247873c1b9ec",
+      "tag": "[curious]",
+      "text": "친구는 왜 그런 기분이 들었을까요?",
+      "source": "relation-pencil-prank.step3.question"
+    },
+    {
+      "id": "1d5237310363",
+      "tag": "",
+      "text": "나는 친구를 웃겨주려고 장난을 했어요. 하지만 친구는 속상하거나 걱정할 수 있어요.",
+      "source": "relation-pencil-prank.step3.principle"
+    },
+    {
+      "id": "c16039610760",
+      "tag": "",
+      "text": "연필이 없어져서 걱정이 되었어요",
+      "source": "relation-pencil-prank.step3.options.A"
+    },
+    {
+      "id": "982b1898cc9d",
+      "tag": "",
+      "text": "누가 연칠을 가져갔다고 생각했어요.",
+      "source": "relation-pencil-prank.step3.options.B"
+    },
+    {
+      "id": "70200112b4f3",
+      "tag": "",
+      "text": "연필을 찾지 못해 속상했어요.",
+      "source": "relation-pencil-prank.step3.options.C"
+    },
+    {
+      "id": "55d58b6176cb",
+      "tag": "",
+      "text": "친구가 장난친 것이 재미있었어요.",
+      "source": "relation-pencil-prank.step3.options.D"
+    },
+    {
+      "id": "c7a9bc45a370",
+      "tag": "[curious]",
+      "text": "친구의 표정을 보니 내가 생각한 것과 다른 것 같아요. 어떻게 하면 좋을까요?",
+      "source": "relation-pencil-prank.action.question"
+    },
+    {
+      "id": "d470bb04f947",
+      "tag": "",
+      "text": "재미있는 장난이라고 생각하고 계속 숨겨요.",
+      "source": "relation-pencil-prank.action.options.A"
+    },
+    {
+      "id": "2c7ba3eb96af",
+      "tag": "[gently]",
+      "text": "친구가 왜 그런 표정을 지었는지 생각해봐요.",
+      "source": "relation-pencil-prank.action.options.A.feedback"
+    },
+    {
+      "id": "325fd01bd2a2",
+      "tag": "",
+      "text": "친구가 찾을 때까지 아무 말도 하지 않아요.",
+      "source": "relation-pencil-prank.action.options.B"
+    },
+    {
+      "id": "3bbedbc61e0a",
+      "tag": "[gently]",
+      "text": "없어진 물건이 있다면 속상하겠죠? 친구 마음을 생각해봐요",
+      "source": "relation-pencil-prank.action.options.B.feedback"
+    },
+    {
+      "id": "04f4b9196b0d",
+      "tag": "",
+      "text": "연필을 돌려주고 “미안해. 나는 네가 웃을 줄 알았어.”라고 말해요.",
+      "source": "relation-pencil-prank.action.options.C"
+    },
+    {
+      "id": "f68f9256224d",
+      "tag": "[warmly]",
+      "text": "용기있는 선택이네요. 미안한 마음이 들 때 바로 바과하는 멋진 모습입니다.",
+      "source": "relation-pencil-prank.action.options.C.feedback"
+    },
+    {
+      "id": "81e5676c27a1",
+      "tag": "",
+      "text": "“내가 장난으로 숨겼는데 속상했어?”라고 친구에게 물어봐요.",
+      "source": "relation-pencil-prank.action.options.D"
+    },
+    {
+      "id": "31fc27abef6e",
+      "tag": "[warmly]",
+      "text": "친구의 마음을 직접 물어보고 확인했다니 친구도 마음이 살짝 풀렸을 거예요.",
+      "source": "relation-pencil-prank.action.options.D.feedback"
+    },
+    {
+      "id": "0a4fc2f3a18e",
+      "tag": "[cheerfully]",
+      "text": "“나는 재미있어도 친구는 재미없을 수 있어요. 친구의 표정과 마음도 살펴봐요.”",
+      "source": "relation-pencil-prank.closing"
+    },
+    {
+      "id": "7567df202e58",
+      "tag": "[softly]",
+      "text": "내가 노력하여 만든 발표를 친구들이 놀리니 속상해",
+      "source": "self-presentation-teasing.situation.story.0"
+    },
+    {
+      "id": "1a016fd04cfd",
+      "tag": "[softly]",
+      "text": "속상한 마음을 혼자 해결하고 싶어",
+      "source": "self-presentation-teasing.situation.keySentence"
+    },
+    {
+      "id": "122de0d5b8f2",
+      "tag": "[curious]",
+      "text": "그때 내 기분은 어떨까요?",
+      "source": "self-presentation-teasing.feeling.question"
+    },
+    {
+      "id": "d5a0f48fcc1a",
+      "tag": "[curious]",
+      "text": "그때 내 몸의 반응은 어떤가요?",
+      "source": "self-presentation-teasing.step3.question"
+    },
+    {
+      "id": "41a74799b366",
+      "tag": "[softly]",
+      "text": "머리에 열이 오르고 눈이 뜨거워지고, 목소리가 커진다.",
+      "source": "self-presentation-teasing.step3.byFeeling.angry"
+    },
+    {
+      "id": "ffd97db02ffd",
+      "tag": "[sad]",
+      "text": "가슴이 쿵쿵 뛴다, 입술이 마른다.",
+      "source": "self-presentation-teasing.step3.byFeeling.nervous"
+    },
+    {
+      "id": "1848daaf3b37",
+      "tag": "[sad]",
+      "text": "눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다.",
+      "source": "self-presentation-teasing.step3.byFeeling.upset"
+    },
+    {
+      "id": "ac2a586c8f29",
+      "tag": "[sad]",
+      "text": "배가 아프다, 머리가 아프다.",
+      "source": "self-presentation-teasing.step3.byFeeling.worried"
+    },
+    {
+      "id": "48d65e90b9d5",
+      "tag": "[curious]",
+      "text": "이런 마음과 몸의 반응이 나타날 때 나에게 필요한 것은?",
+      "source": "self-presentation-teasing.action.question"
+    },
+    {
+      "id": "72c5cecc4b95",
+      "tag": "",
+      "text": "발표가 끝나고 혼자서 산책하기",
+      "source": "self-presentation-teasing.action.options.A"
+    },
+    {
+      "id": "d1a5870d5f70",
+      "tag": "[warmly]",
+      "text": "발표가 끝난 뒤 쉬는 시간에 운동장에 나가 가볍게 산책을 해봐요. 어떤 마음이 들까요?",
+      "source": "self-presentation-teasing.action.options.A.feedback"
+    },
+    {
+      "id": "96aeb4c6a2b6",
+      "tag": "",
+      "text": "마음을 위로하기 위해 그림을 그려보기",
+      "source": "self-presentation-teasing.action.options.B"
+    },
+    {
+      "id": "d4d41a5bea57",
+      "tag": "[warmly]",
+      "text": "그림을 그려 내 마음을 표현하는 방법은 어떤가요? 그림을 그린다면 어떤 마음이 들까요?",
+      "source": "self-presentation-teasing.action.options.B.feedback"
+    },
+    {
+      "id": "fbe8340cf2cb",
+      "tag": "",
+      "text": "조용한 곳에 잠시 혼자 있기",
+      "source": "self-presentation-teasing.action.options.C"
+    },
+    {
+      "id": "e44ba6972df2",
+      "tag": "[warmly]",
+      "text": "좋은 방법이예요. 우리 나가서 기분전환을 시켜볼까요? 잠시 조용히 앉아 있으면 어떤 마음이 들까요?",
+      "source": "self-presentation-teasing.action.options.C.feedback"
+    },
+    {
+      "id": "fc64aa66581f",
+      "tag": "",
+      "text": "숨을 크게 내쉬어보기",
+      "source": "self-presentation-teasing.action.options.D"
+    },
+    {
+      "id": "52d20ddbd762",
+      "tag": "[warmly]",
+      "text": "그래도 기분이 풀리지 않는다면 선생님께도 이야기할 수 있어요.",
+      "source": "self-presentation-teasing.action.options.D.feedback"
+    },
+    {
+      "id": "370bd5c1fd3c",
+      "tag": "[cheerfully]",
+      "text": "앞으로 혼자 속상한 일이 있거나 같은 상황이 있을 때 오늘과 같이 해보는 거예요. 우리 모두는 소중하니까요.",
+      "source": "self-presentation-teasing.closing"
+    },
+    {
+      "id": "d19422f164ea",
+      "tag": "[softly]",
+      "text": "쉬는 시간에 친구들이 운동장에서 함께 놀고 있어요.",
+      "source": "social-playground.situation.story.0"
+    },
+    {
+      "id": "c0178685f0cf",
+      "tag": "[softly]",
+      "text": "나는 친구들과 같이 놀고 싶지만 친구들은 아직 나를 부르지 않았어요.",
+      "source": "social-playground.situation.story.1"
+    },
+    {
+      "id": "beca2890068e",
+      "tag": "[softly]",
+      "text": "“나도 같이 놀고 싶어!”",
+      "source": "social-playground.situation.keySentence"
+    },
+    {
+      "id": "bd77f288e374",
+      "tag": "[curious]",
+      "text": "왜 그런 기분이 들었을까요?",
+      "source": "social-playground.step3.question"
+    },
+    {
+      "id": "8238aa009d46",
+      "tag": "[softly]",
+      "text": "친구들이 나와 놀기 싫어한다고 생각해서",
+      "source": "social-playground.step3.byFeeling.annoyed"
+    },
+    {
+      "id": "677818bf099f",
+      "tag": "[softly]",
+      "text": "나만 빼고 노는 것 같아서",
+      "source": "social-playground.step3.byFeeling.angry"
+    },
+    {
+      "id": "5100330ebeb3",
+      "tag": "[sad]",
+      "text": "어떻게 같이 놀자고 말해야 할지 몰라서",
+      "source": "social-playground.step3.byFeeling.embarrassed"
+    },
+    {
+      "id": "fe642cd27fb7",
+      "tag": "[sad]",
+      "text": "친구들이 거절할까 봐 걱정돼서",
+      "source": "social-playground.step3.byFeeling.worried"
+    },
+    {
+      "id": "b4e914dc9d93",
+      "tag": "[curious]",
+      "text": "친구들과 함께 놀고 싶다면 어떻게 해볼 수 있을까요?",
+      "source": "social-playground.action.question"
+    },
+    {
+      "id": "335ab25d25e4",
+      "tag": "",
+      "text": "친구들에게 화를 내며 “왜 나만 빼도 놀아!＂라고 말해요.",
+      "source": "social-playground.action.options.A"
+    },
+    {
+      "id": "9256b3c6baa9",
+      "tag": "[gently]",
+      "text": "화가 날 수 있어요. 하지만 화를 내며 말하면 친구들이 놀라거나 속상할 수 있어요. “나도 같이 놀고 싶어.”라고 말해보면 어떨까요?",
+      "source": "social-playground.action.options.A.feedback"
+    },
+    {
+      "id": "f3f2394b9959",
+      "tag": "",
+      "text": "가까이에 가서 조용히 친구들을 기다려요",
+      "source": "social-playground.action.options.B"
+    },
+    {
+      "id": "f8cb19bc9c22",
+      "tag": "[warmly]",
+      "text": "“가까이에서 기다리면 친구들이 내 마음을 알아줄 수도 있지만, 모를 수도 있어요. 함께 놀고 싶다면 내 마음을 말해보는 건 어떨까요?”.",
+      "source": "social-playground.action.options.B.feedback"
+    },
+    {
+      "id": "62ddc4756317",
+      "tag": "",
+      "text": "친구들에게 “나도 같이 놀아도 돼?”라고 물어봐요.",
+      "source": "social-playground.action.options.C"
+    },
+    {
+      "id": "49e1e4333e17",
+      "tag": "[warmly]",
+      "text": "좋은 방법이에요. ＂나도 같이 놀아도 돼?“함께하고 싶은 마음을 말로 표현하면 친구가 내 마음을 알 수 있어요.",
+      "source": "social-playground.action.options.C.feedback"
+    },
+    {
+      "id": "12a042ec98ba",
+      "tag": "",
+      "text": "친구에게 말하기 어렵다면 선생님에게 ＂저도 같이 놀고 싶어요＂라고 말해요.",
+      "source": "social-playground.action.options.D"
+    },
+    {
+      "id": "4783192aeb37",
+      "tag": "[warmly]",
+      "text": "도움이 필요할 때 선생님에게 말할 수 있어요. 다음에는 용기를 내어 친구에게 내 마음을 직접 말해보는 것도 좋아요.",
+      "source": "social-playground.action.options.D.feedback"
+    },
+    {
+      "id": "47b9be1c1f9b",
+      "tag": "[cheerfully]",
+      "text": "“내 마음은 말로 표현할 수 있어요. 친구에게 내가 원하는 것을 말해보고, 어려울 때 어른에게 도움을 요청해요.”",
+      "source": "social-playground.closing"
+    }
+  ]
+}

@@ -1,10 +1,7 @@
-import recording from './recorded-narration.json'
 import type { Locale } from './settings'
+import { activeNarrationVoice as recording, type RecordedClip } from './narration/voices'
 
-export interface RecordedClip {
-  text: string
-  url: string
-}
+export type { RecordedClip }
 
 /** Ignore punctuation added between clips, never skip unrecorded words. */
 export function narrationKey(text: string): string {

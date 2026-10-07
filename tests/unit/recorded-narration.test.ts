@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import inventory from '../../content-source/narration/inventory.json'
-import recording from '../../src/services/recorded-narration.json'
+import { activeNarrationVoice, NARRATION_VOICES } from '../../src/services/narration/voices'
 import { resolveRecordedNarration } from '../../src/services/recordedNarration'
 
 describe('recorded narration', () => {
@@ -23,20 +23,34 @@ describe('recorded narration', () => {
     expect(resolveRecordedNarration('속상해요', 'en', clips)).toBeUndefined()
   })
 
-  it('ships every registered MP3 inside public for offline precaching', () => {
-    for (const clip of recording.clips) {
-      expect(clip.url).toMatch(/^\/audio\/ko\/.+\.mp3$/)
-      expect(existsSync(`public${clip.url}`), clip.url).toBe(true)
+  it('ships every registered MP3 of every voice set inside public', () => {
+    for (const voice of Object.values(NARRATION_VOICES)) {
+      expect(voice.audioDir).toMatch(/^\/audio\/[a-z-]+$/)
+      for (const clip of voice.clips) {
+        expect(clip.url.startsWith(`${voice.audioDir}/`), clip.url).toBe(true)
+        expect(existsSync(`public${clip.url}`), clip.url).toBe(true)
+      }
     }
   })
 
-  it('covers every phrase the screens speak, so the browser voice is only a fallback', () => {
+  it('ships the kid voice by default and keeps the adult Kyung set switchable', () => {
+    expect(activeNarrationVoice.id).toBe('lulu-lolipop')
+    expect(Object.keys(NARRATION_VOICES)).toEqual([
+      'kyung',
+      'sophie-lane',
+      'clova-ndain',
+      'lulu-lolipop',
+    ])
+    expect(NARRATION_VOICES.kyung.clips.length).toBeGreaterThan(100)
+    for (const voice of Object.values(NARRATION_VOICES))
+      expect(voice.playbackRate).toBeGreaterThanOrEqual(0.7)
+  })
+
+  it('covers every phrase the screens speak with the shipped voice, so the browser voice is only a fallback', () => {
     const missing = inventory.clips
-      .filter((phrase) => !resolveRecordedNarration(phrase.text, 'ko'))
+      .filter((phrase) => !resolveRecordedNarration(phrase.text, 'ko', activeNarrationVoice.clips))
       .map((phrase) => phrase.text)
-    // Pending: the 2026-10-07 client correction (소개 → 고개) still needs its ElevenLabs clip.
-    // Until `pnpm narration:import` registers it, the browser voice reads this one sentence.
-    expect(missing).toEqual(['눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다.'])
+    expect(missing).toEqual([])
   })
 
   it('assembles the Step 3 opening and the ending recap from recorded phrases', () => {
