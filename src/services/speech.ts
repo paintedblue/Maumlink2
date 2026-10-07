@@ -15,7 +15,10 @@ export interface SpeechStatus {
 }
 type Listener = (speaking: boolean) => void
 const LANG: Record<Locale, string> = { ko: 'ko-KR', en: 'en-US' }
-const RATE = 0.9
+// Slow, clearly separated sentences for slow learners (client review 2026-10-07).
+const RATE = 0.8
+// Recorded clips were generated at ElevenLabs speed 1.06; stretch them without changing pitch.
+const AUDIO_RATE = 0.85
 const VOICE_WAIT_MS = 1500
 const START_WAIT_MS = 4000
 
@@ -283,6 +286,7 @@ class SpeechService {
       const startClip = () => {
         if (done || this.request !== req || !this.enabled) return
         el.src = urls[index]!
+        slowDown(el)
         this.current = { cancel }
         this.setStatus({ phase: 'loading' })
         // play() may return undefined (jsdom) or throw synchronously; treat both as rejections.
@@ -303,5 +307,13 @@ class SpeechService {
       startClip()
     })
   }
+}
+/** Loading a new source resets playbackRate to defaultPlaybackRate, so set both per clip. */
+function slowDown(el: HTMLAudioElement): void {
+  const media = el as HTMLAudioElement & { webkitPreservesPitch?: boolean }
+  media.preservesPitch = true
+  media.webkitPreservesPitch = true
+  el.defaultPlaybackRate = AUDIO_RATE
+  el.playbackRate = AUDIO_RATE
 }
 export const speech = new SpeechService()

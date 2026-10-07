@@ -48,7 +48,11 @@ export function Step3({ scenario, state, dispatch, wiggle }: Props) {
       : '',
     exploring && !explored ? t('step3.explore') : '',
   ]
-    .concat(step3.principle && !principleAsFeedback ? L(step3.principle) : '')
+    .concat(
+      step3.principle && !principleAsFeedback && step3.narratePrinciple !== false
+        ? L(step3.principle)
+        : '',
+    )
     .filter(Boolean)
     .join(' ')
   // In explore mode only the opening is read automatically (frozen at mount); each press speaks

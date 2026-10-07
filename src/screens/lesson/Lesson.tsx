@@ -231,6 +231,7 @@ export function Lesson() {
           choice && L(choice.text),
           choice?.ack && L(choice.ack),
           s3.principle &&
+            s3.narratePrinciple !== false &&
             !(s3.type === 'multiple-choice' && s3.principleAfterChoice && !choice) &&
             L(s3.principle),
           state!.moreShown && s3.more && L(s3.more),

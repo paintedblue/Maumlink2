@@ -45,7 +45,8 @@ for (const file of readdirSync('content/scenarios').filter((name) => name.endsWi
   put(scenario.feeling.question.ko, 'feeling.question')
   put(scenario.feeling.hint.text.ko, 'feeling.hint')
   put(scenario.step3.question.ko, 'step3.question')
-  put(scenario.step3.principle?.ko, 'step3.principle')
+  if (scenario.step3.narratePrinciple !== false)
+    put(scenario.step3.principle?.ko, 'step3.principle')
   put(scenario.step3.more?.ko, 'step3.more')
   if (scenario.step3.type === 'multiple-choice') {
     for (const option of scenario.step3.options) {

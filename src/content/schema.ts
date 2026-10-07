@@ -27,7 +27,13 @@ export const DOMAINS: readonly Domain[] = ['self', 'social', 'relation', 'mind',
 export const Quality = z.enum(['recommended', 'acceptable', 'reconsider'])
 export type Quality = z.infer<typeof Quality>
 
-const Step3Base = { question: LString, principle: LString.optional(), more: LString.optional() }
+const Step3Base = {
+  question: LString,
+  principle: LString.optional(),
+  /** false: show `principle` as text only and never read it aloud (자기 인식 학습 목표). */
+  narratePrinciple: z.boolean().optional(),
+  more: LString.optional(),
+}
 
 export const Step3Reason = z.object({
   type: z.literal('reason'),

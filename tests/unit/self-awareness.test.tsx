@@ -199,7 +199,7 @@ describe('자기 인식 lesson (screens)', () => {
     await user.click(screen.getByTestId('nav-primary'))
     expect(screen.getByText('그 때 나의 몸의 반응은?')).toBeInTheDocument()
     const card = screen.getByTestId('body-reaction-card')
-    expect(card).toHaveTextContent('눈물이 나온다, 소개가 숙여진다, 몸에 힘이 빠진다.')
+    expect(card).toHaveTextContent('눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다.')
     const explorer = screen.getByTestId('body-explorer')
     await user.click(within(explorer).getByRole('button', { name: '화가 나요' }))
     expect(screen.getByTestId('body-reaction-card')).toHaveTextContent(

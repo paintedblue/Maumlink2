@@ -5,6 +5,9 @@ import { installSynth } from '../fixtures/speech'
 function installAudio() {
   const audio = {
     src: '',
+    playbackRate: 1,
+    defaultPlaybackRate: 1,
+    preservesPitch: false,
     onended: undefined as (() => void) | undefined,
     onplaying: undefined as (() => void) | undefined,
     play: vi.fn().mockResolvedValue(undefined),
@@ -231,14 +234,14 @@ describe('speech service', () => {
     expect(synth.cancel).toHaveBeenCalledTimes(calls + 1)
   })
 
-  it('speaks Korean at rate 0.9 with a Korean voice and resolves on end (FR-AUD-01)', async () => {
+  it('speaks Korean slowly (rate 0.8) with a Korean voice and resolves on end (FR-AUD-01)', async () => {
     const { synth, spoken } = installSynth()
     const { speech } = await import('../../src/services/speech')
     const p = speech.speak({ text: '안녕', locale: 'ko' })
     expect(synth.speak).toHaveBeenCalledTimes(1)
     const u = spoken[0]!
     expect(u.lang).toBe('ko-KR')
-    expect(u.rate).toBe(0.9)
+    expect(u.rate).toBe(0.8)
     expect((u.voice as { lang: string }).lang).toBe('ko-KR')
     u.onend?.()
     await expect(p).resolves.toBeUndefined()
@@ -267,6 +270,10 @@ describe('speech service', () => {
     const { speech } = await import('../../src/services/speech')
     const pending = speech.speak({ text: '오늘은 어떤 마음을 배워볼까요?', locale: 'ko' })
     expect(audio?.src).toBe('/audio/ko/1015b8bb0ecc.mp3')
+    // Recorded clips are slowed for slow learners without changing the voice's pitch.
+    expect(audio.playbackRate).toBe(0.85)
+    expect(audio.defaultPlaybackRate).toBe(0.85)
+    expect(audio.preservesPitch).toBe(true)
     expect(synth.speak).not.toHaveBeenCalled()
     expect(speech.getStatus().phase).toBe('loading')
     audio?.onplaying?.()

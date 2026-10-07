@@ -451,7 +451,12 @@
         },
         "step3.principle": {
           "page": 5,
-          "ko": "내 몸의 반응을 보고 내 감정을 인지할 수 있다."
+          "ko": "내 몸의 반응을 보고 내 마음을 알 수 있어요.",
+          "clientCorrection": {
+            "date": "2026-10-07",
+            "pdf": "내 몸의 반응을 보고 내 감정을 인지할 수 있다.",
+            "note": "콘텐츠 설계자 수정 요청: 아동 눈높이 문장으로 바꾸고 읽어 주지 않음"
+          }
         },
         "step3.byFeeling.angry.text": {
           "page": 5,
@@ -463,7 +468,12 @@
         },
         "step3.byFeeling.upset.text": {
           "page": 5,
-          "ko": "눈물이 나온다, 소개가 숙여진다, 몸에 힘이 빠진다."
+          "ko": "눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다.",
+          "clientCorrection": {
+            "date": "2026-10-07",
+            "pdf": "눈물이 나온다, 소개가 숙여진다, 몸에 힘이 빠진다.",
+            "note": "콘텐츠 설계자 오탈자 수정: 소개 → 고개"
+          }
         },
         "step3.byFeeling.worried.text": {
           "page": 5,

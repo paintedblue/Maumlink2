@@ -116,7 +116,7 @@
       },
       "upset": {
         "text": {
-          "ko": "눈물이 나온다, 소개가 숙여진다, 몸에 힘이 빠진다."
+          "ko": "눈물이 나온다, 고개가 숙여진다, 몸에 힘이 빠진다."
         },
         "parts": ["eyes", "head", "body"]
       },
@@ -128,8 +128,9 @@
       }
     },
     "principle": {
-      "ko": "내 몸의 반응을 보고 내 감정을 인지할 수 있다."
+      "ko": "내 몸의 반응을 보고 내 마음을 알 수 있어요."
     },
+    "narratePrinciple": false,
     "sourceOmissions": ["shy", "scared"]
   },
   "action": {
