@@ -11,7 +11,14 @@ import {
 const CategorySchema = z.enum(['do', 'rethink'])
 export type SortCategory = z.infer<typeof CategorySchema>
 export const GameStateSchema = z.object({
-  step: z.enum(['choice', 'choiceFeedback', 'conversation', 'sorting', 'sortingFeedback', 'complete']),
+  step: z.enum([
+    'choice',
+    'choiceFeedback',
+    'conversation',
+    'sorting',
+    'sortingFeedback',
+    'complete',
+  ]),
   selectedChoiceId: z.string().nullable(),
   choiceWrong: z.boolean(),
   choiceAttempts: z.number().int().nonnegative(),
