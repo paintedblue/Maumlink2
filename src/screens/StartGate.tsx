@@ -1,38 +1,31 @@
-import { BrandLogo } from '@/design/BrandLogo'
-import { HeartFriends } from '@/design/HeartFriends'
-import { PrimaryButton } from '@/design/Button'
-import { ArrowRightIcon } from '@/design/icons'
-import { useT } from '@/i18n/useT'
+import { devkitArt } from '@/design/devkitAssets'
 import { useSettings } from '@/services/settings'
 import { sound } from '@/services/sound'
 import { speech } from '@/services/speech'
 
-/** First-visit full-screen Start (FR-HOME-01): the one tap that unlocks audio everywhere. */
+/** One first-visit tap also unlocks browser audio. */
 export function StartGate() {
-  const { t } = useT()
-  const setStarted = useSettings((s) => s.setStarted)
+  const setStarted = useSettings((state) => state.setStarted)
   return (
-    <main className="start-screen">
-      <div className="start-art" aria-hidden="true">
-        <HeartFriends />
+    <main className="explore-start">
+      <div className="explore-start__sky" aria-hidden="true" />
+      <h1>마음마을 탐험대</h1>
+      <p>여러 상황에서 어떻게 행동하면 좋을지 함께 연습해요.</p>
+      <div className="explore-start__characters" aria-hidden="true">
+        <img src={devkitArt.haruFull} alt="" />
+        <img src={devkitArt.dog} alt="" />
       </div>
-      <div className="start-copy">
-        <h1 className="start-title">
-          <BrandLogo className="start-wordmark" />
-        </h1>
-        <p className="start-description">{t('home.greeting')}</p>
-      </div>
-      <PrimaryButton
-        className="start-action"
-        iconRight={<ArrowRightIcon />}
+      <button
+        type="button"
+        className="explore-primary"
         onClick={() => {
           speech.unlock()
           sound.unlock()
           setStarted()
         }}
       >
-        {t('home.start')}
-      </PrimaryButton>
+        시작하기 <span aria-hidden="true">›</span>
+      </button>
     </main>
   )
 }

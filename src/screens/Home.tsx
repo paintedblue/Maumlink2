@@ -1,166 +1,101 @@
-import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { useNavigate } from 'react-router'
-import { scenariosByDomain } from '@/content/loader'
-import type { Domain, Scenario } from '@/content/schema'
-import { VoiceToggle } from '@/design/VoiceToggle'
-import { BrandLogo } from '@/design/BrandLogo'
-import { HeartFriends } from '@/design/HeartFriends'
-import { IconButton } from '@/design/Button'
-import { domainSurface } from '@/design/domain'
-import { Sheet } from '@/design/Sheet'
-import { cn } from '@/design/cn'
-import { CheckIcon, ChevronRightIcon, SettingsIcon } from '@/design/icons'
-import { useT } from '@/i18n/useT'
-import { useLesson } from '@/engine/store'
-import { useProgress } from '@/services/progress'
-import { useSettings } from '@/services/settings'
-import { sound } from '@/services/sound'
-import { useAutoRead, useSpeak } from '@/services/useSpeak'
-import { SettingsSheet } from './SettingsSheet'
+import { domains, episodes, episodesFor } from '@/content/episodeIndex'
+import { avatarArt, devkitArt, mapBackground, mapPlaces } from '@/design/devkitAssets'
 import { StartGate } from './StartGate'
+import { AvatarSelect } from './AvatarSelect'
+import { useMvpProgress, completionPercent } from '@/services/mvpProgress'
+import { useProfile } from '@/services/profile'
+import { useSettings } from '@/services/settings'
 
-const ORDER: Domain[] = ['self', 'social', 'relation', 'mind']
+const greeting = '안녕! 오늘은 어느 곳을 탐험할까요?'
 
 export function Home() {
-  const started = useSettings((s) => s.started)
+  const started = useSettings((state) => state.started)
+  const avatarId = useProfile((state) => state.avatarId)
   if (!started) return <StartGate />
-  return <HomeInner />
+  if (!avatarId) return <AvatarSelect />
+  return <ExploreMap />
 }
 
-function HomeInner() {
-  const { t, L, locale } = useT()
+function ExploreMap() {
   const navigate = useNavigate()
-  const { speak, supported } = useSpeak()
-  const entries = useProgress((s) => s.entries)
-  const soundOn = useSettings((s) => s.sound)
-  const [settingsOpen, setSettingsOpen] = useState(false)
-  const [picker, setPicker] = useState<Domain | null>(null)
-  const greeting = t('home.greeting')
-
-  useEffect(() => sound.setEnabled(soundOn), [soundOn])
-  useAutoRead(greeting, 'home')
-
-  const reset = useLesson((l) => l.reset)
-  const open = (s: Scenario) => {
-    reset()
-    navigate(`/lesson/${s.id}`)
-  }
+  const avatarId = useProfile((state) => state.avatarId)
+  const completed = useMvpProgress((state) => state.completedEpisodeIds)
+  const count = completed.length
+  const total = episodes.length
+  const percent = completionPercent(count)
 
   return (
-    <div className="home-screen">
-      <header className="home-masthead">
-        <div className="home-header">
-          <div className="brand-lockup">
-            <BrandLogo />
+    <div className="explore-map-page">
+      <main className="explore-map-main">
+        <div className="explore-greeting">
+          <span className="explore-greeting__avatar">
+            <img src={avatarId ? avatarArt[avatarId] : devkitArt.haruAvatar} alt="" />
+          </span>
+          <h1>{greeting}</h1>
+        </div>
+        <div
+          className="explore-card explore-progress"
+          role="status"
+          aria-label={`완료한 에피소드 ${count}개, 전체 ${total}개 중 ${percent}퍼센트`}
+        >
+          <div>
+            <strong>
+              {count} / {total}
+            </strong>
+            <span>완료한 에피소드</span>
           </div>
-          <div className="utility-controls">
-            <VoiceToggle onEnable={() => void speak(greeting)} supported={supported} />
-            <IconButton label={t('nav.settings')} onClick={() => setSettingsOpen(true)}>
-              <SettingsIcon />
-            </IconButton>
+          <div className="explore-progress__track" aria-hidden="true">
+            <span style={{ width: `${percent}%` }} />
           </div>
+          <strong className="explore-progress__pct">{percent}%</strong>
         </div>
 
-        <div className="home-intro">
-          <h1 className="home-question">{greeting}</h1>
-          <HeartFriends className="home-friends" />
-        </div>
-      </header>
-      <main className="home-library">
-        {!supported && (
-          <p className="mb-4 text-center text-caption text-ink-soft">{t('tts.unavailable')}</p>
-        )}
-
-        <section aria-label={t('home.pick')} className="domain-grid">
-          {ORDER.map((d) => {
-            const list = scenariosByDomain[d]
-            const reserved = d === 'reserved' || list.length === 0
-            const done = list.length > 0 && list.every((s) => entries[s.id])
-            const scene = list[0]
-            const cover = scene?.situation.imageByLocale?.[locale] ?? scene?.situation.image
-            const imageBase = cover?.replace(/\.(png|webp|jpe?g)$/i, '')
+        <section
+          className="explore-map"
+          aria-label="마음마을 지도"
+          style={{ '--map-bg': `url(${mapBackground})` } as CSSProperties}
+        >
+          {domains.map((domain) => {
+            const art = mapPlaces[domain.id]
+            const marks = episodesFor(domain.id).map((episode) => completed.includes(episode.id))
+            const done = marks.filter(Boolean).length
             return (
               <button
-                key={d}
+                key={domain.id}
                 type="button"
-                data-domain={d}
-                disabled={reserved}
-                aria-label={`${scene ? `${L(scene.situation.title)} · ` : ''}${t(`domain.${d}`)}${reserved ? ` (${t('home.reserved')})` : ''}`}
-                className={cn('domain-card', reserved && 'domain-card--reserved')}
-                onClick={() => {
-                  if (reserved) return
-                  sound.play('tick')
-                  if (list.length === 1) open(list[0]!)
-                  else setPicker(d)
-                }}
+                className="explore-place"
+                data-place={domain.id}
+                data-wide={art.wide || undefined}
+                onClick={() => navigate(`/area/${domain.id}`)}
+                aria-label={`${domain.mapName}, ${domain.name}, ${marks.length}개 중 ${done}개 완료`}
               >
-                {!reserved && (
-                  <span className="domain-card-cover">
-                    {imageBase ? (
-                      <img
-                        src={`${imageBase}-800.webp`}
-                        alt=""
-                        width={800}
-                        height={500}
-                        decoding="async"
-                      />
-                    ) : (
-                      <img
-                        src={`/icons/domain/${d}.svg`}
-                        alt=""
-                        width={96}
-                        height={96}
-                        className="domain-cover-fallback"
-                      />
-                    )}
-                    <span className={`domain-cover-symbol domain-cover-symbol--${d}`}>
-                      <img src={`/icons/domain/${d}.svg`} alt="" width={32} height={32} />
+                <span className="explore-place__name">{domain.mapName}</span>
+                <img
+                  className="explore-place__art"
+                  src={art.image}
+                  alt=""
+                  style={{ height: art.height }}
+                />
+                <span className="explore-place__tag">
+                  <span className="explore-place__category">{domain.name}</span>
+                  <span className="explore-place__status">
+                    <span className="explore-place__dots">
+                      {marks.map((on, i) => (
+                        <span key={i} data-on={on || undefined} />
+                      ))}
+                    </span>
+                    <span className="explore-place__count">
+                      {done}/{marks.length}
                     </span>
                   </span>
-                )}
-                <span className="domain-card-content">
-                  <span className="domain-card-category">{t(`domain.${d}`)}</span>
-                  {!reserved && scene && (
-                    <span className="domain-card-name">{L(scene.situation.title)}</span>
-                  )}
-                  {!reserved && (
-                    <span className="domain-card-meta">
-                      <span className="text-caption text-ink-soft">{t('home.start')}</span>
-                      <span className="domain-card-arrow">
-                        <ChevronRightIcon size={24} />
-                      </span>
-                    </span>
-                  )}
                 </span>
-                {done && (
-                  <span className="domain-completed">
-                    <CheckIcon size={16} /> {t('home.done')}
-                  </span>
-                )}
               </button>
             )
           })}
         </section>
       </main>
-      <SettingsSheet open={settingsOpen} onClose={() => setSettingsOpen(false)} />
-      <Sheet open={picker !== null} onClose={() => setPicker(null)} title={t('home.pick')}>
-        <div className="flex flex-col gap-3">
-          {(picker ? scenariosByDomain[picker] : []).map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              className={cn(
-                'tap flex items-center justify-between rounded-card border-[3px] px-5 py-4 text-left text-body font-bold text-ink',
-                domainSurface[s.domain],
-              )}
-              onClick={() => open(s)}
-            >
-              <span>{L(s.title)}</span>
-              {entries[s.id] && <CheckIcon size={22} />}
-            </button>
-          ))}
-        </div>
-      </Sheet>
     </div>
   )
 }
