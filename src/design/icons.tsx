@@ -129,3 +129,25 @@ export function LinkMark({ size = 40, ...rest }: P) {
     </svg>
   )
 }
+
+/** Filled speaker from the life-garden handoff (orange on tinted circles). */
+export function GardenSpeakerIcon({
+  size = 17,
+  color = 'currentColor',
+}: {
+  size?: number
+  color?: string
+}) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M4 9h4l5-4v14l-5-4H4z" fill={color} />
+      <path
+        d="M16 8.5a5 5 0 0 1 0 7"
+        stroke={color}
+        strokeWidth="2.2"
+        fill="none"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}

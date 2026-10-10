@@ -32,3 +32,7 @@ tests/e2e/**/*-snapshots/*-linux.png
 
 # one-time TTS downloads before `pnpm narration:import`
 .narration-downloads
+
+# local package store and raw design archives (extracted copies live in handoff/)
+.pnpm-store/
+*.zip
